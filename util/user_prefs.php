@@ -2,8 +2,7 @@
 <?php
 include "../includes/core.php";
 if (isset($_POST['pref_css'])) {
-	header("Refresh: 1; url=userprefs.php");
-//	$pref_css = $_POST['pref_css'];
+	header("Refresh: 1; url=user_prefs.php");
 }
 ?>
 <head>
@@ -17,10 +16,10 @@ if (isset($_POST['pref_css'])) {
 		<?php
 		if (isset($_SESSION['username'])) {
 			print('<a href="../">home</a></br>');
-			print('<a href="'.CONFIG_DOCUMENT_ROOT_PATH.'logout.php">logout</a>');
+			print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a>');
 		}
 		else {
-			print('<a href="'.CONFIG_DOCUMENT_ROOT_PATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
+			print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
 		}
 		?>
 	</div>
@@ -30,6 +29,7 @@ if (isset($_POST['pref_css'])) {
 <h1 style="text-align:center;">User preferences</h1>
 <?php
 	if (isset($_POST['pref_css'])) {
+	$pref_css = $_POST['pref_css'];
 		if (updateUserStyle($pref_css, $_SESSION['username'])) {
 			echo "User style was updated successfully!";
 		}
