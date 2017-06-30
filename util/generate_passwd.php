@@ -2,7 +2,7 @@
 <?php include "../includes/core.php"; ?>
 <HTML>
 <head>
-	<?php include "../includes/head.php";?>
+	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
 	<title>bmffd — password change</title>
 </head>
 <BODY>
@@ -13,7 +13,7 @@
 </div>
 <div id="right_frame">
 <h1 style="text-align:center;">the bath house</h1>
-<a href='.'>go back »</a>
+<a href="<?php print CONFIG_WEBHOMEPAGE?>">go home »</a>
 <form action="generate_passwd.php" method="post">
 </br><label>new password</label></br>
 <input type="password" id="onsen_new_password" name="onsen_new_password" maxlength="50" /></br>

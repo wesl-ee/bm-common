@@ -15,7 +15,7 @@ if (isset($_POST['pref_css'])) {
 	<div id="logout">
 		<?php
 		if (isset($_SESSION['username'])) {
-			print('<a href="../">home</a></br>');
+			print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
 			print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a>');
 		}
 		else {
@@ -43,7 +43,7 @@ if (isset($_POST['pref_css'])) {
 	}
 	?>
 	<div style="padding-bottom:20px;">
-		<a href="index.php">« back</a>
+		<a href="<?php echo CONFIG_WEBHOMEPAGE?>">home</a>
 	</div>
 	<form method="post">
 	<div style="display:table;width:100%;">

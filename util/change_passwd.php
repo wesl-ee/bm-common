@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
- include "../includes/core.php";
+include "../includes/core.php";
 
 // Was the user refered by some other link?
 if (isset($_GET['ref']))
@@ -8,8 +8,8 @@ if (isset($_GET['ref']))
 ?>
 <HTML>
 <head>
-	<?php include "../includes/head.php"; ?>
-	<title>bmffd — login</title>
+	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
+	<title>bmffd — change password</title>
 </head>
 <body>
 <div id="container">
@@ -17,11 +17,11 @@ if (isset($_GET['ref']))
 	<div id="logout">
 		<?php
 		if (isset($_SESSION['username'])) {
-			print('<a href="'.CONFIG_DOCUMENT_ROOT_PATH.'">home</a></br>');
-			print('<a href="'.CONFIG_DOCUMENT_ROOT_PATH.'logout.php">logout</a>');
+			print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
+			print('<a href="'.CONFIG_COMMON_PATH.'logout.php">logout</a>');
 		}
 		else {
-			print('<a href="'.CONFIG_DOCUMENT_ROOT_PATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
+			print('<a href="'.CONFIG_COMMON_PATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
 		}
 		?>
 	</div>
@@ -77,7 +77,6 @@ if (isset($_POST['onsen_curr_password'], $_POST['onsen_new_password'], $_POST['o
 	}
 
 	// Handling incorrect passwords
-	// UNCOMMENT ONCE DONE WITH SSHA-512 ROLLOVER
 	if (!password_verify($onsen_curr_password, $sql_password)) {
 		print "Your password is incorrect!"; return;
 	}
