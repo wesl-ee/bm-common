@@ -6,24 +6,18 @@ define("CONFIG_REQUIRE_AUTHENTICATION", false);
 define("CONFIG_OPEN_REGISTRATION", false);
 
 // MySQL server config options (more to come)
-define("CONFIG_DB_SERVER", "127.0.0.1");
-define("CONFIG_DB_USERNAME", "DB_USERNAME");
+define("CONFIG_DB_SERVER", "DB_SERVER");
+define("CONFIG_DB_USERNAME", "DB_USER");
 define("CONFIG_DB_PASSWORD", "DB_PASSWORD");
 define("CONFIG_DB_DATABASE", "DB_DATABASE");
 define("CONFIG_DB_TABLE", "DB_TABLE");
 
-// Root for serving things for bmffd
-define("CONFIG_ROOT_PATH","/var/http/bmffd/");
-// Relative to http DOCUMENT_HEAD
-define("CONFIG_DOCUMENT_ROOT_PATH", "/bmffd/");
-// A place for thumbnails and encoded video, relative to DOCUMENT_HEAD
-define("CONFIG_TEMPORARY_DIRECTORY", "/a/");
+define("CONFIG_COMMON_PATH", "/var/http/common/");
+define("CONFIG_COMMON_WEBPATH", "/common/");
+
+define("CONFIG_WEBHOMEPAGE", "/hooYa/");
 
 // Logs
 define("CONFIG_AUTHLOG_FILE", "/path/to/auth.log");
 define("CONFIG_ACCESSLOG_FILE", "/path/to/access.log");
-
-// Tag databases for bmfft
-define("CONFIG_TAG_DB", "/path/to/tags.db");
-define("CONFIG_META_DB", "/path/to/meta.db");
 ?>

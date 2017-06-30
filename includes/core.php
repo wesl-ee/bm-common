@@ -4,13 +4,14 @@
 session_start();
 
 // deployment-specific configuration
-include(dirname(__FILE__)."/config.php");
+include("config.php");
 
 //function definitions
 
 // updates the user's current style and stashes that into a SQL table
 function updateUserStyle($css = NULL, $username = NULL)
 {
+
 	if ($username) {
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
 	if ($conn->connect_error) {
@@ -25,49 +26,48 @@ function updateUserStyle($css = NULL, $username = NULL)
 }
 function reloadUserStyle() {
 	switch($_SESSION['pref_css']) {
-        case "classic":
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless.css";
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/rei.png";
-                $_SESSION['motd']="お帰りなさい";
-                break;
-        case "gold":
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_gold.css";
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/yui.png";
-                $_SESSION['motd']="おかえりなさい";
-                break;
-        case "wu_tang":
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_wutang.css";
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/ghost.png";
-                $_SESSION['motd']="Protect ya neck";
-                break;
-        case "red":
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_red.css";
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/mao.png";
-                $_SESSION['motd']="为人民服务";
-                break;
-        case "nier":
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_nier.css";
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/2B.png";
-                $_SESSION['motd']="おかえりなさい";
-                break;
-        case "none":
-        default:
-        case "bigmike":
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_bigmike.css";
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/mike.png";
-                $_SESSION['motd']="おかえりなさい";
-                break;
-        case "yys":
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/yuzuko.png";
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_yys.css";
-                $_SESSION['motd']="よぉ";
-                break;
-        case "none":
-        case "worlds":
-                $_SESSION['mascot']=CONFIG_DOCUMENT_ROOT_PATH."img/hand.png";
-                $_SESSION['stylesheet']=CONFIG_DOCUMENT_ROOT_PATH."css/style_suckless_worlds.css";
-                $_SESSION['motd']="we'll see creation come undone";
-                break;
+	case "classic":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/rei.png";
+		$_SESSION['motd']="お帰りなさい";
+		break;
+	case "gold":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_gold.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/yui.png";
+		$_SESSION['motd']="おかえりなさい";
+		break;
+	case "wu_tang":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_wutang.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/ghost.png";
+		$_SESSION['motd']="Protect ya neck";
+		break;
+	case "red":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_red.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/mao.png";
+		$_SESSION['motd']="为人民服务";
+		break;
+	case "nier":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_nier.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/2B.png";
+		$_SESSION['motd']="おかえりなさい";
+		break;
+	default:
+		$_SESSION['pref_css']='bigmike';
+	case "bigmike":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_bigmike.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/mike.png";
+		$_SESSION['motd']="おかえりなさい";
+		break;
+	case "yys":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/yuzuko.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_yys.css";
+		$_SESSION['motd']="よぉ";
+		break;
+	case "worlds":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/hand.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_worlds.css";
+		$_SESSION['motd']="we'll see creation come undone";
+		break;
 	}
 }
 // returns the size of a directory in bytes
