@@ -10,7 +10,6 @@ define("CONFIG_DB_SERVER", "DB_SERVER");
 define("CONFIG_DB_USERNAME", "DB_USER");
 define("CONFIG_DB_PASSWORD", "DB_PASSWORD");
 define("CONFIG_DB_DATABASE", "DB_DATABASE");
-define("CONFIG_DB_TABLE", "DB_TABLE");
 
 define("CONFIG_COMMON_PATH", "/var/http/common/");
 define("CONFIG_COMMON_WEBPATH", "/common/");

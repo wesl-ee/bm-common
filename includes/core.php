@@ -17,7 +17,7 @@ function updateUserStyle($css = NULL, $username = NULL)
 	if ($conn->connect_error) {
 		return False;
 	}
-	$cmd = "UPDATE `" . CONFIG_DB_TABLE . "` SET `pref_css`='$css' WHERE `username`='$username'";
+	$cmd = "UPDATE `users` SET `pref_css`='$css' WHERE `username`='$username'";
 	$conn->query($cmd);
 	}
 	$_SESSION['pref_css'] = $css;

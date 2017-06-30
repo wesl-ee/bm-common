@@ -53,7 +53,7 @@ if (isset($_POST['onsen_curr_password'], $_POST['onsen_new_password'], $_POST['o
 		print "It looks like the SQL database is offline"; return;
 	}
 
-	$cmd = "SELECT `id`, `password`, `username`, `failed_logins`, `last_login`, `locked`, `pref_css` FROM " . CONFIG_DB_TABLE . " WHERE `username`='$onsen_username'";
+	$cmd = "SELECT `id`, `password`, `username`, `failed_logins`, `last_login`, `locked`, `pref_css` FROM `users` WHERE `username`='$onsen_username'";
 	$result=$conn->query($cmd);
 	if (!$result) {
 		print "Something went wrong with your request. . . email someone who can fix it"; return;

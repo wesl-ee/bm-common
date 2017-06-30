@@ -29,12 +29,6 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 	$onsen_username = filter_var($_POST['onsen_username'], FILTER_SANITIZE_STRING);
 	$onsen_password = filter_var($_POST['onsen_password'], FILTER_SANITIZE_STRING);
 
-	$mysql_hostname = CONFIG_DB_SERVER;
-	$mysql_username = CONFIG_DB_USERNAME;
-	$mysql_password = CONFIG_DB_PASSWORD;
-	$mysql_dbname = CONFIG_DB_DATABASE;
-	$mysql_table = CONFIG_DB_TABLE;
-
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
 	if ($conn->connect_error) {
 		lwrite(CONFIG_AUTHLOG_FILE, "Could not connect to SQL database for user ".$onsen_username);
@@ -44,7 +38,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 	}
 
 	// First check if the account you're trying to log in to is locked
-	$cmd = "SELECT `id`, `username`, `password`, `failed_logins`, `last_login`, `locked`, `pref_css` FROM `" . CONFIG_DB_TABLE . "` WHERE `username`='$onsen_username'";
+	$cmd = "SELECT `id`, `username`, `password`, `failed_logins`, `last_login`, `locked`, `pref_css` FROM `users` WHERE `username`='$onsen_username'";
 	$result=$conn->query($cmd);
 	if (!$result) {
 		lwrite(CONFIG_AUTHLOG_FILE, "Could not query SQL database for user ".$onsen_username);
@@ -99,7 +93,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 
 	// Set the last_login date to today
 	$today = date("Y-m-d H:i:s");
-	$cmd = "UPDATE `" . CONFIG_DB_TABLE . "` SET `last_login`='$today' WHERE `username`='$sql_username'";
+	$cmd = "UPDATE `users` SET `last_login`='$today' WHERE `username`='$sql_username'";
 	$conn->query($cmd);
 
 	// Set the User ID, effectively logging the user in
