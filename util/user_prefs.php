@@ -6,7 +6,7 @@ if (isset($_POST['pref_css'])) {
 }
 ?>
 <head>
-	<?php include "../includes/head.php"; ?>
+	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
 	<title>bmffd — preferences</title>
 </head>
 <body>
@@ -14,7 +14,7 @@ if (isset($_POST['pref_css'])) {
 <div id="left_frame">
 	<div id="logout">
 		<?php
-		if (isset($_SESSION['username'])) {
+		if (isset($_SESSION['userid'])) {
 			print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
 			print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a>');
 		}
@@ -30,7 +30,7 @@ if (isset($_POST['pref_css'])) {
 <?php
 	if (isset($_POST['pref_css'])) {
 	$pref_css = $_POST['pref_css'];
-		if (updateUserStyle($pref_css, $_SESSION['username'])) {
+		if (updateUserStyle($pref_css, $_SESSION['userid'])) {
 			echo "User style was updated successfully!";
 		}
 		else {
@@ -74,7 +74,7 @@ if (isset($_POST['pref_css'])) {
 	</div>
 	</div>
 	</form>
-		<a href="change_password.php">Change Password</a>
+		<a href="change_passwd.php">Change Password</a>
 </div>
 
 </div>

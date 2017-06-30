@@ -9,15 +9,15 @@ include("config.php");
 //function definitions
 
 // updates the user's current style and stashes that into a SQL table
-function updateUserStyle($css = NULL, $username = NULL)
+function updateUserStyle($css = NULL, $id = NULL)
 {
 
-	if ($username) {
+	if ($id) {
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
 	if ($conn->connect_error) {
 		return False;
 	}
-	$cmd = "UPDATE `users` SET `pref_css`='$css' WHERE `username`='$username'";
+	$cmd = "UPDATE `users` SET `pref_css`='$css' WHERE `id`='$id'";
 	$conn->query($cmd);
 	}
 	$_SESSION['pref_css'] = $css;

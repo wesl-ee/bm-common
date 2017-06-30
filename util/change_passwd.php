@@ -5,6 +5,11 @@ include "../includes/core.php";
 // Was the user refered by some other link?
 if (isset($_GET['ref']))
 	$uri = "?ref=".urlencode($_GET['ref']);
+if (!isset($_SESSION['id'])) {
+	header("HTTP/1.0 401 Unauthorized");
+	header("Location: ".CONFIG_COMMON_WEBPATH."login.php");
+die;
+}
 ?>
 <HTML>
 <head>
@@ -16,7 +21,7 @@ if (isset($_GET['ref']))
 <div id="left_frame">
 	<div id="logout">
 		<?php
-		if (isset($_SESSION['username'])) {
+		if (isset($_SESSION['userid'])) {
 			print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
 			print('<a href="'.CONFIG_COMMON_PATH.'logout.php">logout</a>');
 		}

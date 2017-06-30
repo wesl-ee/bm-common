@@ -97,7 +97,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 	$conn->query($cmd);
 
 	// Set the User ID, effectively logging the user in
-	$_SESSION['user_id'] = $sql_id;
+	$_SESSION['userid'] = $sql_id;
 	$_SESSION['username'] = $sql_username;
 	print "Welcome home $sql_username!</br>You last logged in on $sql_last_login";
 	if ($sql_failed_logins > 0)
@@ -112,7 +112,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 }
 ?>
 <div id="header">
-	<div style="width:50%;float:left;"><a href="../">« back</a></div>
+	<div style="width:50%;float:left;"><a href="/">« back</a></div>
 	<div style="width:50%;float:left;text-align:right;"><a href="util/acc_create.php">create an account</a></div>
 </div>
 <p>
