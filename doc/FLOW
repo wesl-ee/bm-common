@@ -6,8 +6,8 @@ login page. This corresponds to the user's ID in the SQL table, which I
 cover momentarily.
 
 SECTION DATABASES
-Currently, I use mySQL to track logged-in user information. The table
-(currently) looks like this
+Currently, I use MySQL to track logged-in user information. The table
+looks like this
 
 MariaDB [bigmike]> DESCRIBE users;
 +--------------------------+--------------+------+-----+-------------------+----------------+
@@ -61,13 +61,29 @@ the includes/core.php switch statement to define your $_SESSION['session'],
 $_SESSION['stylesheet'], and $_SESSION['motd'], it's that simple!
 
 SECTION ONE-TIME ACCOUNT CREATION
+Invite keys may be generated at util/invite.php; Currently only one invite key may
+be generated per week for the entire site, but this is likely to change as demand
+grows for more invites.
+Invites are stored in CONFIG_DB_DATABASE in the `invites` table which looks like
+this:
 
-Running ./otp outputs a list of 100 one-time passwords that can be used
-against the generated otp-challenge file. Save the stdout, it cannot be
-recovered if you lose it! And if you do, simply run ./otp again. The
-one-time password works on a hash-chain. Essentially, the program generates
-the 100th hash in the chain, then asks the user for the 99th hash, which
-would be hard to brute-force on its own. If the user-provided 99th hash can
-be hashed to yield the 100th hash, the user is allowed to create an account
-and the server then stores the 99th hash as its one-time password challenge.
-Pretty neat stuff!
+MariaDB [bigmike]> DESCRIBE invited;
++--------------+--------------+------+-----+-------------------+-------+
+| Field        | Type         | Null | Key | Default           | Extra |
++--------------+--------------+------+-----+-------------------+-------+
+| hash         | varchar(128) | NO   | PRI | NULL              |       |
+| ownerid      | int(11)      | YES  |     | NULL              |       |
+| date_created | datetime     | YES  |     | CURRENT_TIMESTAMP |       |
++--------------+--------------+------+-----+-------------------+-------+
+I will describe each row briefly here:
+hash
+	This is a SHA512 hash of the key that is generated when a user
+	generates one at util/invite.php. It's important to remember
+	that the key to this hash is NOT STORED ANYWHERE after it is
+	printed out to the user SO IF ONE LOSES THE KEY IT IS LOST
+ownerid
+	Relating to the column `id` in users, this is the user's
+	unique, identifying number
+date_created
+	Holds the time that the key was created, s.t. old keys can be
+	removed after they are stale

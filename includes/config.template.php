@@ -4,6 +4,11 @@ define("CONFIG_REQUIRE_AUTHENTICATION", false);
 // Open the account registration page to everyone instead of using one-time
 // keys
 define("CONFIG_OPEN_REGISTRATION", false);
+// Allow current users to invite their friends using the new one-time
+// password system
+define("CONFIG_ALLOW_INVITES", false);
+// Site-wide cooldown period between requesting invite codes
+define("CONFIG_INVITE_COOLDOWN", "7 days");
 
 // MySQL server config options (more to come)
 define("CONFIG_DB_SERVER", "DB_SERVER");

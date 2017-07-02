@@ -171,6 +171,9 @@ function randomHex($len) {
 		$hex .= $chars[rand(0, strlen($chars) - 1)];
 	return $hex;
 }
+function randomBase64($len) {
+	return base64_encode(random_bytes($len));
+}
 function lwrite($file, $msg) {
 	$fd = fopen($file, "a");
 	fwrite($fd, @date('[d/M/Y:H:i:s]').' '.$msg.PHP_EOL);
