@@ -43,7 +43,7 @@ if (isset($_POST['pref_css'])) {
 	}
 	?>
 	<div style="padding-bottom:20px;">
-		<a href="<?php echo CONFIG_WEBHOMEPAGE?>">home</a>
+		<a href="<?php echo CONFIG_COMMON_WEBPATH?>">back</a>
 	</div>
 	<form method="post">
 	<div style="display:table;width:100%;">

@@ -64,7 +64,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <?php
 	if (!CONFIG_ALLOW_INVITES) {
 		print '<h3 style="text-align:center;margin-top:-20px;">Invites not allowed</h3>';
-		print '<a href="'.CONFIG_WEBHOMEPAGE.'">« back</a>';
+		print '<a href="'.CONFIG_COMMON_WEBPATH.'">« back</a>';
 		return;
 	}
 ?>

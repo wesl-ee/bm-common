@@ -5,7 +5,7 @@ include "../includes/core.php";
 // Was the user refered by some other link?
 if (isset($_GET['ref']))
 	$uri = "?ref=".urlencode($_GET['ref']);
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['userid'])) {
 	header("HTTP/1.0 401 Unauthorized");
 	header("Location: ".CONFIG_COMMON_WEBPATH."login.php");
 die;
@@ -97,7 +97,7 @@ if (isset($_POST['onsen_curr_password'], $_POST['onsen_new_password'], $_POST['o
 ?>
 <div class="entry">
 <p>
-	<a href="userprefs.php">« back</a>
+	<a href="../">« back</a>
 </p>
 <form action="change_password.php" method="post">
 	<label for="onsen_curr_password">Current password</label></br>
