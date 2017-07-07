@@ -14,15 +14,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <div id="container">
 <div id="left_frame">
 	<div id="logout">
-		<?php
-		if (isset($_SESSION['userid'])) {
-			print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
-			print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a>');
-		}
-		else {
-			print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
-		}
-		?>
+		<?php print_login(); ?>
 	</div>
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
@@ -33,7 +25,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <form action="acc_create.php" method="post">
 <?php if (!CONFIG_OPEN_REGISTRATION) {
 	print '<label style="display:block;">one-time registration key</label>';
-	print '<input style="display:block;" type="password" id="invite_key" name="invite_key" maxlength="50" />';
+	print '<input style="display:block;" type="password" id="invite_key" name="invite_key" maxlength="128" />';
 }?>
 <label style="display:block;">requested username</label>
 <input style="display:block;" type="text" id="onsen_username" name="onsen_username" maxlength="20" />

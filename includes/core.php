@@ -174,6 +174,16 @@ function randomHex($len) {
 function randomBase64($len) {
 	return base64_encode(random_bytes($len));
 }
+function print_login()
+{
+	if (isset($_SESSION['userid'])) {
+		print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
+		print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a>');
+	}
+	else {
+		print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
+	}
+}
 function lwrite($file, $msg) {
 	$fd = fopen($file, "a");
 	fwrite($fd, @date('[d/M/Y:H:i:s]').' '.$msg.PHP_EOL);
