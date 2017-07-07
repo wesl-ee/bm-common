@@ -42,7 +42,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 	</div>
 	</div>
 	<div style="margin-top:30px;margin-bottom:30px;">
-	<div style="float:left;width:100%;text-align:center;padding-bottom:50px;">
+	<div style="float:left;width:100%;text-align:center">
 		<a href="util/invite.php">Invite a Friend</a>
 	</div>
 	</div>
