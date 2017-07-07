@@ -26,9 +26,11 @@ function updateUserStyle($css = NULL, $id = NULL)
 }
 function reloadUserStyle() {
 	switch($_SESSION['pref_css']) {
+	default:
+		$_SESSION['pref_css']='classic';
 	case "classic":
-		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless.css";
-		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/rei.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/maki.png";
 		$_SESSION['motd']="お帰りなさい";
 		break;
 	case "gold":
@@ -51,8 +53,6 @@ function reloadUserStyle() {
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/2B.png";
 		$_SESSION['motd']="おかえりなさい";
 		break;
-	default:
-		$_SESSION['pref_css']='bigmike';
 	case "bigmike":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_bigmike.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/mike.png";

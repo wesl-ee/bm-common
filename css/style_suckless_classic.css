@@ -1,16 +1,11 @@
 /* Theme colors and fonts */
 body {
-	background-color: #fbfaf8;
-	color: #7372a0;
+	background-color: #BBF3FF;
+	color: #B0475A;
 }
 #logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex {
-	background-color: inherit;
-	color: #7372a0;
-}
-#logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex,
-#thumbs img {
-	border-style: solid;
-	border-color: black;
+	background-color: #FFD4E5;
+	color: #B0475A;
 }
 body {
 	font-family: MPlus;
