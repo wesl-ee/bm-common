@@ -1,4 +1,4 @@
-/* Base page layouts */
+/* Basic site structure */
 #logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex {
 	border-width: 1px;
 }
@@ -23,7 +23,6 @@
 	float: left;
 	width: 70%;
 	padding-left: 20px;
-	max-height: 100%;
 	overflow: hidden;
 	padding-right: 20px;
 	padding-bottom: 10px;
@@ -39,7 +38,6 @@
 #tag_frame {
 	position: absolute;
 	max-height:80%;
-	border-radius: 20px 20px 0px 0px;
 	width: 90%;
 	overflow-y: scroll;
 	bottom:0;
@@ -54,7 +52,6 @@
 }
 #logout {
 	position:relative;
-	border-radius: 0px 0px 25px 25px;
 	padding: 10px;
 	top: 0px;
 	margin: auto;
@@ -109,8 +106,10 @@ a:hover {
 }
 #content {
 	width:100%;
-	height: 0px;
 	flex: 1;
+	height: 0px;
+	min-height: 0px;
+	min-width: 0px;
 }
 #content * {
 	display: block;
@@ -120,16 +119,25 @@ a:hover {
 	max-width: 100%;
 	cursor: pointer;
 }
+#header {
+	display: block;
+}
 #thumbs {
 	column-count: 4;
 	column-gap: 1em;
 }
 #thumbs img {
+	cursor: pointer;
 	display: inline-block;
 	margin: 0 0 1em;
 	width: 100%;
-	cursor: pointer;
 	border-radius: 10px 10px 10px 10px;
+	/* Before the pictures are loaded make
+	sure the boxes have some height */
+	min-height: 100px;
+}
+#blink {
+	animation: blinker 1s 2;
 }
 img {
 	-moz-user-select: none;
@@ -148,4 +156,9 @@ input,select,textarea,select {
 }
 ::-webkit-scrollbar {
         width: 0px;
+}
+@-webkit-keyframes blinker {  
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1.0; }
 }

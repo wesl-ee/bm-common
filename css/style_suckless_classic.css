@@ -4,8 +4,23 @@ body {
 	color: #B0475A;
 }
 #logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex {
-	background-color: #FFD4E5;
-	color: #B0475A;
+	background-color: #ed544c;
+	color: #ffffff;
+}
+#logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex,
+#thumbs img {
+	border-style: solid;
+	border-color: black;
+}
+/* Curved edges */
+#logout {
+	border-radius: 0px 0px 25px 25px;
+}
+#tag_frame {
+	border-radius: 25px 25px 0px 0px;
+}
+#right_frame, #right_frame_flex {
+	border-radius: 0px 0px 0px 20px;
 }
 body {
 	font-family: MPlus;
