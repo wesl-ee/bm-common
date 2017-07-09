@@ -39,14 +39,26 @@ if (!db_isAdmin($_SESSION['userid'])) die;
 	</div>
 
 	<div style="float:left;width:33%;text-align:center;padding-bottom:50px;">
-		<a href="hooya/import.php">import to hooYa!</a>
+		<?php if (CONFIG_HOOYA_PATH) {
+			print '<a href="'
+			. CONFIG_HOOYA_WEBPATH.'admin/import.php">'
+			. 'import to hooYa!</a>';
+		} ?>&nbsp
 	</div>
 	<div style="float:left;width:33%;text-align:center;padding-bottom:50px;">
-		<a href="hooya/update.php">clean &amp update hooYa!</a>
+		<?php if (CONFIG_HOOYA_PATH) {
+			print '<a href="'
+			. CONFIG_HOOYA_WEBPATH.'admin/update.php">'
+			. 'clean &amp update hooYa!</a>';
+		} ?>&nbsp
 	</div>
 	<div style="float:left;width:33%;text-align:center">&nbsp</div>
 	<div style="float:left;width:33%;text-align:center">
-		<a href="hooya/delete.php">delete from hooYa!</a>
+		<?php if (CONFIG_HOOYA_PATH) {
+			print '<a href="'
+			. CONFIG_HOOYA_WEBPATH.'admin/delete.php">'
+			. 'delete from hooYa!</a>';
+		} ?>&nbsp
 	</div>
 	<div style="float:left;width:33%;text-align:center">&nbsp</div>
 	</div>
