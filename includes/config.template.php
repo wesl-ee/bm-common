@@ -1,27 +1,32 @@
 <?php
 // Require users to authenticate to access files
-define("CONFIG_REQUIRE_AUTHENTICATION", false);
+define("CONFIG_REQUIRE_AUTHENTICATION", true);
 // Open the account registration page to everyone instead of using one-time
 // keys
 define("CONFIG_OPEN_REGISTRATION", false);
-// Allow current users to invite their friends using the new one-time
-// password system
 define("CONFIG_ALLOW_INVITES", false);
-// Site-wide cooldown period between requesting invite codes
 define("CONFIG_INVITE_COOLDOWN", "7 days");
 
-// MySQL server config options (more to come)
-define("CONFIG_DB_SERVER", "DB_SERVER");
-define("CONFIG_DB_USERNAME", "DB_USER");
-define("CONFIG_DB_PASSWORD", "DB_PASSWORD");
-define("CONFIG_DB_DATABASE", "DB_DATABASE");
+// MySQL server config options
+define("CONFIG_DB_SERVER", "localhost");
+define("CONFIG_DB_USERNAME", "MYSQL_USER");
+define("CONFIG_DB_PASSWORD", "MYSQL_PASSWORD");
+define("CONFIG_DB_DATABASE", "MYSQL_DB");
 
-define("CONFIG_COMMON_PATH", "/var/http/common/");
-define("CONFIG_COMMON_WEBPATH", "/common/");
+define("CONFIG_COMMON_PATH", "/var/http/hub/common/");
+define("CONFIG_COMMON_WEBPATH", "/hub/common/");
 
-define("CONFIG_WEBHOMEPAGE", "/hooYa/");
+// Where you want to drop users when they want to go to your
+// main site
+define("CONFIG_WEBHOMEPAGE", "/hub/");
 
-// Logs
-define("CONFIG_AUTHLOG_FILE", "/path/to/auth.log");
-define("CONFIG_ACCESSLOG_FILE", "/path/to/access.log");
+// pieces of bigmike
+// if you do not implement a component, simply set its value to false
+// BUT DO NOT comment out the definition, this causes unexpected
+// behavior
+define("CONFIG_HOOYA_PATH", "/var/http/hub/hooYa/");
+define("CONFIG_HOOYA_WEBPATH", "/hub/hooYa/");
+
+define("CONFIG_BMFFD_PATH", "/var/http/hub/bmffd/");
+define("CONFIG_BMFFD_WEBPATH", "/hub/bmffd/");
 ?>
