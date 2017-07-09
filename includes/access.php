@@ -8,9 +8,9 @@ function db_isAdmin($userid)
 	CONFIG_DB_DATABASE);
 	if (mysqli_connect_errno()) die("Could not connect to mysql server");
 
-	$query = 'SELECT 1 FROM onsen, membership, groups
-	WHERE onsen.id='.$userid.'
-	AND membership.userid=onsen.id
+	$query = 'SELECT 1 FROM users, membership, groups
+	WHERE users.id='.$userid.'
+	AND membership.userid=users.id
 	AND groups.id=membership.groupid
 	AND groups.name="wheel"';
 
@@ -27,9 +27,9 @@ function db_isInGroup($userid, $groupid)
 	CONFIG_DB_DATABASE);
 	if (mysqli_connect_errno()) die("Could not connect to mysql server");
 
-	$query = 'SELECT 1 FROM onsen, membership, groups
-	WHERE onsen.id='.$userid.'
-	AND membership.userid=onsen.id
+	$query = 'SELECT 1 FROM users, membership, groups
+	WHERE users.id='.$userid.'
+	AND membership.userid=users.id
 	AND groups.id=membership.groupid
 	AND groups.id='.$groupid;
 
@@ -63,7 +63,7 @@ function db_getUsernames()
 	CONFIG_DB_PASSWORD,
 	CONFIG_DB_DATABASE);
 	if (mysqli_connect_errno()) die("Could not connect to mysql server");
-	$query = 'SELECT onsen.username,onsen.id FROM onsen';
+	$query = 'SELECT users.username,users.id FROM users';
 	$res = mysqli_query($dbh, $query);
 	if (mysqli_error($dbh)) die(mysqli_error($dbh));
 	while ($row = mysqli_fetch_assoc($res)) {
