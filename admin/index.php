@@ -25,7 +25,7 @@ if (!db_isAdmin($_SESSION['userid'])) die;
 <div id="right_frame">
 	<h1 style="text-align:center;">admin hub</h1>
 	<div class="header">
-	<a href="../">« back</a>
+	<a href="<?php echo CONFIG_WEBHOMEPAGE?>">« back</a>
 	</div>
 	<div style="text-align:center;padding-bottom:30px;">
 	<marquee style="display:block;" behavior="slide" direction="right" scrollamount="30">

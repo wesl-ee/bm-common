@@ -1,6 +1,7 @@
 /* Basic site structure */
 #logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex {
 	border-width: 1px;
+	box-sizing: border-box;
 }
 #thumbs img {
 	border-width: 2px;
@@ -33,15 +34,14 @@
 	float: left;
 	height: 100%;
 	width: 30%;
-	overflow: hidden;
 }
 #tag_frame {
 	position: absolute;
+	bottom: 0;
 	max-height:80%;
-	width: 90%;
+	width: 97%;
+	max-width: 400px;
 	overflow-y: scroll;
-	bottom:0;
-	left:10px;
 }
 #container {
 	position: absolute;
@@ -56,6 +56,7 @@
 	top: 0px;
 	margin: auto;
 	width: 50%;
+	max-width: 300px;
 	text-align:center;
 }
 a {
@@ -91,18 +92,26 @@ a:hover {
 	display: block;
 	overflow:auto;
 }
-#space_box, #member_box {
-	width:45%;
+
+#space_box, #member_box, #box {
+	box-sizing: border-box;
 	text-align:center;
 	color:inherit;
 	background:transparent;
 	margin-top:5px;
+	font-size: 1em;
+}
+#box {
+	width: 50%;
+	float: left;
 }
 #space_box {
-	float:left;
+	width: 45%;
+	float: left;
 }
 #member_box {
-	float:right;
+	width: 45%;
+	float: right;
 }
 #content {
 	width:100%;
