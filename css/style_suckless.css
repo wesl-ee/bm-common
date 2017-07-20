@@ -98,8 +98,8 @@ a:hover {
 	text-align:center;
 	color:inherit;
 	background:transparent;
-	margin-top:5px;
 	font-size: 1em;
+	height: 1em;
 }
 #box {
 	width: 50%;
@@ -108,10 +108,12 @@ a:hover {
 #space_box {
 	width: 45%;
 	float: left;
+	margin-bottom: 5px;
 }
 #member_box {
 	width: 45%;
 	float: right;
+	margin-bottom: 5px;
 }
 #content {
 	width:100%;
@@ -145,9 +147,6 @@ a:hover {
 	sure the boxes have some height */
 	min-height: 100px;
 }
-#blink {
-	animation: blinker 1s 2;
-}
 img {
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -163,11 +162,10 @@ input,select,textarea,select {
         font-family: inherit;
 	border: 1px solid black;
 }
+input[type=number] {-moz-appearance: textfield;}
+::-webkit-inner-spin-button { -webkit-appearance: none;}
+::-webkit-outer-spin-button { -webkit-appearance: none;}
 ::-webkit-scrollbar {
         width: 0px;
-}
-@-webkit-keyframes blinker {
-	0% { opacity: 1.0; }
-	50% { opacity: 0.0; }
-	100% { opacity: 1.0; }
+	height: 0px;
 }
