@@ -1,5 +1,5 @@
 /* Basic site structure */
-#logout, #galleryFrame, #right_frame, #tag_frame, #right_frame_flex {
+#logout, #galleryFrame, #right_frame, #tag_frame {
 	border-width: 1px;
 	box-sizing: border-box;
 }
@@ -7,7 +7,11 @@
 	border-width: 2px;
 }
 #right_frame {
+	display: flex;
 	flex-direction: column;
+	/* For some reason there is some extra space at the botton. . . */
+	overflow: hidden !important;
+	position: relative;
 	float: left;
 	width: 70%;
 	padding-left: 20px;
@@ -17,17 +21,12 @@
 	padding-bottom: 5px;
 	box-sizing: border-box;
 }
-#right_frame_flex {
+.flexrow {
 	display: flex;
-	flex-direction: column;
-	height: 100%;
-	float: left;
-	width: 70%;
-	padding-left: 20px;
-	overflow: hidden;
-	padding-right: 20px;
-	padding-bottom: 10px;
-	box-sizing: border-box;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	overflow: scroll;
 }
 #left_frame {
 	position: relative;
@@ -99,7 +98,6 @@ a:hover {
 	color:inherit;
 	background:transparent;
 	font-size: 1em;
-	height: 1em;
 }
 #box {
 	width: 50%;
@@ -116,13 +114,12 @@ a:hover {
 	margin-bottom: 5px;
 }
 #content {
-	width:100%;
 	flex: 1;
 	height: 0px;
 	min-height: 0px;
 	min-width: 0px;
 }
-#content * {
+#content > * {
 	display: block;
 	margin: auto;
 	border-radius: 10px 10px 10px 10px;
@@ -134,18 +131,22 @@ a:hover {
 	display: block;
 }
 #thumbs {
-	column-count: 4;
-	column-gap: 1em;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	overflow: scroll;
 }
 #thumbs img {
+	flex: 0 1 auto;
 	cursor: pointer;
-	display: inline-block;
 	margin: 0 0 1em;
-	width: 100%;
+	max-width: 250px;
 	border-radius: 10px 10px 10px 10px;
 	/* Before the pictures are loaded make
-	sure the boxes have some height */
-	min-height: 100px;
+	sure the boxes have some height
+	min-height: 100px;*/
 }
 img {
 	-moz-user-select: none;
