@@ -38,12 +38,13 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 	$onsen_password = filter_var($_POST['onsen_password'], FILTER_SANITIZE_STRING);
 	$invite_key = $_POST['invite_key'];
 	if (!CONFIG_OPEN_REGISTRATION) {
-		if (!invites_validate($invite_key)) {
+		$invited_by = invites_validate($invite_key);
+		if (!$invited_by) {
 			print "Incorrect one-time key!";
 			return;
 		}
 	}
-	if (account_create($onsen_username, $onsen_password) === false) {
+	if (account_create($onsen_username, $onsen_password, $invited_by) === false) {
 		print 'Could not create your account right now. . .';
 		return;
 	}

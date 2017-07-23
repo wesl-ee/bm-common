@@ -17,12 +17,13 @@ function invites_validate($key)
 	$hash = hash('sha512', $key);
 
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
-	$cmd = "SELECT `hash` FROM `invites` WHERE `hash` = '".$hash."'";
+	$cmd = "SELECT `ownerid, hash` FROM `invites` WHERE `hash` = '".$hash."'";
 	$result=$conn->query($cmd);
 	if ($result->num_rows == 0) {
 		return false;
 	}
-	return true;
+	$row = $result->fetch_assoc();
+	return $row['ownerid'];
 }
 function invites_delete($key)
 {
