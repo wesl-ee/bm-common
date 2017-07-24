@@ -118,4 +118,13 @@ function lwrite($file, $msg) {
 	fclose($fd);
 	return;
 }
+function get_username($id)
+{
+	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
+	$cmd = "SELECT `username` FROM users WHERE `id` = $id";
+	$result = $conn->query($cmd);
+	$row = $result->fetch_assoc();
+
+	return $row['username'];
+}
 ?>

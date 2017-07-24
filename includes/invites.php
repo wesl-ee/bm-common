@@ -46,6 +46,19 @@ function invites_cangenerate($userid)
 	}
 	return true;
 }
+// Cheap hack to invalidate keys s.t. we don't delete the key until it's
+// expired. This keeps someone from using the same key twice while a user
+// waits for a new one to regenerate
+function invites_invalidate($key)
+{
+	// Generate the hash to delete
+	$hash = hash('sha512', $key);
+
+	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
+	$cmd = "UPDATE `invites` SET `hash` = '" . time() . "' WHERE `hash` = '".$hash."'";
+	$conn->query($cmd);
+	return true;
+}
 function invites_clean()
 {
 	$cutoff = date('Y-m-d H:i:s', strtotime(' -'.CONFIG_INVITE_COOLDOWN));

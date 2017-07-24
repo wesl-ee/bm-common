@@ -48,7 +48,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		print 'Could not create your account right now. . .';
 		return;
 	}
-	if ($invite_key) invites_delete($invite_key);
+	if ($invite_key) invites_invalidate($invite_key);
 	print 'Created your account!';
 }
 ?>
