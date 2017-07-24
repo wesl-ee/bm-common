@@ -1,0 +1,46 @@
+=head1 Installation
+
+The following things are required to run bigmike, and should be installed in
+roughly the order they are listed here.
+
+=over
+
+=item An HTTP Server
+
+bigmike has been tested with lighttp and Apache, but any web server with PHP
+and xsendfile support will work
+
+=item PHP
+
+Make sure your webserver can interpret and serve PHP files
+
+=item mod_xsendfile
+
+mod_xsendfile enables the sending of large files easily. You can grab an
+apache module L<here|https://tn123.org/mod_xsendfile/>, but several
+implementations of this module exist for numerous other web servers.
+
+=item Perl
+
+You likely already have Perl5 installed, but in case you do not it is easily
+available for many operating systems
+
+=over
+
+=item DBI
+
+Perl5 database interface module. It is used for any perl scripts
+that run on the site, like the installation tools or the 'daily dump' for
+hooYa.
+This can be installed from CPAN by running `cpan -i DBI` as root, or
+per-user if you lack those permissions or want a simply local install.
+
+=item DBD::mysql
+
+Perl5 module for interfacing with MySQL tables through DBI.
+Easily installed from CPAN by running `cpan -i DBD::mysql` as root, or
+per-user if you lack those permissions or want a simply local install.
+
+=back
+
+=back
