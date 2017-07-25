@@ -1,55 +1,76 @@
-/* Basic site structure */
-#logout, #galleryFrame, #right_frame, #tag_frame {
-	border-width: 1px;
-	box-sizing: border-box;
-}
-#thumbs img {
-	border-width: 2px;
-}
-#right_frame {
-	display: flex;
-	flex-direction: column;
-	/* For some reason there is some extra space at the botton. . . */
-	overflow: hidden !important;
-	position: relative;
-	float: left;
-	width: 70%;
-	padding-left: 20px;
-	max-height: 100%;
-	overflow: scroll;
-	padding-right: 20px;
-	padding-bottom: 5px;
-	box-sizing: border-box;
-}
-.flexrow {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	overflow: scroll;
-}
-#left_frame {
-	position: relative;
-	float: left;
-	height: 100%;
-	width: 30%;
-}
-#tag_frame {
-	position: absolute;
-	bottom: 0;
-	max-height:80%;
-	width: 97%;
-	max-width: 400px;
-	overflow-y: scroll;
-}
+/* This file describes the structure of bigmike. Any changes here will
+ * affect all users regardless of their current stylesheet.
+ *
+ * If you are
+ * looking to make a color change, it's likely that you don't mean to
+ * edit this file. Back away slowly and carefuly; nothing will break if
+ * you don't touch it.
+ *
+ * yumi
+ */
+
+/* Fit it all on one page */
 #container {
 	position: absolute;
+	overflow: hidden !important;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 }
-#logout {
+/* Without this, our borders overflow! */
+nav, #rightframe, aside {
+	box-sizing: border-box;
+}
+/* Where the mascot, banner, other things go */
+#leftframe {
+	float: left;
+	position: relative;
+	height: 100%;
+	width: 30%;
+}
+/* Where the important shit goes */
+#rightframe {
+	/* funkmaster flex */
+	display: flex;
+	flex-direction: column;
+
+	/* Share space with #leftframe */
+	width: 70%;
+	max-height: 100%;
+
+	/* Shouldn't happen that we have overflow, but
+	just in case. . . */
+	overflow: hidden;
+
+	/* Room to beathe */
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* Tagging frame */
+aside {
+	position: absolute;
+	bottom: 0;
+	max-height:80%;
+	padding: 10px;
+	width: 95%;
+	max-width: 400px;
+	overflow-y: scroll;
+}
+/* Before our main content */
+header {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row nowrap;
+}
+header > * {
+	/* Cut off long items in the header*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+nav {
 	position:relative;
 	padding: 10px;
 	top: 0px;
@@ -87,66 +108,49 @@ a:hover {
         -ms-filter:     grayscale(0%);
         -o-filter:      grayscale(0%);
 }
-#tagform {
+/* Tag frame */
+aside {
 	display: block;
 	overflow:auto;
 }
-
-#space_box, #member_box, #box {
-	box-sizing: border-box;
-	text-align:center;
-	color:inherit;
-	background:transparent;
+/* A specific tag inside the tag frame */
+figure {
+	display: flex;
+}
+figure > input {
+	color: inherit;
+	background-color: transparent;
 	font-size: 1em;
 }
-#box {
-	width: 50%;
-	float: left;
-}
-#space_box {
-	width: 45%;
-	float: left;
-	margin-bottom: 5px;
-}
-#member_box {
-	width: 45%;
-	float: right;
-	margin-bottom: 5px;
-}
-#content {
-	flex: 1;
-	height: 0px;
-	min-height: 0px;
-	min-width: 0px;
-}
-#content > * {
-	display: block;
-	margin: auto;
-	border-radius: 10px 10px 10px 10px;
-	max-height: 100%;
-	max-width: 100%;
-	cursor: pointer;
-}
-#header {
-	display: block;
-}
-#thumbs {
+/* The content we came to see */
+main {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	justify-content: center;
-	overflow: scroll;
 }
-#thumbs img {
-	flex: 0 1 auto;
+main#single {
+	/* Center content */
+	justify-content: center;
+	align-items: center;
+	min-height: 0;
+}
+main#single > * {
+	max-height: 100%;
+}
+main#thumbs {
+	flex-flow: row wrap;
+	overflow: scroll;
+
+	/* Otherwise we lose the aspect ratio */
+	justify-content: center;
+	align-items: center;
+
+}
+main#thumbs > img {
 	cursor: pointer;
-	margin: 0 0 1em;
 	max-width: 250px;
+
+	/* Looks a little close w/o padding */
 	border-radius: 10px 10px 10px 10px;
-	/* Before the pictures are loaded make
-	sure the boxes have some height
-	min-height: 100px;*/
+	margin: 2px;
 }
 img {
 	-moz-user-select: none;
@@ -162,6 +166,7 @@ input,select,textarea,select {
 	background-color: #F7F7F7;
         font-family: inherit;
 	border: 1px solid black;
+	padding: 0px;
 }
 input[type=number] {-moz-appearance: textfield;}
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
