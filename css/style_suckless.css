@@ -142,11 +142,20 @@ aside {
 	display: block;
 	overflow:auto;
 }
-/* A specific tag inside the tag frame */
-figure {
-	display: flex;
+/* Tag list */
+aside table {
+	table-layout: fixed;
+	width: 100%;
 }
-figure > input {
+aside table td {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+/* Expand the data to full size so we get a well-sized table */
+aside table td > * {
+	width: 100%;
+}
+aside table input {
 	color: inherit;
 	background-color: transparent;
 	font-size: 1em;
