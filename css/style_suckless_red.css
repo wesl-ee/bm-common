@@ -11,13 +11,6 @@ nav, #rightframe, aside {
 ::-webkit-scrollbar-thumb {
 	background: #FFFFFF;
 }
-/* Curved edges */
-nav {
-	border-radius: 0px 0px 25px 25px;
-}
-aside {
-	border-radius: 0px 25px 0px 0px;
-}
 body {
 	font-family: MPlus;
 	font-size: 16px;

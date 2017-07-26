@@ -48,6 +48,10 @@ nav, #rightframe, aside {
 	padding-right: 20px;
 	padding-bottom: 3px;
 	padding-top: 3px;
+
+	/* No borders on document edge */
+	border-top-width: 0px !important;
+	border-right-width: 0px !important;
 }
 
 /* Tagging frame */
@@ -59,6 +63,10 @@ aside {
 	width: 95%;
 	max-width: 400px;
 	overflow-y: scroll;
+
+	border-radius: 0px 15px 0px 0px;
+	border-bottom-width: 0px !important;
+	border-left-width: 0px !important;
 }
 h1 {
 	text-align: center;
@@ -98,6 +106,9 @@ nav {
 	width: 50%;
 	max-width: 300px;
 	text-align:center;
+
+	border-radius: 0px 0px 25px 25px;
+	border-top-width: 0px !important;
 }
 a {
 	text-decoration: underline;
@@ -213,14 +224,12 @@ main.thumbs > img {
 	/* Looks a little close w/o space */
 	margin: 5px;
 }
-/* Flex table thing */
-main.listing {
-	display: flex;
-	flex-flow: column nowrap;
+/* Listing files & things */
+main > table {
 	width: 100%;
 }
-main.listing > * {
-
+main > table th {
+	text-align: left;
 }
 /* Search form (includes searchbox & options) */
 #search {
