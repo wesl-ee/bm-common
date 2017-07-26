@@ -92,7 +92,8 @@ header> * {
 footer {
 	display: flex;
 	align-content: flex-start;
-	flex-flow: column nowrap;
+	flex-flow: row nowrap;
+	justify-content: space-between;
 
 	flex: 0 0 auto;
 
@@ -168,18 +169,18 @@ aside table input {
 main {
 	display: flex;
 }
-main#single {
+main.single {
 /* hack for firefox */
 	min-height: 0;
 	filter: drop-shadow(0px 0px 3px rgba(0,0,0,.3))
 	drop-shadow(0px 0px 10px rgba(0,0,0,.3));
 }
-main#single > * {
+main.single > * {
 	/* Grow small items !important */
 	flex: 1 1 auto;
 }
 /* Hack allows us to keep maintain the content aspect ration */
-main#single > #hack > * {
+main.single > #hack > * {
 	display: block;
 	max-height: 100%;
 	max-width: 100%;
@@ -187,7 +188,7 @@ main#single > #hack > * {
 	margin-right: auto;
 	border-radius: 5px;
 }
-main#thumbs {
+main.thumbs {
 	flex-flow: row wrap;
 	overflow: scroll;
 
@@ -195,10 +196,12 @@ main#thumbs {
 	justify-content: center;
 	align-items: center;
 }
-main#thumbs > img {
+main.thumbs > img {
 	cursor: pointer;
-	width: 25%;
-	min-width: 100px;
+	/* Fit four per line plus margin */
+	width: calc(25% - 10px);
+	min-width: 150px;
+	max-width: 500px;
 
 	/* Looks a little close w/o padding */
 	margin: 5px;
@@ -207,6 +210,7 @@ main#thumbs > img {
 #search {
 	width: 70%;
 	margin: auto;
+	padding-bottom: 10px;
 }
 #search input[type=submit] {
 	padding-left: 10px;
