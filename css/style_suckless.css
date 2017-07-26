@@ -145,6 +145,13 @@ a:hover {
 aside {
 	display: block;
 	overflow:auto;
+
+	/* Scrollbar on left */
+	direction: rtl;
+	padding-left: 5px;
+}
+aside > * {
+	direction: ltr;
 }
 /* Tag list */
 aside table {
@@ -250,8 +257,8 @@ input[type=number] {-moz-appearance: textfield;}
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
 ::-webkit-outer-spin-button { -webkit-appearance: none;}
 ::-webkit-scrollbar {
-	width: 2px;
-	height: 2px;
+	width: 4px;
+	height: 0;
 }
 ::-webkit-scrollbar-button {
 	width: 0px;
@@ -259,9 +266,4 @@ input[type=number] {-moz-appearance: textfield;}
 }
 ::-webkit-scrollbar-corner {
 	background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #aaaaaa;
-  border: 0px none #ffffff;
-  border-radius: 50px;
 }
