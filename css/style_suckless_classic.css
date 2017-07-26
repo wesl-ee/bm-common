@@ -6,22 +6,17 @@ body {
 nav, #rightframe,  aside {
 	background-color: #ed544c;
 	color: #ffffff;
-}
-nav, #rightframe, aside {
 	border: 1px solid black;
 }
-main#thumbs > img {
-	border: 2px solid black;
+::-webkit-scrollbar-thumb {
+	background: #ffffff;
 }
 /* Curved edges */
 nav {
 	border-radius: 0px 0px 25px 25px;
 }
 aside {
-	border-radius: 25px 25px 0px 0px;
-}
-#rightframe {
-	border-radius: 0px 0px 0px 25px;
+	border-radius: 0px 25px 0px 0px;
 }
 body {
 	font-family: MPlus;
