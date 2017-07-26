@@ -46,8 +46,8 @@ nav, #rightframe, aside {
 	/* Room to beathe */
 	padding-left: 20px;
 	padding-right: 20px;
-	padding-bottom: 10px;
-
+	padding-bottom: 3px;
+	padding-top: 3px;
 }
 
 /* Tagging frame */
@@ -73,16 +73,8 @@ header {
 
 	/* Don't shrink the header for space! */
 	flex: 0 0 auto;
-
-	/* room to breate */
-	margin-bottom: 5px;
-	padding-bottom: 5px;
-
-	/* <hr/> stand-in */
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
 }
-header> * {
+header > * {
 	/* Max one-line */
 	white-space: nowrap;
 	/* Cut off long items */
@@ -96,12 +88,6 @@ footer {
 	justify-content: space-between;
 
 	flex: 0 0 auto;
-
-	padding-top: 5px;
-	margin-top: 5px;
-
-	border-top-width: 1px;
-	border-top-style: solid;
 }
 
 nav {
@@ -175,9 +161,20 @@ aside table input {
 /* The content we came to see */
 main {
 	display: flex;
+	overflow: scroll;
+
+	border-top-style: solid;
+	border-top-width: 1px;
+
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+
+	/* Room to breathe */
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 main.single {
-/* hack for firefox */
+	/* hack for firefox */
 	min-height: 0;
 	filter: drop-shadow(0px 0px 3px rgba(0,0,0,.3))
 	drop-shadow(0px 0px 10px rgba(0,0,0,.3));
@@ -189,15 +186,18 @@ main.single > * {
 /* Hack allows us to keep maintain the content aspect ration */
 main.single > #hack > * {
 	display: block;
-	max-height: 100%;
+	/* Account for margin when doing full height */
+	max-height: calc(100% - 20px);
 	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 5px;
+
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 main.thumbs {
 	flex-flow: row wrap;
-	overflow: scroll;
 
 	/* Otherwise we lose the aspect ratio */
 	justify-content: center;
@@ -210,8 +210,17 @@ main.thumbs > img {
 	min-width: 150px;
 	max-width: 500px;
 
-	/* Looks a little close w/o padding */
+	/* Looks a little close w/o space */
 	margin: 5px;
+}
+/* Flex table thing */
+main.listing {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+}
+main.listing > * {
+
 }
 /* Search form (includes searchbox & options) */
 #search {
@@ -258,7 +267,7 @@ input[type=number] {-moz-appearance: textfield;}
 ::-webkit-outer-spin-button { -webkit-appearance: none;}
 ::-webkit-scrollbar {
 	width: 4px;
-	height: 0;
+	height: 0px;
 }
 ::-webkit-scrollbar-button {
 	width: 0px;
