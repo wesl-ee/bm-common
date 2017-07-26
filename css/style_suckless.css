@@ -115,7 +115,6 @@ nav {
 a {
 	text-decoration: underline;
 	color: inherit;
-	outline: none;
 }
 a:hover {
 	cursor: pointer;
@@ -204,6 +203,25 @@ main#thumbs > img {
 	/* Looks a little close w/o padding */
 	margin: 5px;
 }
+/* Search form (includes searchbox & options) */
+#search {
+	width: 70%;
+	margin: auto;
+}
+#search input[type=submit] {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#search > * {
+	width: 100%;
+}
+#search > #params {
+	display: flex;
+	margin-top: 10px;
+}
+#search > #params > * {
+	flex: 1 1 auto;
+}
 img {
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -214,11 +232,15 @@ img {
 	-webkit-touch-callout: none;
 	image-orientation: from-image;
 }
-input,select,textarea,select {
+input, select, textarea, select {
 	background-color: #F7F7F7;
         font-family: inherit;
 	border: 1px solid black;
 	padding: 0px;
+	font-size: 1em;
+}
+a {
+	outline: none;
 }
 input[type=number] {-moz-appearance: textfield;}
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
