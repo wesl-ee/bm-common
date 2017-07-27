@@ -150,6 +150,9 @@ aside {
 aside > * {
 	direction: ltr;
 }
+aside > header {
+	justify-content: center;
+}
 /* Tag list */
 aside table {
 	table-layout: fixed;
@@ -180,6 +183,10 @@ main {
 	/* Room to breathe */
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+main.stack {
+	flex-flow: column;
+	align-items: center;
 }
 main.single {
 	/* hack for firefox */
@@ -253,10 +260,6 @@ main.thumbs > img {
 	margin: auto;
 	padding-bottom: 10px;
 }
-#search input[type=submit] {
-	padding-left: 10px;
-	padding-right: 10px;
-}
 #search > * {
 	width: 100%;
 }
@@ -283,6 +286,11 @@ input, select, textarea, select {
 	border: 1px solid black;
 	padding: 0px;
 	font-size: 1em;
+}
+input[type=submit]
+{
+	padding-left: 5px;
+	padding-right: 5px;
 }
 a {
 	outline: none;
