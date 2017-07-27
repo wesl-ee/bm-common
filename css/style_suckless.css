@@ -265,13 +265,15 @@ main.selectmenu > nav {
 	display: flex;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	padding-right: 50px;
 
 	/* scroll between these borders */
 	border-top-style: solid;
 	border-top-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
+}
+main.selectmenu > nav > * {
+	padding-right: 50px;
 }
 main.selectmenu > nav td,
 main.selectmenu > nav th {
