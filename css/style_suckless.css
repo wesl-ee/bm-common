@@ -180,7 +180,7 @@ aside table input {
 main {
 	display: flex;
 
-	overflow: scroll;
+	overflow: hidden;
 
 	width: 100%;
 
@@ -249,19 +249,22 @@ main.thumbs > img {
 
 /* Listing files & things */
 main.selectmenu {
+	justify-content: space-around;
+}
+main.selectmenu > * {
+	padding-right: 10px;
 }
 main.selectmenu > header {
-	align-self: flex-end;
-	padding-right: 10px;
-	max-width: 40%;
-	overflow-wrap: break-word;
+	align-self: center;
+/*	flex: 1 1 auto;*/
 }
 main.selectmenu > header > nav {
 	padding-top: 10px;
 }
 main.selectmenu > nav {
+	display: flex;
 	overflow: scroll;
-	width: 100%;
+	padding-right: 50px;
 
 	/* scroll between these borders */
 	border-top-style: solid;
@@ -269,16 +272,19 @@ main.selectmenu > nav {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 }
-main.selectmenu > table {
-	width:100%;
-}
 main.selectmenu > nav td,
 main.selectmenu > nav th {
+	white-space: nowrap;
 	padding-right: 50px;
 	text-align: left;
 }
-main.selectmenu > ul {
+main.selectmenu > nav > ul {
 	line-height: 1.5em;
+	padding-inline-start: 15px;
+	-webkit-padding-start: 15px;
+}
+main.selectmenu > nav > ul a {
+	text-decoration: none;
 }
 /* Search form (includes searchbox & options) */
 #search {
