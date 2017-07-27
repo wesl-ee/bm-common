@@ -153,7 +153,7 @@ aside > * {
 	direction: ltr;
 }
 aside > header {
-	justify-content: center;
+	text-align: center;
 }
 /* Tag list */
 aside table {
@@ -251,8 +251,8 @@ main.thumbs > img {
 main.selectmenu {
 	justify-content: space-around;
 }
-main.selectmenu > * {
-	padding-right: 10px;
+main.selectmenu * {
+	text-overflow: ellipsis;
 }
 main.selectmenu > header {
 	align-self: center;
@@ -263,7 +263,8 @@ main.selectmenu > header > nav {
 }
 main.selectmenu > nav {
 	display: flex;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	padding-right: 50px;
 
 	/* scroll between these borders */
@@ -278,13 +279,13 @@ main.selectmenu > nav th {
 	padding-right: 50px;
 	text-align: left;
 }
+main.selectmenu > nav a {
+	text-decoration: none;
+}
 main.selectmenu > nav > ul {
 	line-height: 1.5em;
 	padding-inline-start: 15px;
 	-webkit-padding-start: 15px;
-}
-main.selectmenu > nav > ul a {
-	text-decoration: none;
 }
 /* Search form (includes searchbox & options) */
 #search {

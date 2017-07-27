@@ -125,9 +125,8 @@ function get_username($id)
 
 	return $row['username'];
 }
-function print_titleblock($subtitle, $title)
+function cursor()
 {
-	print "<h3>$subtitle</h3>"
-	. "<h1>$title<span class='blink'>_</span></h1>";
+	print "<span class='blink'>_</span>";
 }
 ?>
