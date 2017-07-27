@@ -3,7 +3,7 @@ body {
 	background-color: #fbfaf8;
 	color: #7372a0;
 }
-nav, #rightframe, aside {
+#leftframe > nav, #rightframe, aside {
 	background-color: inherit;
 	color: #7372a0;
 	border: 1px solid black;

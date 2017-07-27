@@ -25,9 +25,9 @@ function updateUserStyle($css = NULL, $id = NULL)
 	return True;
 }
 function reloadUserStyle() {
+	if (!isset($_SESSION['pref_css']))
+		$_SESSION['pref_css'] = 'bigmike';
 	switch($_SESSION['pref_css']) {
-	default:
-		$_SESSION['pref_css']='classic';
 	case "classic":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/maki.png";
@@ -124,5 +124,10 @@ function get_username($id)
 	$row = $result->fetch_assoc();
 
 	return $row['username'];
+}
+function print_titleblock($subtitle, $title)
+{
+	print "<h3>$subtitle</h3>"
+	. "<h1>$title<span class='blink'>_</span></h1>";
 }
 ?>

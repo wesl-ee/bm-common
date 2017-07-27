@@ -3,7 +3,7 @@ body {
 	background-color: #fbfaf8;
 	color: #3e3f40;
 }
-nav, #rightframe, aside {
+#leftframe > nav, #rightframe, aside {
 	background-color: #feffdd;
 	color: #3e3f40;
 	border: 1px solid black;

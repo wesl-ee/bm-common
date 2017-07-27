@@ -19,7 +19,7 @@
 	height: 100%;
 }
 /* Without this, our borders overflow! */
-nav, #rightframe, aside {
+#leftframe > nav, #rightframe, aside {
 	box-sizing: border-box;
 }
 /* Where the mascot, banner, other things go */
@@ -68,9 +68,9 @@ aside {
 	border-bottom-width: 0px !important;
 	border-left-width: 0px !important;
 }
-h1 {
-	text-align: center;
-	padding-bottom: 20px;
+h1, h2, h3, ul {
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
 /* Before our main content */
 header {
@@ -98,7 +98,7 @@ footer {
 	flex: 0 0 auto;
 }
 
-nav {
+#leftframe > nav {
 	position:relative;
 	padding: 10px;
 	top: 0px;
@@ -172,13 +172,10 @@ aside table input {
 /* The content we came to see */
 main {
 	display: flex;
+
 	overflow: scroll;
 
-	border-top-style: solid;
-	border-top-width: 1px;
-
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
+	width: 100%;
 
 	/* Room to breathe */
 	margin-top: 10px;
@@ -189,6 +186,11 @@ main.single {
 	min-height: 0;
 	filter: drop-shadow(0px 0px 3px rgba(0,0,0,.3))
 	drop-shadow(0px 0px 10px rgba(0,0,0,.3));
+
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
 }
 main.single > * {
 	/* Grow small items !important */
@@ -207,12 +209,21 @@ main.single > #hack > * {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
 main.thumbs {
 	flex-flow: row wrap;
 
 	/* Otherwise we lose the aspect ratio */
 	justify-content: center;
 	align-items: center;
+
+	overflow: scroll;
+
+	/* scroll between these borders */
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
 }
 main.thumbs > img {
 	cursor: pointer;
@@ -224,12 +235,17 @@ main.thumbs > img {
 	/* Looks a little close w/o space */
 	margin: 5px;
 }
+
 /* Listing files & things */
-main > table {
+.listing {
+	overflow: scroll;
 	width: 100%;
-}
-main > table th {
-	text-align: left;
+
+	/* scroll between these borders */
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
 }
 /* Search form (includes searchbox & options) */
 #search {
@@ -284,4 +300,10 @@ input[type=number] {-moz-appearance: textfield;}
 }
 ::-webkit-scrollbar-corner {
 	background: transparent;
+}
+.blink {
+	animation: animation-blink 1.2s steps(2, start) infinite;
+}
+@keyframes animation-blink {
+	to { visibility: hidden; }
 }
