@@ -262,7 +262,6 @@ main.selectmenu > header > nav {
 	padding-top: 10px;
 }
 main.selectmenu > nav {
-	display: flex;
 	overflow-y: scroll;
 	overflow-x: hidden;
 
@@ -272,13 +271,9 @@ main.selectmenu > nav {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 }
-main.selectmenu > nav > * {
-	padding-right: 50px;
-}
 main.selectmenu > nav td,
 main.selectmenu > nav th {
 	white-space: nowrap;
-	padding-right: 50px;
 	text-align: left;
 }
 main.selectmenu > nav a {

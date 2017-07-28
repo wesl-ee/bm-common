@@ -13,31 +13,27 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 </head>
 <body>
 <div id="container">
-<div id="left_frame">
-	<div id="logout">
+<div id="leftframe">
+	<nav>
 		<?php print_login() ?>
-        </div>
+        </nav>
 	<img id="mascot" src=<?php echo $_SESSION['mascot']?>>
 </div>
 
-<div id="right_frame">
-	<h1 style="text-align:center;">User Center</h1>
-	<div class="header">
-	<a href="../">« back</a>
-	</div>
-	<div style="margin-top:30px;margin-bottom:30px;">
-	<div style="float:left;width:50%;text-align:center;padding-bottom:50px;">
-		<a href="util/user_prefs.php">User Preferences</a>
-	</div>
-	<div style="float:left;width:50%;text-align:center;padding-bottom:50px;">
-		<a href="util/change_passwd.php">Change password</a>
-	</div>
-	</div>
-	<div style="margin-top:30px;margin-bottom:30px;">
-	<div style="float:left;width:100%;text-align:center">
-		<a href="util/invite.php">Invite a Friend</a>
-	</div>
-	</div>
+<div id="rightframe">
+	<main class="selectmenu">
+	<header>
+		<h1>User Center</h1>
+		<a href="../">back</a>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="util/user_prefs.php">User Preferences</a></li>
+			<li><a href="util/change_passwd.php">Change password</a></li>
+			<li><a href="util/invite.php">Invite a Friend</a></li>
+		</ul>
+	</nav>
+	</main>
 </div>
 </div>
 </body>

@@ -11,13 +11,13 @@ if (isset($_POST['pref_css'])) {
 </head>
 <body>
 <div id="container">
-<div id="left_frame">
-	<div id="logout">
+<div id="leftframe">
+	<nav>
 		<?php print_login(); ?>
-	</div>
+	</nav>
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
-<div id="right_frame">
+<div id="rightframe">
 <h1 style="text-align:center;">User preferences</h1>
 <?php
 	if (isset($_POST['pref_css'])) {
@@ -38,12 +38,10 @@ if (isset($_POST['pref_css'])) {
 		<a href="<?php echo CONFIG_COMMON_WEBPATH?>">back</a>
 	</div>
 	<form method="post">
-	<div style="display:table;width:100%;">
-	<div style="display:table-row">
-	<div style="display:table-cell;padding-bottom:20px;">
-		CSS Style
-	</div>
-	<div style="display:table-cell;padding-bottom:20px;">
+	<table style="width:50%;margin:auto;">
+	<tr>
+		<td>CSS Style</td>
+		<td>
 		<select name="pref_css" onchange="this.form.submit()">
 		<option <?php if ($_SESSION['pref_css']=="bigmike") echo "selected" ?> value="bigmike">Big Mike</option>
 		<option <?php if ($_SESSION['pref_css']=="classic") echo "selected" ?> value="classic">Classic</option>
@@ -54,19 +52,20 @@ if (isset($_POST['pref_css'])) {
 		<option <?php if ($_SESSION['pref_css']=="worlds") echo "selected" ?> value="worlds">Worlds</option>
 		<option <?php if ($_SESSION['pref_css']=="wu_tang") echo "selected" ?> value="wu_tang">Wu-tang</option>
 		</select>
-	</div>
-	</div>
-	<div style="display:table-row;">
-	<div style="display:table-cell;padding-bottom:20px;">
-		Mascot
-	</div>
-	<div style="display:table-cell;padding-bottom:20px;">
+		</td>
+	</tr>
+	<tr>
+		<td>Mascot</td>
+		<td>
 		<input <?php if ($_SESSION['mascot']) echo 'checked'?> type="checkbox" name="work" onchange="this.form.submit()"></input>
-	</div>
-	</div>
-	</div>
+		</td>
+	</tr>
+	<tr colspan=2>
+		<td><a href="change_passwd.php">Change Password</a></td>
+	</tr>
+	</table>
 	</form>
-		<a href="change_passwd.php">Change Password</a>
+
 </div>
 
 </div>

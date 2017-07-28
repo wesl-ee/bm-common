@@ -45,14 +45,17 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <BODY>
 
 <div id="container">
-<div id="left_frame">
-	<div id="logout">
+<div id="leftframe">
+	<nav>
 		<?php print_login(); ?>
-	</div>
+	</nav>
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
-<div id="right_frame">
-<h1 style="text-align:center;">the bath house</h1>
+<div id="rightframe">
+<header>
+	<h1 style="text-align:center;">the bath house</h1>
+	<h3>invite key generator</h3>
+</header>
 <?php
 	if (!CONFIG_ALLOW_INVITES) {
 		print '<h3 style="text-align:center;margin-top:-20px;">Invites not allowed</h3>';
@@ -60,8 +63,6 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		return;
 	}
 ?>
-
-<h3 style="text-align:center;margin-top:-20px;">invite key generator</h3>
 
 <a href=<?php echo CONFIG_WEBHOMEPAGE?>>« back</a>
 <div id="timer" style="text-align:center;"></div>

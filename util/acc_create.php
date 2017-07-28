@@ -12,16 +12,17 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <BODY>
 
 <div id="container">
-<div id="left_frame">
-	<div id="logout">
+<div id="leftframe">
+	<nav>
 		<?php print_login(); ?>
-	</div>
+	</nav>
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
-<div id="right_frame">
-<h1 style="text-align:center;">the bath house</h1>
-<h3 style="text-align:center;margin-top:-20px;">account creation wizard</h3>
-<a href='.'>« back</a>
+<div id="rightframe">
+	<header>
+	<a href='/'>back</a>
+	<h3>account creation wizard</h3>
+	</header>
 <form action="acc_create.php" method="post">
 <?php if (!CONFIG_OPEN_REGISTRATION) {
 	print '<label style="display:block;">one-time registration key</label>';

@@ -8,19 +8,20 @@ if (isset($_GET['ref']))
 ?>
 <HTML>
 <head>
-	<?php include "includes/head.php"; ?>
+	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
 	<title>bmffd — login</title>
 </head>
 <body>
 
 <div id="container">
-<div id="left_frame">
-<img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
+<div id="leftframe">
+	<img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
-<div id="right_frame">
-<div id="title">
-<h1 style="text-align:center;">the bath house</h1>
-</div>
+<div id="rightframe">
+	<header>
+		<h1 style="text-align:center;">the bath house</h1>
+		<a href="util/acc_create.php">create an account</a>
+	</header>
 <?php
 if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 
@@ -111,10 +112,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 	die;	
 }
 ?>
-<div id="header">
-	<div style="width:50%;float:left;"><a href="/">« back</a></div>
-	<div style="width:50%;float:left;text-align:right;"><a href="util/acc_create.php">create an account</a></div>
-</div>
+
 <p>
 Please log in ～
 </p>

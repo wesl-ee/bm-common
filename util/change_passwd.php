@@ -18,14 +18,16 @@ die;
 </head>
 <body>
 <div id="container">
-<div id="left_frame">
-	<div id="logout">
+<div id="leftframe">
+	<nav>
 		<?php print_login(); ?>
-	</div>
+	</nav>
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
-<div id="right_frame">
-<h1 style="text-align:center;">password changes</h1>
+<div id="rightframe">
+<header>
+	<h1 style="text-align:center;">password changes</h1>
+</header>
 <?php
 if (isset($_POST['onsen_curr_password'], $_POST['onsen_new_password'], $_POST['onsen_confirm_password'])) {
 	if ($_POST['onsen_new_password'] != $_POST['onsen_confirm_password']) {
