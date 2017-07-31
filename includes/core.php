@@ -112,10 +112,6 @@ function print_login()
 		print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
 	}
 }
-function lwrite($msg) {
-	syslog(LOG_INFO, $msg);
-	return;
-}
 function get_username($id)
 {
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);

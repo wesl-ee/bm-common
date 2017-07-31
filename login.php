@@ -25,6 +25,9 @@ if (isset($_GET['ref']))
 <?php
 if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 
+	// Don't login too fast!
+	sleep(5);
+
 	if (strlen($_POST['onsen_username']) > 20 || strlen($_POST['onsen_password']) > 50) { print '<script type="text/javascript">setTimeout(function () {window.history.back();}, 2000);</script>';return; }
 
 	$onsen_username = filter_var($_POST['onsen_username'], FILTER_SANITIZE_STRING);
@@ -32,7 +35,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
 	if ($conn->connect_error) {
-		lwrite(CONFIG_AUTHLOG_FILE, "Could not connect to SQL database for user ".$onsen_username);
+		syslog(LOG_INFO|LOG_DAEMON, "Could not connect to SQL database for user ".$onsen_username);
 		print "It looks like the SQL database is offline";
 		print '<script type="text/javascript">setTimeout(function () {window.history.back();}, 2000);</script>';
 		return;
@@ -42,7 +45,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 	$cmd = "SELECT `id`, `username`, `password`, `failed_logins`, `last_login`, `locked`, `pref_css` FROM `users` WHERE `username`='$onsen_username'";
 	$result=$conn->query($cmd);
 	if (!$result) {
-		lwrite(CONFIG_AUTHLOG_FILE, "Could not query SQL database for user ".$onsen_username);
+		syslog(LOG_INFO|LOG_DAEMON, "Could not query SQL database for user ".$onsen_username);
 		print "Something went wrong with your request. . . email someone who can fix it";
 		print '<script type="text/javascript">setTimeout(function () {window.history.back();}, 2000);</script>';
 		return;
@@ -58,14 +61,14 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 
 	// Handling incorrect usernames
 	if ($result->num_rows === 0) {
-		lwrite(CONFIG_AUTHLOG_FILE, "Failed log-in attempt for non-existent user ".$onsen_username." from ".$_SERVER['REMOTE_ADDR']);
+		syslog(LOG_INFO|LOG_DAEMON, "Failed log-in attempt for non-existent user ".$onsen_username." from ".$_SERVER['REMOTE_ADDR']);
 		print "I cannot find an account like that!";
 		print '<script type="text/javascript">setTimeout(function () {window.history.back();}, 2000);</script>';
 		return;
 	}
 	// Handling locked accounts
 	if ($sql_locked == "y") {
-		lwrite(CONFIG_AUTHLOG_FILE, "Failed log-in attempt for locked user ".$onsen_username." from ".$_SERVER['REMOTE_ADDR']);
+		syslog(LOG_INFO|LOG_DAEMON, "Failed log-in attempt for locked user ".$onsen_username." from ".$_SERVER['REMOTE_ADDR']);
 		print "Your account is locked, please try again in a few minutes~";
 		print '<script type="text/javascript">setTimeout(function () {window.history.back();}, 2000);</script>';
 		return;
@@ -74,7 +77,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 
 	$salt = substr($sql_password, 3-mb_strlen($sql_password), -129);
 	if (!password_verify($onsen_password, $sql_password)) {
-		lwrite(CONFIG_AUTHLOG_FILE, "Failed log-in attempt for ".$onsen_username." from ".$_SERVER['REMOTE_ADDR']);
+		syslog(LOG_INFO|LOG_DAEMON, "Failed log-in attempt for ".$onsen_username." from ".$_SERVER['REMOTE_ADDR']);
 		$failed_logins = $row["failed_logins"]+1;
 		print "You have failed to log in $failed_logins times";
 		$cmd = "UPDATE `onsen` SET `failed_logins`='$failed_logins' WHERE `username`='$sql_username'";
@@ -83,7 +86,7 @@ if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
 		return;
 	}
 
-	lwrite(CONFIG_AUTHLOG_FILE, "Successful login for ".$sql_username." from ". $_SERVER['REMOTE_ADDR']);
+	syslog(LOG_INFO|LOG_DAEMON, "Successful login for ".$sql_username." from ". $_SERVER['REMOTE_ADDR']);
 	// Set the number of failed logins to 0
 	$cmd = "UPDATE `onsen` SET `failed_logins`=0 WHERE `username`='$sql_username'";
 	$conn->query($cmd);
