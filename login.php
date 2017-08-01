@@ -24,7 +24,6 @@ if (isset($_GET['ref']))
 	</header>
 <?php
 if (isset($_POST['onsen_username'], $_POST['onsen_password'])) {
-
 	// Don't login too fast!
 	sleep(5);
 
