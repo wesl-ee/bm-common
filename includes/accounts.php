@@ -7,19 +7,35 @@ function account_create($username, $password, $invited_by = NULL)
 		CONFIG_DB_DATABASE);
 	$username = mysqli_escape_string($dbh, $username);
 	$password = mysqli_escape_string($dbh, $password);
+
+	// Duplicate username detection
 	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
-	. " WHERE `username`='" . $username . "'");
+	. " WHERE `username`='$username'");
 	if (mysqli_num_rows($res)) {
+		syslog(LOG_INFO|LOG_DAEMON, "Attempted to create a duplicate"
+		. " user $username from " . $_SERVER['REMOTE_ADDR']);
 		return false;
 	}
+
+	// Duplicate IP address detection
+	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
+	. " WHERE `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'");
+	if (mysqli_num_rows($res)) {
+		syslog(LOG_INFO|LOG_DAEMON, "Attempted to same-ip register"
+		. " $username from " . $_SERVER['REMOTE_ADDR']);
+		return false;
+	}
+
+	// Register the requested username and password
 	$salt = randomHex(16);
 	$hash = $password;
-	// crypt(3) formatted hash+salt
+	// make a crypt(3) formatted hash+salt
 	$hash = crypt($hash, '$6$'.$salt.'$');
 	$salted_password = $hash;
 	mysqli_query($dbh, "INSERT INTO `users`"
-	. " (`username`, `password`, `invited_by`) VALUES"
-	. " ('$username', '$salted_password', '$invited_by')");
+	. " (`username`, `password`, `invited_by`, `last_ip`) VALUES"
+	. " ('$username', '$salted_password', '$invited_by',"
+	. "'" . $_SERVER['REMOTE_ADDR'] . "')");
 	mysqli_close($dbh);
 	return true;
 }
