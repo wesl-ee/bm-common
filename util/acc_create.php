@@ -32,11 +32,18 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <input style="display:block;" type="text" name="username" maxlength="20">
 <label style="display:block;">requested password</label>
 <input style="display:block;" type="password" name="password" maxlength="50">
+<label style="display:block;">confirm password</label>
+<input style="display:block;" type="password" name="confirm_password" maxlength="50">
 <input style="display:block;" type="submit" value="Sign me up!">
 </form>
-	<?php if (isset($_POST['username'], $_POST['password'])
+	<?php if (isset($_POST['username'], $_POST['password']
+	, $_POST['confirm_password'])
 	&& (CONFIG_OPEN_REGISTRATION || isset($_POST['invite_key']))
 	) {
+		if ($_POST['confirm_password'] != $_POST['password']) {
+			print "Passwords do not match";
+			return;
+		}
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		$invite_key = $_POST['invite_key'];
