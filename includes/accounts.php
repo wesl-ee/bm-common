@@ -89,7 +89,7 @@ function login_validate($username, $password)
 
 	// Update 'last login' information to the current session
 	$today = date("Y-m-d H:i:s");
-	mysqli_query("UPDATE `users` SET `last_login`='$today'"
+	mysqli_query($dbh, "UPDATE `users` SET `last_login`='$today'"
 	. ", `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'"
 	. " WHERE `id` = " . $_SESSION['userid']);
 
