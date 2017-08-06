@@ -179,6 +179,7 @@ aside table input {
 /* The content we came to see */
 main {
 	display: flex;
+	justify-content: space-around;
 
 	overflow: hidden;
 
@@ -188,9 +189,10 @@ main {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-main.stack {
-	flex-flow: column;
-	align-items: center;
+main td,
+main th {
+	white-space: nowrap;
+	text-align: left;
 }
 main.single {
 	/* hack for firefox */
@@ -248,20 +250,19 @@ main.thumbs > img {
 }
 
 /* Listing files & things */
-main.selectmenu {
-	justify-content: space-around;
-}
-main.selectmenu * {
+main.widemenu * {
 	text-overflow: ellipsis;
 }
-main.selectmenu > header {
+main.widemenu > header {
 	align-self: center;
 /*	flex: 1 1 auto;*/
 }
-main.selectmenu > header > nav {
+main.widemenu > header > nav {
 	padding-top: 10px;
 }
-main.selectmenu > nav {
+main.widemenu > ul,
+main.widemenu > table,
+main.widemenu > article {
 	overflow-y: scroll;
 	overflow-x: hidden;
 
@@ -270,16 +271,15 @@ main.selectmenu > nav {
 	border-top-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
+
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
-main.selectmenu > nav td,
-main.selectmenu > nav th {
-	white-space: nowrap;
-	text-align: left;
-}
-main.selectmenu > nav a {
+
+main.widemenu > ul a {
 	text-decoration: none;
 }
-main.selectmenu > nav > ul {
+main.widemenu > ul {
 	line-height: 1.5em;
 	padding-inline-start: 15px;
 	-webkit-padding-start: 15px;

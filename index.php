@@ -21,18 +21,16 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 </div>
 
 <div id="rightframe">
-	<main class="selectmenu">
+	<main class="widemenu">
 	<header>
 		<h1>User Center</h1>
 		<a href="../">back</a>
 	</header>
-	<nav>
-		<ul>
-			<li><a href="util/user_prefs.php">User Preferences</a></li>
-			<li><a href="util/change_passwd.php">Change password</a></li>
-			<li><a href="util/invite.php">Invite a Friend</a></li>
-		</ul>
-	</nav>
+	<ul>
+		<li><a href="util/user_prefs.php">User Preferences</a></li>
+		<li><a href="util/change_passwd.php">Change password</a></li>
+		<li><a href="util/invite.php">Invite a Friend</a></li>
+	</ul>
 	</main>
 </div>
 </div>

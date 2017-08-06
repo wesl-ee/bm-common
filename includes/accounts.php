@@ -20,6 +20,8 @@ function account_create($username, $password, $invited_by = NULL)
 	// Duplicate IP address detection
 	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
 	. " WHERE `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'");
+	print("SELECT `username` FROM `users`"
+        . " WHERE `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'");
 	if (mysqli_num_rows($res)) {
 		syslog(LOG_INFO|LOG_DAEMON, "Attempted to same-ip register"
 		. " $username from " . $_SERVER['REMOTE_ADDR']);
