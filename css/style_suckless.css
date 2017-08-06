@@ -193,6 +193,10 @@ main td,
 main th {
 	white-space: nowrap;
 	text-align: left;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+main table {
 }
 main.single {
 	/* hack for firefox */
@@ -261,7 +265,6 @@ main.widemenu > header > nav {
 	padding-top: 10px;
 }
 main.widemenu > ul,
-main.widemenu > table,
 main.widemenu > article {
 	overflow-y: scroll;
 	overflow-x: hidden;

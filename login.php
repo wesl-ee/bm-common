@@ -29,7 +29,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 	sleep(5);
 
 	print "<p>";
-	if ($info = login_validate($_POST['username'], $_POST['password'])) {
+	if ($info = login($_POST['username'], $_POST['password'])) {
 		print "Welcome home " . $_SESSION['username']
 		. "<br/>"
 		. "You last logged in on " . $info['last_login']

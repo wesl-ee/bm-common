@@ -30,6 +30,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 		<li><a href="util/user_prefs.php">User Preferences</a></li>
 		<li><a href="util/change_passwd.php">Change password</a></li>
 		<li><a href="util/invite.php">Invite a Friend</a></li>
+		<li><a href="util/acc_delete.php">Delete your account</a></li>
 	</ul>
 	</main>
 </div>
