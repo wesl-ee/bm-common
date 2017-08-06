@@ -60,9 +60,6 @@ if (isset($_POST['pref_css'])) {
 		<input <?php if ($_SESSION['mascot']) echo 'checked'?> type="checkbox" name="work" onchange="this.form.submit()"></input>
 		</td>
 	</tr>
-	<tr colspan=2>
-		<td><a href="change_passwd.php">Change Password</a></td>
-	</tr>
 	</table>
 	</form>
 

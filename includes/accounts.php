@@ -35,9 +35,15 @@ function account_create($username, $password, $invited_by = NULL)
 	$hash = crypt($hash, '$6$'.$salt.'$');
 	$salted_password = $hash;
 	mysqli_query($dbh, "INSERT INTO `users`"
-	. " (`username`, `password`, `invited_by`, `last_ip`) VALUES"
-	. " ('$username', '$salted_password', '$invited_by',"
-	. "'" . $_SERVER['REMOTE_ADDR'] . "')");
+	. " (`username`, `password`, `last_ip`) VALUES"
+	. " ('$username', '$salted_password'"
+	. ", '" . $_SERVER['REMOTE_ADDR'] . "')");
+
+	if (isset($invited_by)) {
+		mysqli_query("UPDATE `users` SET"
+		. " `invited_by`='$invited_by'"
+		. " WHERE username='$username'");
+	}
 	mysqli_close($dbh);
 	return true;
 }
@@ -91,7 +97,7 @@ function login_validate($username, $password)
 
 	// Update 'last login' information to the current session
 	$today = date("Y-m-d H:i:s");
-	mysqli_query("UPDATE `users` SET `last_login`='$today'"
+	mysqli_query($dbh, "UPDATE `users` SET `last_login`='$today'"
 	. ", `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'"
 	. " WHERE `id` = " . $_SESSION['userid']);
 
