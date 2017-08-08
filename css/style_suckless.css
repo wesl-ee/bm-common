@@ -303,6 +303,11 @@ main.widemenu > ul {
 #search > #params > * {
 	flex: 1 1 auto;
 }
+#search > #params input[type=number],
+#search > #params input[type=text] {
+	padding-left: 5px;
+	padding-right: 5px;
+}
 img {
 	-moz-user-select: none;
 	-webkit-user-select: none;
