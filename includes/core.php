@@ -26,7 +26,7 @@ function updateUserStyle($css = NULL, $id = NULL)
 }
 function reloadUserStyle() {
 	if (!isset($_SESSION['pref_css']))
-		$_SESSION['pref_css'] = 'bigmike';
+		$_SESSION['pref_css'] = 'classic';
 	switch($_SESSION['pref_css']) {
 	case "classic":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";

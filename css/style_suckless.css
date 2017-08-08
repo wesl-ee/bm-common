@@ -293,6 +293,9 @@ main.widemenu > ul {
 	margin: auto;
 	padding-bottom: 10px;
 }
+#search > input {
+	padding-left: 2px;
+}
 #search > * {
 	width: 100%;
 }
@@ -304,9 +307,10 @@ main.widemenu > ul {
 	flex: 1 1 auto;
 }
 #search > #params input[type=number],
-#search > #params input[type=text] {
-	padding-left: 5px;
-	padding-right: 5px;
+#search > #params input {
+	padding-left: 2px;
+	padding-right: 2px;
+	width: 100px;
 }
 img {
 	-moz-user-select: none;
