@@ -53,18 +53,17 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 </div>
 <div id="rightframe">
 <header>
-	<h1 style="text-align:center;">the bath house</h1>
+	<a href=<?php echo CONFIG_WEBHOMEPAGE?>>« back</a>
 	<h3>invite key generator</h3>
 </header>
+<main>
+
 <?php
 	if (!CONFIG_ALLOW_INVITES) {
-		print '<h3 style="text-align:center;margin-top:-20px;">Invites not allowed</h3>';
-		print '<a href="'.CONFIG_COMMON_WEBPATH.'">« back</a>';
+		print '<h3>Invites not allowed</h3>';
 		return;
 	}
 ?>
-
-<a href=<?php echo CONFIG_WEBHOMEPAGE?>>« back</a>
 <div id="timer" style="text-align:center;"></div>
 <form method="post">
 <input type="hidden" name="generate" value="true" />
@@ -93,6 +92,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 	}
 }
 ?>
+</main>
 </div>
 </div>
 </body>

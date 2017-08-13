@@ -147,7 +147,9 @@ aside {
 
 	/* Scrollbar on left */
 	direction: rtl;
+	padding: 10px;
 	padding-left: 5px;
+	padding-bottom: 25px;
 }
 aside > * {
 	direction: ltr;
@@ -178,12 +180,13 @@ aside table input {
 /* Search main page */
 /* The content we came to see */
 main {
-	display: flex;
-	justify-content: space-around;
-
-	overflow: hidden;
-
+	overflow: scroll;
 	width: 100%;
+
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
 
 	/* Room to breathe */
 	margin-top: 10px;
@@ -196,18 +199,13 @@ main th {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-main table {
-}
 main.single {
 	/* hack for firefox */
 	min-height: 0;
 	filter: drop-shadow(0px 0px 3px rgba(0,0,0,.3))
 	drop-shadow(0px 0px 10px rgba(0,0,0,.3));
 
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
+
 }
 main.single > * {
 	/* Grow small items !important */
@@ -226,8 +224,8 @@ main.single > #hack > * {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
 main.thumbs {
+	display: flex;
 	flex-flow: row wrap;
 
 	/* Otherwise we lose the aspect ratio */
@@ -251,41 +249,6 @@ main.thumbs > img {
 
 	/* Looks a little close w/o space */
 	margin: 5px;
-}
-
-/* Listing files & things */
-main.widemenu * {
-	text-overflow: ellipsis;
-}
-main.widemenu > header {
-	align-self: center;
-/*	flex: 1 1 auto;*/
-}
-main.widemenu > header > nav {
-	padding-top: 10px;
-}
-main.widemenu > ul,
-main.widemenu > article {
-	overflow-y: scroll;
-	overflow-x: hidden;
-
-	/* scroll between these borders */
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-main.widemenu > ul a {
-	text-decoration: none;
-}
-main.widemenu > ul {
-	line-height: 1.5em;
-	padding-inline-start: 15px;
-	-webkit-padding-start: 15px;
 }
 /* Search form (includes searchbox & options) */
 #search {

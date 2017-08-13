@@ -21,11 +21,11 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 </div>
 
 <div id="rightframe">
-	<main class="widemenu">
 	<header>
-		<h1>User Center</h1>
 		<a href="../">back</a>
+		<h1>User Center</h1>
 	</header>
+	<main>
 	<ul>
 		<li><a href="util/user_prefs.php">User Preferences</a></li>
 		<li><a href="util/change_passwd.php">Change password</a></li>
