@@ -16,7 +16,10 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+
+	/* URL status bar gets in the way otherwise */
+	height: calc(100% - 25px);
+	margin-bottom: 25px;
 }
 /* Without this, our borders overflow! */
 #leftframe > nav, #rightframe, aside {
@@ -46,8 +49,8 @@
 	/* Room to beathe */
 	padding-left: 20px;
 	padding-right: 20px;
-	padding-bottom: 3px;
 	padding-top: 3px;
+	padding-bottom: 25px;
 
 	/* No borders on document edge */
 	border-top-width: 0px !important;
@@ -64,8 +67,7 @@ aside {
 	max-width: 400px;
 	overflow-y: scroll;
 
-	border-radius: 0px 15px 0px 0px;
-	border-bottom-width: 0px !important;
+	border-radius: 0px 15px 15px 0px;
 	border-left-width: 0px !important;
 }
 h1, h2, h3, ul {
@@ -149,7 +151,6 @@ aside {
 	direction: rtl;
 	padding: 10px;
 	padding-left: 5px;
-	padding-bottom: 25px;
 }
 aside > * {
 	direction: ltr;
@@ -200,12 +201,11 @@ main th {
 	padding-right: 20px;
 }
 main.single {
+	display: flex;
 	/* hack for firefox */
 	min-height: 0;
 	filter: drop-shadow(0px 0px 3px rgba(0,0,0,.3))
 	drop-shadow(0px 0px 10px rgba(0,0,0,.3));
-
-
 }
 main.single > * {
 	/* Grow small items !important */
@@ -224,23 +224,7 @@ main.single > #hack > * {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-main.thumbs {
-	display: flex;
-	flex-flow: row wrap;
-
-	/* Otherwise we lose the aspect ratio */
-	justify-content: center;
-	align-items: center;
-
-	overflow: scroll;
-
-	/* scroll between these borders */
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-}
-main.thumbs > img {
+main.thumbs img {
 	cursor: pointer;
 	/* Fit four per line plus margin */
 	width: calc(25% - 10px);
