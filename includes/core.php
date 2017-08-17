@@ -68,6 +68,11 @@ function reloadUserStyle() {
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_worlds.css";
 		$_SESSION['motd']="we'll see creation come undone";
 		break;
+	case "hino":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/hinobaby.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_hino.css";
+		$_SESSION['motd']="おかえりなさい";
+		break;
 	}
 }
 // returns a human-readable file-size
@@ -104,13 +109,42 @@ function randomBase64($len) {
 }
 function print_login()
 {
+	print '<script>
+		var countDownDate = new Date("Aug 16, 2017 09:00:00").getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+		// Get todays date and time
+		var now = new Date().getTime();
+
+		// Find the distance between now an the count down date
+		var distance = countDownDate - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+		// Display the result in the element with id="demo"
+		document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+		+ minutes + "m ";
+
+		// If the count down is finished, write some text
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("timer").innerHTML = "<a href=\"http://howler.us.to\">now</a>";
+		}
+	}, 1000);
+	</script>';
 	if (isset($_SESSION['userid'])) {
 		print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
-		print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a>');
+		print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>');
 	}
 	else {
-		print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
+		print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a><br/>');
 	}
+	print '<a href="http://howler.us.to">howler</a> opens in<div id="timer">&nbsp</div>';
 }
 function get_username($id)
 {

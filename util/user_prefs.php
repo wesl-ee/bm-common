@@ -18,7 +18,10 @@ if (isset($_POST['pref_css'])) {
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
 <div id="rightframe">
-<h1 style="text-align:center;">User preferences</h1>
+<header>
+	<h1>User preferences</h1>
+</header>
+<main>
 <?php
 	if (isset($_POST['pref_css'])) {
 	$pref_css = $_POST['pref_css'];
@@ -34,9 +37,6 @@ if (isset($_POST['pref_css'])) {
 		die();
 	}
 	?>
-	<div style="padding-bottom:20px;">
-		<a href="<?php echo CONFIG_COMMON_WEBPATH?>">back</a>
-	</div>
 	<form method="post">
 	<table style="width:50%;margin:auto;">
 	<tr>
@@ -45,6 +45,7 @@ if (isset($_POST['pref_css'])) {
 		<select name="pref_css" onchange="this.form.submit()">
 		<option <?php if ($_SESSION['pref_css']=="bigmike") echo "selected" ?> value="bigmike">Big Mike</option>
 		<option <?php if ($_SESSION['pref_css']=="classic") echo "selected" ?> value="classic">Classic</option>
+		<option <?php if ($_SESSION['pref_css']=="hino") echo "selected" ?> value="hino">Hino</option>
 		<option <?php if ($_SESSION['pref_css']=="gold") echo "selected" ?> value="gold">Gold</option>
 		<option <?php if ($_SESSION['pref_css']=="nier") echo "selected" ?> value="nier">Nier</option>
 		<option <?php if ($_SESSION['pref_css']=="red") echo "selected" ?> value="red">Red</option>
@@ -62,7 +63,7 @@ if (isset($_POST['pref_css'])) {
 	</tr>
 	</table>
 	</form>
-
+</main>
 </div>
 
 </div>
