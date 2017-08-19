@@ -73,7 +73,11 @@ function reloadUserStyle() {
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_hino.css";
 		$_SESSION['motd']="おかえりなさい";
 		break;
-	}
+	case "illya":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/illya.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_illya.css";
+		$_SESSION['motd']="おかえりなさい";
+		break;
 }
 // returns a human-readable file-size
 function human_filesize($bytes, $decimals = 2)

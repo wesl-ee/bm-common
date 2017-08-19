@@ -46,6 +46,7 @@ if (isset($_POST['pref_css'])) {
 		<option <?php if ($_SESSION['pref_css']=="bigmike") echo "selected" ?> value="bigmike">Big Mike</option>
 		<option <?php if ($_SESSION['pref_css']=="classic") echo "selected" ?> value="classic">Classic</option>
 		<option <?php if ($_SESSION['pref_css']=="hino") echo "selected" ?> value="hino">Hino</option>
+		<option <?php if ($_SESSION['pref_css']=="illya") echo "selected" ?> value="illya">Illya</option>
 		<option <?php if ($_SESSION['pref_css']=="gold") echo "selected" ?> value="gold">Gold</option>
 		<option <?php if ($_SESSION['pref_css']=="nier") echo "selected" ?> value="nier">Nier</option>
 		<option <?php if ($_SESSION['pref_css']=="red") echo "selected" ?> value="red">Red</option>
