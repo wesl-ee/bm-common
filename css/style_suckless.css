@@ -123,7 +123,7 @@ a:hover {
 	color: #5ABFCF;
 }
 #mascot {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	max-width: 100%;
 	max-height: 80%;
@@ -196,9 +196,12 @@ main {
 main td,
 main th {
 	white-space: nowrap;
-	text-align: left;
+	text-align: center;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+main table {
+	margin: auto;
 }
 main.single {
 	display: flex;
