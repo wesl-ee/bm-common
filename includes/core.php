@@ -9,24 +9,25 @@ include("config.php");
 //function definitions
 
 // updates the user's current style and stashes that into a SQL table
-function updateUserStyle($css = NULL, $id = NULL)
+function updateUserStyle($css = NULL, $workmode = NULL, $id = NULL)
 {
-
+	if ($workmode) $workmode = 'y'; else $workmode = 'n';
 	if ($id) {
-	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
-	if ($conn->connect_error) {
-		return False;
+		$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
+		if ($conn->connect_error) {
+			return False;
+		}
+		$cmd = "UPDATE `users` SET `pref_css`='$css', `workmode`='$workmode' WHERE `id`='$id'";
+		$conn->query($cmd);
 	}
-	$cmd = "UPDATE `users` SET `pref_css`='$css' WHERE `id`='$id'";
-	$conn->query($cmd);
-	}
+	$_SESSION['workmode'] = $workmode;
 	$_SESSION['pref_css'] = $css;
 	reloadUserStyle();
 	return True;
 }
 function reloadUserStyle() {
 	if (!isset($_SESSION['pref_css']))
-		$_SESSION['pref_css'] = 'classic';
+		$_SESSION['pref_css'] = 'yys';
 	switch($_SESSION['pref_css']) {
 	case "classic":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
@@ -79,6 +80,7 @@ function reloadUserStyle() {
 		$_SESSION['motd']="おかえりなさい";
 		break;
 	}
+	if ($_SESSION['workmode'] == 'n') unset($_SESSION['mascot']);
 }
 // returns a human-readable file-size
 function human_filesize($bytes, $decimals = 2)
@@ -114,34 +116,6 @@ function randomBase64($len) {
 }
 function print_login()
 {
-	print '<script>
-		var countDownDate = new Date("Aug 16, 2017 09:00:00").getTime();
-
-		// Update the count down every 1 second
-		var x = setInterval(function() {
-
-		// Get todays date and time
-		var now = new Date().getTime();
-
-		// Find the distance between now an the count down date
-		var distance = countDownDate - now;
-
-		// Time calculations for days, hours, minutes and seconds
-		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-		// Display the result in the element with id="demo"
-		document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-		+ minutes + "m ";
-
-		// If the count down is finished, write some text
-		if (distance < 0) {
-			clearInterval(x);
-			document.getElementById("timer").innerHTML = "<a href=\"http://howler.us.to\">now</a>";
-		}
-	}, 1000);
-	</script>';
 	if (isset($_SESSION['userid'])) {
 		print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
 		print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>');
@@ -149,7 +123,6 @@ function print_login()
 	else {
 		print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a><br/>');
 	}
-	print '<a href="http://howler.us.to">howler</a> opens in<div id="timer">&nbsp</div>';
 }
 function get_username($id)
 {

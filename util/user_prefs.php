@@ -25,16 +25,13 @@ if (isset($_POST['pref_css'])) {
 <?php
 	if (isset($_POST['pref_css'])) {
 	$pref_css = $_POST['pref_css'];
-		if (updateUserStyle($pref_css, $_SESSION['userid'])) {
+		if (updateUserStyle($pref_css, $_POST['work'], $_SESSION['userid'])) {
 			echo "User style was updated successfully!";
 		}
 		else {
 			echo "User style was not updated successfully!";
 		}
-		if (!$_POST['work']) {
-			unset($_SESSION['mascot']);
-		}
-		die();
+		die;
 	}
 	?>
 	<form method="post">

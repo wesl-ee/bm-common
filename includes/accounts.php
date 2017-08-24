@@ -88,7 +88,7 @@ function login($username, $password)
 	$password = mysqli_escape_string($dbh, $password);
 	$res = mysqli_query($dbh, "SELECT"
 	. " `id`, `username`, `failed_logins`, `last_ip`"
-	. ", `last_login`, `pref_css` FROM `users`"
+	. ", `last_login`, `pref_css`, `workmode` FROM `users`"
 	. "  WHERE username='$username'");
 	$row = mysqli_fetch_assoc($res);
 
@@ -105,6 +105,7 @@ function login($username, $password)
 
 	// Update the styling sheets for our session
 	$_SESSION['pref_css'] = $row['pref_css'];
+	$_SESSION['workmode'] = $row['workmode'];
 	reloaduserstyle();
 
 	// Update 'last login' information to the current session
