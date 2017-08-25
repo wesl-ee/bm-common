@@ -9,9 +9,12 @@ include("config.php");
 //function definitions
 
 // updates the user's current style and stashes that into a SQL table
-function updateUserStyle($css = NULL, $workmode = NULL, $id = NULL)
+function updateUserStyle($css, $workmode, $id = NULL)
 {
-	if ($workmode) $workmode = 'y'; else $workmode = 'n';
+	$_SESSION['workmode'] = $workmode;
+	$_SESSION['pref_css'] = $css;
+
+	if (!$workmode) $workmode = 'NULL';
 	if ($id) {
 		$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
 		if ($conn->connect_error) {
@@ -20,14 +23,12 @@ function updateUserStyle($css = NULL, $workmode = NULL, $id = NULL)
 		$cmd = "UPDATE `users` SET `pref_css`='$css', `workmode`='$workmode' WHERE `id`='$id'";
 		$conn->query($cmd);
 	}
-	$_SESSION['workmode'] = $workmode;
-	$_SESSION['pref_css'] = $css;
 	reloadUserStyle();
 	return True;
 }
 function reloadUserStyle() {
-	if (!isset($_SESSION['pref_css']))
-		$_SESSION['pref_css'] = 'yys';
+	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'yys';
+	if (!isset($_SESSION['userid'])) $_SESSION['workmode'] = 'y';
 	switch($_SESSION['pref_css']) {
 	case "classic":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
@@ -80,7 +81,7 @@ function reloadUserStyle() {
 		$_SESSION['motd']="おかえりなさい";
 		break;
 	}
-	if ($_SESSION['workmode'] == 'n') unset($_SESSION['mascot']);
+	if ($_SESSION['workmode']) unset($_SESSION['mascot']);
 }
 // returns a human-readable file-size
 function human_filesize($bytes, $decimals = 2)
@@ -116,13 +117,12 @@ function randomBase64($len) {
 }
 function print_login()
 {
-	if (isset($_SESSION['userid'])) {
-		print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
-		print('<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>');
-	}
-	else {
-		print('<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a><br/>');
-	}
+	print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
+	if (isset($_SESSION['userid']))
+		print '<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>';
+	else
+		print '<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='
+		.$_SERVER['REQUEST_URI'].'">login</a><br/>';
 }
 function get_username($id)
 {

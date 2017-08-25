@@ -25,7 +25,8 @@ if (isset($_POST['pref_css'])) {
 <?php
 	if (isset($_POST['pref_css'])) {
 	$pref_css = $_POST['pref_css'];
-		if (updateUserStyle($pref_css, $_POST['work'], $_SESSION['userid'])) {
+	if (!$_POST['mascot']) $workmode = 'on';
+		if (updateUserStyle($pref_css, $workmode, $_SESSION['userid'])) {
 			echo "User style was updated successfully!";
 		}
 		else {
@@ -56,7 +57,7 @@ if (isset($_POST['pref_css'])) {
 	<tr>
 		<td>Mascot</td>
 		<td>
-		<input <?php if ($_SESSION['mascot']) echo 'checked'?> type="checkbox" name="work" onchange="this.form.submit()"></input>
+		<input <?php if (!$_SESSION['workmode']) echo 'checked'?> type="checkbox" name="mascot" onchange="this.form.submit()"></input>
 		</td>
 	</tr>
 	</table>
