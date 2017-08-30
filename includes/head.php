@@ -1,5 +1,4 @@
 <?php
-$_SESSION['last_activity'] = new DateTime();
 if (!isset($_SESSION['pref_css']))
 	reloadUserStyle();
 ?>

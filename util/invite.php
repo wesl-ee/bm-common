@@ -8,7 +8,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
-	<title>bmffd — invite a friend</title>
+	<title>bm — invite a friend</title>
 	<script>
 		// Set the date we're counting down to
 		var nexttime = "<?php echo invites_nexttime();?>";

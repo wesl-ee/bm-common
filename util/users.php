@@ -8,7 +8,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
-	<title>bmffd — directory</title>
+	<title>bm — phonebook</title>
 </head>
 <BODY>
 

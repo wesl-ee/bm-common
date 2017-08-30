@@ -9,7 +9,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bmffd</title>
+	<title>bm</title>
 </head>
 <body>
 <div id="container">

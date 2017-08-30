@@ -10,7 +10,7 @@ if (isset($_GET['ref']))
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bmffd — login</title>
+	<title>bm — login</title>
 </head>
 <body>
 
@@ -20,7 +20,7 @@ if (isset($_GET['ref']))
 </div>
 <div id="rightframe">
 	<header>
-		<h1 style="text-align:center;">the bath house</h1>
+		<h1>bm</h1>
 		<a href="util/acc_create.php">create an account</a>
 	</header>
 <?php

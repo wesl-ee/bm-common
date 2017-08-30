@@ -8,7 +8,7 @@ include CONFIG_COMMON_PATH."includes/auth.php";
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
-	<title>bigmike — delete your account</title>
+	<title>bm — delete your account</title>
 </head>
 <BODY>
 

@@ -7,7 +7,7 @@ if (isset($_POST['pref_css'])) {
 ?>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bmffd — preferences</title>
+	<title>bm — preferences</title>
 </head>
 <body>
 <div id="container">

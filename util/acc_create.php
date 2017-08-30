@@ -7,7 +7,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
-	<title>bigmike — create an account</title>
+	<title>bm — create an account</title>
 </head>
 <BODY>
 
