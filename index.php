@@ -26,7 +26,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 	</header>
 	<main>
 	<table>
-		<tr><td><a href="../users.php">User directory</a></td></tr>
+		<tr><td><a href="util/users.php">User directory</a></td></tr>
 		<tr><td><a href="util/user_prefs.php">User Preferences</a></td></tr>
 		<tr><td><a href="util/change_passwd.php">Change password</a></td></tr>
 		<tr><td><a href="util/invite.php">Invite a Friend</a></td></tr>
