@@ -7,7 +7,6 @@ session_start();
 include("config.php");
 
 //function definitions
-
 // updates the user's current style and stashes that into a SQL table
 function updateUserStyle($css, $workmode, $id = NULL)
 {
@@ -26,6 +25,7 @@ function updateUserStyle($css, $workmode, $id = NULL)
 	reloadUserStyle();
 	return True;
 }
+// Set all the elements that define a style
 function reloadUserStyle() {
 	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'yys';
 	if (!isset($_SESSION['userid'])) $_SESSION['workmode'] = 'y';
@@ -90,21 +90,6 @@ function human_filesize($bytes, $decimals = 2)
     $factor = floor((strlen($bytes) - 1) / 3);
     return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
 }
-// used for determining elligibility to be downloaded as a zip file
-function isAnAudioFile($filename)
-{
-	$extension = pathinfo($filename)["extension"];
-	if ($extension == "mp3") return true;
-	if ($extension == "m4a") return true;
-	if ($extension == "flac") return true;
-	if ($extension == "aiff") return true;
-	if ($extension == "m3u") return true;
-	if ($extension == "mpg") return true;
-	if ($extension == "wav") return true;
-	if ($extension == "ogg") return true;
-	if ($extension == "wma") return true;
-	return false;
-}
 // Generates a random hex string, mostly for generating a salt
 function randomHex($len) {
 	$chars = 'abcdef01234567890';
@@ -112,9 +97,7 @@ function randomHex($len) {
 		$hex .= $chars[rand(0, strlen($chars) - 1)];
 	return $hex;
 }
-function randomBase64($len) {
-	return base64_encode(random_bytes($len));
-}
+// Prints the cute <nav> information at the top left
 function print_login()
 {
 	print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
@@ -124,6 +107,7 @@ function print_login()
 		print '<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='
 		.$_SERVER['REQUEST_URI'].'">login</a><br/>';
 }
+// Resolve a user id to a user name
 function get_username($id)
 {
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
@@ -133,6 +117,7 @@ function get_username($id)
 
 	return $row['username'];
 }
+// cute!
 function cursor()
 {
 	print "<span class='blink'>_</span>";

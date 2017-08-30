@@ -105,6 +105,7 @@ $sth = $dbh->prepare(
 	. "`locked` CHAR(1) DEFAULT 'n',"
 	. "`failed_logins` INT(11) DEFAULT '0',"
 	. "`pref_css` VARCHAR(64) DEFAULT 'bigmike',"
+	. "`workmode` VARCHAR(2) DEFAULT 'no',",
 	. "`invited_by` VARCHAR(40) DEFAULT NULL,"
 	. "PRIMARY KEY (`id`)"
 	. ") ENGINE=InnoDB DEFAULT CHARSET=utf8"
