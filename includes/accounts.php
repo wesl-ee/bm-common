@@ -131,4 +131,26 @@ function account_delete($id)
 	. " $username from " . $_SERVER['REMOTE_ADDR']);
 	return;
 }
+function check_ipaddr($userip)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+	$res =  mysqli_query($dbh, "SELECT 1 FROM `users`"
+	. "WHERE `last_ip`='$userip'");
+	if(!mysqli_fetch_assoc($res))
+		return false;
+	return true;
+
+}
+function update_ipaddr($userID)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+	mysqli_query($dbh, "UPDATE `users` SET `last_ip`='" . $_SERVER['REMOTE_ADDR'] 
+	. "' WHERE `id`='$userID'");
+}
 ?>
