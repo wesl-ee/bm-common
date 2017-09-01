@@ -252,12 +252,12 @@ main.thumbs img {
 }
 #search > #params {
 	display: flex;
+	justify-content: space-between;
 	margin-top: 10px;
 }
-#search > #params > * {
-	flex: 1 1 auto;
+#search > #params #filters div {
+	text-align: right;
 }
-#search > #params input[type=number],
 #search > #params input {
 	padding-left: 2px;
 	padding-right: 2px;
