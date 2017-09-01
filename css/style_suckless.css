@@ -65,7 +65,7 @@ aside {
 	padding: 10px;
 	width: 95%;
 	max-width: 400px;
-	overflow-y: scroll;
+	overflow-y: auto;
 
 	border-radius: 0px 15px 15px 0px;
 	border-left-width: 0px !important;
@@ -145,7 +145,7 @@ a:hover {
 /* Tag frame */
 aside {
 	display: block;
-	overflow:auto;
+	overflow :auto;
 
 	/* Scrollbar on left */
 	direction: rtl;
@@ -181,7 +181,7 @@ aside table input {
 /* Search main page */
 /* The content we came to see */
 main {
-	overflow: scroll;
+	overflow: auto;
 	width: 100%;
 
 	border-top-style: solid;
