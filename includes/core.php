@@ -13,14 +13,17 @@ function updateUserStyle($css, $workmode, $id = NULL)
 	$_SESSION['workmode'] = $workmode;
 	$_SESSION['pref_css'] = $css;
 
-	if (!$workmode) $workmode = 'NULL';
+	if (!$workmode) $workmode = 'no';
 	if ($id) {
-		$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
-		if ($conn->connect_error) {
-			return False;
-		}
-		$cmd = "UPDATE `users` SET `pref_css`='$css', `workmode`='$workmode' WHERE `id`='$id'";
-		$conn->query($cmd);
+		$dbh = mysqli_connect(CONFIG_DB_SERVER,
+			CONFIG_DB_USERNAME,
+			CONFIG_DB_PASSWORD,
+			CONFIG_DB_DATABASE);
+		mysqli_set_charset($dbh, 'utf8');
+
+		$query = "UPDATE `users` SET `pref_css`='$css'"
+		. ", `workmode`='$workmode' WHERE `id`='$id'";
+		mysqli_query($dbh, $query);
 	}
 	reloadUserStyle();
 	return True;
