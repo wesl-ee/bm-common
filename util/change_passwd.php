@@ -82,10 +82,10 @@ if (isset($_POST['onsen_curr_password'], $_POST['onsen_new_password'], $_POST['o
 	$salt = randomHex(16);
 	$onsen_new_password = crypt($onsen_new_password, '$6$'.$salt.'$');
 	$onsen_username = $_SESSION['username'];
-	$cmd = "UPDATE `onsen` SET `password`='$onsen_new_password' WHERE `username`='$sql_username'";
+	$cmd = "UPDATE `users` SET `password`='$onsen_new_password' WHERE `username`='$sql_username'";
 	$conn->query($cmd);
 
-	print "Successfully changed password!<script type='text/javascript'>setTimeout(function () {window.location.href = 'logout.php';}, 2000);</script>";
+	print "Successfully changed password!<script type='text/javascript'>setTimeout(function () {window.location.href = '../logout.php';}, 2000);</script>";
 	die();
 }
 ?>
@@ -93,7 +93,7 @@ if (isset($_POST['onsen_curr_password'], $_POST['onsen_new_password'], $_POST['o
 <p>
 	<a href="../">« back</a>
 </p>
-<form action="change_password.php" method="post">
+<form method="post">
 	<label for="onsen_curr_password">Current password</label></br>
 	<input type="password" id="onsen_curr_password" name="onsen_curr_password" value="" maxlength="20" /></br>
 	<label for="onsen_new_password">New Password</label></br>

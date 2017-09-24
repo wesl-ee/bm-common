@@ -15,15 +15,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 <div id="container">
 <div id="leftframe">
 	<nav>
-		<?php
-		if (isset($_SESSION['userid'])) {
-			print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
-			print('<a href="'.CONFIG_COMMON_PATH.'logout.php">logout</a>');
-		}
-		else {
-			print('<a href="'.CONFIG_COMMON_PATH.'login.php?ref='.$_SERVER['REQUEST_URI'].'">login</a>');
-		}
-	        ?>
+	<?php print_login();?>
         </nav>
 <img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
@@ -43,7 +35,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 	$result=$conn->query($cmd);
 	foreach ($result as $row) {
 		print '<tr>'
-		. '<td><a href="mailto:'.$row["username"].'@'.$row["domain"].'" >'.$row["username"].'</a></td>'
+		. '<td>' . $row["username"] . '</td>'
 		. '<td>';
 		if (isset($row["invited_by"])) {
 			print get_username($row["invited_by"]);

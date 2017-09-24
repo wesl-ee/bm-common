@@ -18,13 +18,13 @@ function account_create($username, $password, $invited_by = NULL)
 	}
 
 	// Duplicate IP address detection
-	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
+/*	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
 	. " WHERE `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'");
 	if (mysqli_num_rows($res)) {
 		syslog(LOG_INFO|LOG_DAEMON, "Attempted to same-ip register"
 		. " $username from " . $_SERVER['REMOTE_ADDR']);
 		return false;
-	}
+	}*/
 
 	// Register the requested username and password
 	$salt = randomHex(16);
@@ -65,10 +65,10 @@ function user_validate($username, $password)
 		// Update the number of failed logins
 		// Find somewhere better to update this, maybe in the login
 		// function
-/*		$row['failed_logins']++;
+		$row['failed_logins']++;
 		mysqli_query($dbh, "UPDATE `users` SET"
 		. " `failed_logins`=" . $row['failed_logins']
-		. " WHERE `username`='$username'");*/
+		. " WHERE `username`='$username'");
 		return false;
 	}
 	return true;
