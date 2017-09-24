@@ -9,8 +9,9 @@ function account_create($username, $password, $invited_by = NULL)
 	$password = mysqli_escape_string($dbh, $password);
 
 	// Duplicate username detection
-	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
-	. " WHERE `username`='$username'");
+	// No variatons on capitals w/ existing names either
+	$res = mysqli_query($dbh, "SELECT LOWER(`username`) AS username FROM `users`"
+	. " WHERE `username`='" . strtolower($username) . "'");
 	if (mysqli_num_rows($res)) {
 		syslog(LOG_INFO|LOG_DAEMON, "Attempted to create a duplicate"
 		. " user $username from " . $_SERVER['REMOTE_ADDR']);
@@ -38,7 +39,7 @@ function account_create($username, $password, $invited_by = NULL)
 	. ", '" . $_SERVER['REMOTE_ADDR'] . "')");
 
 	if (isset($invited_by)) {
-		mysqli_query("UPDATE `users` SET"
+		mysqli_query($dbh, "UPDATE `users` SET"
 		. " `invited_by`='$invited_by'"
 		. " WHERE username='$username'");
 	}

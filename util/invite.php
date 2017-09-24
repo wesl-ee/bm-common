@@ -53,21 +53,24 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 </div>
 <div id="rightframe">
 <header>
-	<a href=<?php echo CONFIG_WEBHOMEPAGE?>>« back</a>
 	<h3>invite key generator</h3>
 </header>
-<main>
-
+<main style='text-align:center;'>
 <?php
 	if (!CONFIG_ALLOW_INVITES) {
 		print '<h3>Invites not allowed</h3>';
 		return;
 	}
+	else {
+		print 'This button generates a one-time key!<br/>'
+		. 'Do not waste'
+		. ' it, one is available site-wide only every ' . CONFIG_INVITE_COOLDOWN;
+	}
 ?>
 <div id="timer" style="text-align:center;"></div>
 <form method="post">
 <input type="hidden" name="generate" value="true" />
-<input style="display:block;margin:auto;" type="submit" value="Generate my invite key!"/>
+<input style="display:block;margin:auto;margin-top:15px;" type="submit" value="Generate my invite key!"/>
 </form>
 <?php if (isset($_POST['generate'])) {
 	if (!CONFIG_ALLOW_INVITES) {
