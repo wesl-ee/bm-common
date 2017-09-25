@@ -36,62 +36,96 @@ function reloadUserStyle() {
 	case "classic":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/maki.png";
-		$_SESSION['motd']="お帰りなさい";
+		$_SESSION['motd'] = [
+			"お帰りなさい",
+		];
 		break;
 	case "gold":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_gold.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/yui.png";
-		$_SESSION['motd']="おかえりなさい";
+		$_SESSION['motd'] = [
+			"おかえりなさい",
+		];
 		break;
 	case "wu_tang":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_wutang.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/ghost.png";
-		$_SESSION['motd']="Protect ya neck";
+		$_SESSION['motd'] = [
+			"Protect ya neck",
+			"Wu-tang forever",
+			"C.R.E.A.M",
+			"Protect the Cuban Linx",
+		];
 		break;
 	case "red":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_red.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/mao.png";
-		$_SESSION['motd']="为人民服务";
+		$_SESSION['motd'] = [
+			"为人民服务",
+		];
 		break;
 	case "nier":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_nier.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/2B.png";
-		$_SESSION['motd']="おかえりなさい";
+		$_SESSION['motd'] = [
+			"おかえりなさい",
+		];
 		break;
 	case "bigmike":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_bigmike.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/mike.png";
-		$_SESSION['motd']="おかえりなさい";
+		$_SESSION['motd'] = [
+			"おかえりなさい",
+		];
 		break;
 	case "yys":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/yuzuko.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_yys.css";
-		$_SESSION['motd']="よぉ";
+		$_SESSION['motd'] = [
+			"よぉ",
+		];
 		break;
 	case "worlds":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/hand.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_worlds.css";
-		$_SESSION['motd']="we'll see creation come undone";
+		$_SESSION['motd'] = [
+			"We'll see creation come undone",
+			"私はちょうど何が重要か見つけようとしている",
+			"Is anyone there",
+			"You fit perfectly to me in the loneliness",
+			"We'll be the lionhearted",
+		];
 		break;
 	case "hino":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/hinobaby.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_hino.css";
-		$_SESSION['motd']="おかえりなさい";
+		$_SESSION['motd'] = [
+			"おかえりなさい",
+		];
 		break;
 	case "illya":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/illya.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_illya.css";
-		$_SESSION['motd']="おかえりなさい";
+		$_SESSION['motd'] = [
+			"おかえりなさい",
+		];
 		break;
 	case "flylo":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/flylo.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_flylo.css";
-		$_SESSION['motd']="おかえりなさい";
+		$_SESSION['motd'] = [
+			"おかえりなさい",
+		];
 		break;
 	case "the_room":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/tommy.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_the_room.css";
-		$_SESSION['motd']="you're tearing me apart";
+		$_SESSION['motd'] = [
+			"You're tearing me apart",
+			"Hahaha what a story",
+			"So how's your sex life",
+			"Oh hi",
+		];
 		break;
 	}
 	if ($_SESSION['workmode']) unset($_SESSION['mascot']);
