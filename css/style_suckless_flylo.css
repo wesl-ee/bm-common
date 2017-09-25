@@ -1,0 +1,20 @@
+/* Theme colors and fonts */
+body {
+	background-image: url("../img/flylo_back.png");
+	color: #6F3A3A;
+}
+#leftframe > nav, #rightframe, aside {
+	background-color: #FFD101;
+	border: 1px solid #d5d1e9;
+}
+::-webkit-scrollbar-thumb {
+	background: #d5d1e9;
+}
+body {
+	font-family: Century Gothic;
+	font-size: 16px;
+}
+@font-face {
+	font-family: Century Gothic;
+	src: url('CenturyGothic.ttf');
+}

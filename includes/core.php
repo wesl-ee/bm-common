@@ -83,6 +83,16 @@ function reloadUserStyle() {
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_illya.css";
 		$_SESSION['motd']="おかえりなさい";
 		break;
+	case "flylo":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/flylo.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_flylo.css";
+		$_SESSION['motd']="おかえりなさい";
+		break;
+	case "the_room":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/tommy.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_the_room.css";
+		$_SESSION['motd']="you're tearing me apart";
+		break;
 	}
 	if ($_SESSION['workmode']) unset($_SESSION['mascot']);
 }
