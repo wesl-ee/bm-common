@@ -1,0 +1,25 @@
+/* Theme colors and fonts */
+body {
+	background-image: url("../img/room_back.png");
+	background-size: cover;
+	background-color: #436550;
+	color: #ffffff;
+}
+#leftframe > nav, #rightframe, aside {
+	background-color: #436550;
+	border: 1px solid #d5d1e9;
+}
+::-webkit-scrollbar-thumb {
+	background: #ffffff;
+}
+body {
+	font-family: Century Gothic;
+	font-size: 16px;
+}
+#mascot {
+	max-width: 50%;
+}
+@font-face {
+	font-family: Century Gothic;
+	src: url('CenturyGothic.ttf');
+}
