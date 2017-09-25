@@ -1,6 +1,6 @@
 /* Theme colors and fonts */
 body {
-	background-image: url("../img/flylo_back.png");
+	background-color: #e43535;
 	color: #6F3A3A;
 }
 #leftframe > nav, #rightframe, aside {
@@ -8,7 +8,7 @@ body {
 	border: 1px solid #d5d1e9;
 }
 ::-webkit-scrollbar-thumb {
-	background: #d5d1e9;
+	background: #6F3A3A;
 }
 body {
 	font-family: Century Gothic;
