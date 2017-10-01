@@ -1,11 +1,11 @@
 /* Theme colors and fonts */
 body {
 	background-color: #e43535;
-	color: #6F3A3A;
+	color: #971414;
 }
 #leftframe > nav, #rightframe, aside {
 	background-color: #FFD101;
-	border: 1px solid #d5d1e9;
+	border: 1px solid black;
 }
 ::-webkit-scrollbar-thumb {
 	background: #6F3A3A;

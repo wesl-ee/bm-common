@@ -56,11 +56,11 @@
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 3px;
-	padding-bottom: 25px;
+	padding-bottom: 10px;
 
 	/* No borders on document edge */
-	border-top-width: 0px !important;
-	border-right-width: 0px !important;
+	border-top-width: 0px;
+	border-right-width: 0px;
 }
 h1, h2, h3, ul {
 	margin-block-start: 0;
@@ -104,7 +104,41 @@ h1, h2, h3, ul {
 	text-align:center;
 
 	border-radius: 0px 0px 25px 25px;
-	border-top-width: 0px !important;
+	border-top-width: 0px;
+}
+@media only screen and (max-width: 600px) {
+	#container {
+		margin-bottom: 0px;
+		height: 100%;
+	}
+	#rightframe {
+		left: 0;
+		max-height: 80%;
+		width: 100%;
+	}
+	#leftframe {
+		margin-top: auto;
+		top: initial;
+		bottom: 0;
+		max-height: 20%;
+		width: 100%;
+	}
+	#leftframe nav {
+		position: absolute;
+		top: initial;
+		bottom: 0;
+		max-height: 50%;
+		max-width: none;
+		width: 100%;
+		border-radius: 0px;
+		border-top: 1px solid black;
+	}
+	#leftframe aside {
+		max-height: 100%;
+		width: 100%;
+		max-width: none;
+		border-radius: 0px;
+	}
 }
 a {
 	text-decoration: underline;

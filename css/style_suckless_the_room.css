@@ -17,7 +17,9 @@ body {
 	font-size: 16px;
 }
 #mascot {
-	max-width: 50%;
+	max-width: 40%;
+}
+#leftframe {
 }
 @font-face {
 	font-family: Century Gothic;
