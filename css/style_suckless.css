@@ -61,6 +61,8 @@
 	/* No borders on document edge */
 	border-top-width: 0px;
 	border-right-width: 0px;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
 }
 h1, h2, h3, ul {
 	margin-block-start: 0;
@@ -104,40 +106,49 @@ h1, h2, h3, ul {
 	text-align:center;
 
 	border-radius: 0px 0px 25px 25px;
+	border-width: 1px;
 	border-top-width: 0px;
+}
+#leftframe > aside {
+	border-width: 1px;
 }
 @media only screen and (max-width: 600px) {
 	#container {
 		margin-bottom: 0px;
 		height: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 	#rightframe {
-		left: 0;
-		max-height: 80%;
+		position: initial;
 		width: 100%;
+		border-left-width: 0px;
+		z-index: 1;
 	}
 	#leftframe {
-		margin-top: auto;
-		top: initial;
-		bottom: 0;
-		max-height: 20%;
+		position: initial;
+		height: initial;
 		width: 100%;
+		z-index: 1;
 	}
 	#leftframe nav {
-		position: absolute;
 		top: initial;
-		bottom: 0;
-		max-height: 50%;
-		max-width: none;
+		bottom: initial;
+		max-height: initial;
+		max-width: initial;
 		width: 100%;
 		border-radius: 0px;
-		border-top: 1px solid black;
+		border: 0px;
 	}
 	#leftframe aside {
-		max-height: 100%;
+		position: initial;
+		max-height: initial;
 		width: 100%;
-		max-width: none;
+		max-width: initial;
 		border-radius: 0px;
+	}
+	#mascot {
+		z-index: 0;
 	}
 }
 a {

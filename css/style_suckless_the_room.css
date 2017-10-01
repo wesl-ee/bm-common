@@ -7,7 +7,8 @@ body {
 }
 #leftframe > nav, #rightframe, aside {
 	background-color: #436550;
-	border: 1px solid #d5d1e9;
+	border-style: solid;
+	border-color: #d5d1e9;
 }
 ::-webkit-scrollbar-thumb {
 	background: #ffffff;
