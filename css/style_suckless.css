@@ -122,7 +122,8 @@ h1, h2, h3, ul {
 	#rightframe {
 		position: initial;
 		width: 100%;
-		border: 0px !important;
+		border: 0px;
+		border-bottom: 1px;
 		border-left-width: 0px;
 		z-index: 1;
 	}
@@ -137,6 +138,7 @@ h1, h2, h3, ul {
 		bottom: initial;
 		max-height: initial;
 		max-width: initial;
+		text-align: left;
 		width: 100%;
 		border-radius: 0px;
 	}
@@ -145,7 +147,8 @@ h1, h2, h3, ul {
 		max-height: initial;
 		width: 100%;
 		max-width: initial;
-		border: 0px !important;
+		border: 0px;
+
 		border-radius: 0px;
 	}
 	#mascot {

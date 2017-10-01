@@ -163,6 +163,29 @@ function get_username($id)
 
 	return $row['username'];
 }
+function parse_timestamp($ts)
+{
+	$ymd = substr($ts, 0, strpos($ts, ' '));
+	$ymd = explode('-', $ymd);
+	$y = $ymd[0]; $m = $ymd[1]; $d = $ymd[2];
+	$m = monthname($m);
+	return "$m $d, $y";
+}
+function monthname($m) {
+	return [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'][$m-1];
+}
 // cute!
 function cursor()
 {
