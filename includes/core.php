@@ -90,9 +90,8 @@ function reloadUserStyle() {
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_worlds.css";
 		$_SESSION['motd'] = [
 			"We'll see creation come undone",
-			"私はちょうど何が重要か見つけようとしている",
+			"私は",
 			"Is anyone there",
-			"You fit perfectly to me in the loneliness",
 			"We'll be the lionhearted",
 		];
 		break;

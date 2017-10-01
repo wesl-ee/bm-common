@@ -122,6 +122,7 @@ h1, h2, h3, ul {
 	#rightframe {
 		position: initial;
 		width: 100%;
+		border: 0px !important;
 		border-left-width: 0px;
 		z-index: 1;
 	}
@@ -138,13 +139,13 @@ h1, h2, h3, ul {
 		max-width: initial;
 		width: 100%;
 		border-radius: 0px;
-		border: 0px;
 	}
 	#leftframe aside {
 		position: initial;
 		max-height: initial;
 		width: 100%;
 		max-width: initial;
+		border: 0px !important;
 		border-radius: 0px;
 	}
 	#mascot {
