@@ -190,6 +190,43 @@ function monthname($m) {
 	'November',
 	'December'][$m-1];
 }
+function update_user_identity($id, $address, $user_agent)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+
+	$address = mysqli_real_escape_string($dbh, $address);
+	$user_agent = mysqli_real_escape_string($dbh, $user_agent);
+	$query = "SELECT id, last_activity FROM `identity` WHERE"
+	. " `address` = '$address' AND"
+	. " `user_agent` = '$user_agent'"
+	. " AND `last_activity` NOT BETWEEN CURDATE() AND"
+	. " DATE_ADD(CURDATE(), INTERVAL 1 HOUR)";
+	$res = mysqli_query($dbh, $query);
+	$row = mysqli_fetch_assoc($res);
+	if($row['id'] == $_SESSION['userid']) return;
+
+	$query = "INSERT INTO `identity` (`id`, `address`, `user_agent`)"
+	. " VALUES ('$id', '$address', '$user_agent') ON DUPLICATE KEY"
+	. " UPDATE `last_activity` = NOW()";
+	mysqli_query($dbh, $query);
+}
+function check_user_identity($id, $address, $user_agent)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+	$address = mysqli_real_escape_string($dbh, $address);
+	$user_agent = mysqli_real_escape_string($dbh, $user_agent);
+	$query = "SELECT id FROM `identity` WHERE"
+	. " `address` = '$address'";
+	$res = mysqli_query($dbh, $query);
+	$row = mysqli_fetch_assoc($res);
+	return ($row['id'] == $_SESSION['userid']);
+}
 // cute!
 function cursor()
 {

@@ -124,4 +124,16 @@ $sth = $dbh->prepare(
 if (!$sth->execute) {
 	notify_warn DBI::errstr;
 }
+$sth = $dbh->prepare(
+	"CREATE TABLE `identity` ("
+	. "`id` VARCHAR(128) NOT NULL,"
+	. "`address` VARCHAR(128) NOT NULL DEFAULT '',"
+	. "`user_agent` VARCHAR(512) NOT NULL DEFAULT '',"
+	. "`last_activity` DATETIME DEFAULT CURRENT_TIMESTAMP,"
+	. "PRIMARY KEY (`address`, `user_agent`)"
+	. ") ENGINE=InnoDB DEFAULT CHARSET=utf8"
+);
+if (!$sth->execute) {
+	notify_warn DBI::errstr;
+}
 notify_success "Created the SQL structure";

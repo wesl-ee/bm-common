@@ -1,6 +1,11 @@
 <?php
-//if (!isset($_SESSION['pref_css']))
+if (!isset($_SESSION['pref_css']))
 	reloadUserStyle();
+update_user_identity(
+	$_SESSION['userid'],
+	$_SERVER['REMOTE_ADDR'],
+	$_SERVER['HTTP_USER_AGENT']
+);
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
