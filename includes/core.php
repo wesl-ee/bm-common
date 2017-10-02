@@ -163,6 +163,10 @@ function get_username($id)
 
 	return $row['username'];
 }
+function logged_in()
+{
+	return !CONFIG_REQUIRE_AUTHENTICATION && isset($_SESSION['userid']);
+}
 function parse_timestamp($ts)
 {
 	$ymd = substr($ts, 0, strpos($ts, ' '));

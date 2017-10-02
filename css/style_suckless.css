@@ -64,7 +64,7 @@
 	border-left-width: 1px;
 	border-bottom-width: 1px;
 }
-h1, h2, h3, ul {
+h1, h2, h3, h4, ul {
 	margin-block-start: 0;
 	margin-block-end: 0;
 	-webkit-margin-after: 0;
@@ -153,6 +153,9 @@ h1, h2, h3, ul {
 	}
 	#mascot {
 		z-index: 0;
+	}
+	#motd {
+		display: none !important;
 	}
 }
 a {
