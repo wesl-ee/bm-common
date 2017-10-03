@@ -7,7 +7,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
-	<title>bm — create an account</title>
+	<title>bigmike — create an account</title>
 </head>
 <BODY>
 
@@ -23,19 +23,10 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		<a href='/'>back</a>
 		<h3>account creation wizard</h3>
 	</header>
-<form action="acc_create.php" method="post">
+
 <?php if (!CONFIG_OPEN_REGISTRATION) {
-	print '<label style="display:block;">one-time registration key</label>';
-	print '<input style="display:block;" type="password" id="invite_key" name="invite_key" maxlength="128">';
+
 }?>
-<label style="display:block;">requested username</label>
-<input style="display:block;" type="text" name="username" maxlength="20">
-<label style="display:block;">requested password</label>
-<input style="display:block;" type="password" name="password" maxlength="50">
-<label style="display:block;">confirm password</label>
-<input style="display:block;" type="password" name="confirm_password" maxlength="50">
-<input style="display:block;" type="submit" value="Sign me up!">
-</form>
 	<?php if (isset($_POST['username'], $_POST['password']
 	, $_POST['confirm_password'])
 	&& (CONFIG_OPEN_REGISTRATION || isset($_POST['invite_key']))
@@ -59,7 +50,22 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 			return;
 		}
 		if ($invite_key) invites_invalidate($invite_key);
-		print 'Created your account!';
+		print 'Created your account!<br/>'
+		. 'Now just <a href="login.php">login</a>';
+	} else {
+		print '<form action="acc_create.php" method="post">';
+		if (!CONFIG_OPEN_REGISTRATION)
+			print '<label>one-time registration key</label><br/>'
+			. '<input type="password" id="invite_key"'
+			. ' name="invite_key" maxlength="128">';
+		print '<label>requested username</label><br/>'
+		. '<input type="text" name="username" maxlength="20"><br/>'
+		. '<label>requested password</label><br/>'
+		. '<input type="password" name="password" maxlength="50"><br/>'
+		. '<label>confirm password</label><br/>'
+		. '<input type="password" name="confirm_password" maxlength="50"><br/>'
+		. '<input type="submit" value="Sign me up!"><br/>'
+		. '</form>';
 	}?>
 </div>
 </div>

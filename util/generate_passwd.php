@@ -20,9 +20,6 @@
 	<input type="password" id="onsen_new_password" name="onsen_new_password" maxlength="50" /></br>
 	<input type="submit" value="Calculate my hash"/>
 	</form>
-	<p>
-	Please send me the following hash with your username:
-	</p>
 	<textarea style="width:100%;resize:none;">
 	<?php if (isset($_POST['onsen_new_password'])){
 		$salt = randomHex(16);

@@ -202,8 +202,7 @@ function update_user_identity($id, $address, $user_agent)
 	$query = "SELECT id, last_activity FROM `identity` WHERE"
 	. " `address` = '$address' AND"
 	. " `user_agent` = '$user_agent'"
-	. " AND `last_activity` NOT BETWEEN CURDATE() AND"
-	. " DATE_ADD(CURDATE(), INTERVAL 1 HOUR)";
+	. " AND `last_activity` < DATE_SUB(NOW(), INTERVAL 1 HOUR);";
 	$res = mysqli_query($dbh, $query);
 	$row = mysqli_fetch_assoc($res);
 	if($row['id'] == $_SESSION['userid']) return;
@@ -213,19 +212,18 @@ function update_user_identity($id, $address, $user_agent)
 	. " UPDATE `last_activity` = NOW()";
 	mysqli_query($dbh, $query);
 }
-function check_user_identity($id, $address, $user_agent)
+function check_user_identity($id, $address)
 {
 	$dbh = mysqli_connect(CONFIG_DB_SERVER,
 		CONFIG_DB_USERNAME,
 		CONFIG_DB_PASSWORD,
 		CONFIG_DB_DATABASE);
 	$address = mysqli_real_escape_string($dbh, $address);
-	$user_agent = mysqli_real_escape_string($dbh, $user_agent);
 	$query = "SELECT id FROM `identity` WHERE"
 	. " `address` = '$address'";
 	$res = mysqli_query($dbh, $query);
 	$row = mysqli_fetch_assoc($res);
-	return ($row['id'] == $_SESSION['userid']);
+	return ($row['id']);
 }
 // cute!
 function cursor()

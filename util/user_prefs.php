@@ -7,7 +7,7 @@ if (isset($_POST['pref_css'])) {
 ?>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bm — preferences</title>
+	<title>bigmike — preferences</title>
 </head>
 <body>
 <div id="container">
@@ -15,7 +15,7 @@ if (isset($_POST['pref_css'])) {
 	<nav>
 		<?php print_login(); ?>
 	</nav>
-<img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
+<img id="mascot" src=<?php print $_SESSION['mascot'];?>>
 </div>
 <div id="rightframe">
 <header>
@@ -27,10 +27,10 @@ if (isset($_POST['pref_css'])) {
 	$pref_css = $_POST['pref_css'];
 	if (!$_POST['mascot']) $workmode = 'on';
 		if (updateUserStyle($pref_css, $workmode, $_SESSION['userid'])) {
-			echo "User style was updated successfully!";
+			print "User style was updated successfully!";
 		}
 		else {
-			echo "User style was not updated successfully!";
+			print "User style was not updated successfully!";
 		}
 		die;
 	}
@@ -41,25 +41,60 @@ if (isset($_POST['pref_css'])) {
 		<td>CSS Style</td>
 		<td>
 		<select name="pref_css" onchange="this.form.submit()">
-		<option <?php if ($_SESSION['pref_css']=="bigmike") echo "selected" ?> value="bigmike">Big Mike</option>
-		<option <?php if ($_SESSION['pref_css']=="classic") echo "selected" ?> value="classic">Classic</option>
-		<option <?php if ($_SESSION['pref_css']=="flylo") echo "selected" ?> value="flylo">Flying Lotus</option>
-		<option <?php if ($_SESSION['pref_css']=="hino") echo "selected" ?> value="hino">Hino</option>
-		<option <?php if ($_SESSION['pref_css']=="illya") echo "selected" ?> value="illya">Illya</option>
-		<option <?php if ($_SESSION['pref_css']=="gold") echo "selected" ?> value="gold">Gold</option>
-		<option <?php if ($_SESSION['pref_css']=="nier") echo "selected" ?> value="nier">Nier</option>
-		<option <?php if ($_SESSION['pref_css']=="red") echo "selected" ?> value="red">Red</option>
-		<option <?php if ($_SESSION['pref_css']=="the_room") echo "selected" ?> value="the_room">The Room</option>
-		<option <?php if ($_SESSION['pref_css']=="yys") echo "selected" ?> value="yys">Yuyushiki</option>
-		<option <?php if ($_SESSION['pref_css']=="worlds") echo "selected" ?> value="worlds">Worlds</option>
-		<option <?php if ($_SESSION['pref_css']=="wu_tang") echo "selected" ?> value="wu_tang">Wu-tang</option>
+		<option <?php if ($_SESSION['pref_css']=="bigmike")
+			print "selected " ?>
+		value="bigmike">Big Mike</option>
+
+		<option <?php if ($_SESSION['pref_css']=="classic")
+			print "selected " ?>
+		value="classic">Classic</option>
+
+		<option <?php if ($_SESSION['pref_css']=="flylo")
+			print "selected " ?>
+		value="flylo">Flying Lotus</option>
+
+		<option <?php if ($_SESSION['pref_css']=="hino")
+			print "selected " ?>
+		value="hino">Hino</option>
+
+		<option <?php if ($_SESSION['pref_css']=="illya")
+			print " selected" ?>
+		value="illya">Illya</option>
+
+		<option <?php if ($_SESSION['pref_css']=="gold")
+			print "selected " ?>
+		value="gold">Gold</option>
+
+		<option <?php if ($_SESSION['pref_css']=="nier")
+			print "selected " ?>
+		value="nier">Nier</option>
+
+		<option <?php if ($_SESSION['pref_css']=="red")
+			print "selected " ?>
+		value="red">Red</option>
+
+		<option <?php if ($_SESSION['pref_css']=="the_room")
+			print "selected " ?>
+		value="the_room">The Room</option>
+
+		<option <?php if ($_SESSION['pref_css']=="yys")
+			print "selected " ?>
+		value="yys">Yuyushiki</option>
+
+		<option <?php if ($_SESSION['pref_css']=="worlds")
+			print "selected " ?>
+		value="worlds">Worlds</option>
+
+		<option <?php if ($_SESSION['pref_css']=="wu_tang")
+			print "selected " ?>
+		value="wu_tang">Wu-tang</option>
 		</select>
 		</td>
 	</tr>
 	<tr>
 		<td>Mascot</td>
 		<td>
-		<input <?php if (!$_SESSION['workmode']) echo 'checked'?> type="checkbox" name="mascot" onchange="this.form.submit()"></input>
+		<input <?php if (!$_SESSION['workmode']) print 'checked'?> type="checkbox" name="mascot" onchange="this.form.submit()"></input>
 		</td>
 	</tr>
 	</table>

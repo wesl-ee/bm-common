@@ -8,7 +8,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>
-	<title>bm — invite a friend</title>
+	<title>bigmike — invite a friend</title>
 	<script>
 		// Set the date we're counting down to
 		var nexttime = "<?php echo invites_nexttime();?>";
@@ -72,10 +72,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 <input type="hidden" name="generate" value="true" />
 <input style="display:block;margin:auto;margin-top:15px;" type="submit" value="Generate my invite key!"/>
 </form>
-<?php if (isset($_POST['generate'])) {
-	if (!CONFIG_ALLOW_INVITES) {
-		return;
-	}
+<?php if (CONFIG_ALLOW_INVITES && isset($_POST['generate'])) {
 	if (!invites_cangenerate($_SESSION['userid'])) {
 		print '<h3 style="text-align:center";>FAILURE!</h3>';
 		print '<div style="text-align:center">Could not generate a key for you</div>';
@@ -84,14 +81,14 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 	invites_clean();
 	$key = invites_generate($_SESSION['userid']);
 	if ($key) {
-		print '<h3 style="text-align:center";>SUCCESS!</h3>';
-		print '<div style="text-align:center">Your key is:</div>';
-		print '<div style="word-wrap:break-word;margin:5px;text-align:center;border:inherit;padding:3px;">';
-		print $key;
-		print '</div>';
-		print '<div style="text-align:center;">Send this key to a friend ';
-		print 'and have them sign-up <a href="';
-		print CONFIG_COMMON_WEBPATH.'util/acc_create.php">here</a></div>';
+		print '<h3 style="text-align:center";>SUCCESS!</h3>'
+		. '<div style="text-align:center">Your key is:</div>'
+		. '<div style="word-wrap:break-word;margin:5px;text-align:center;border:inherit;padding:3px;">'
+		. $key
+		. '</div>'
+		. '<div style="text-align:center;">Send this key to a friend '
+		. 'and have them sign-up <a href="'
+		. 'acc_create.php">here</a></div>';
 	}
 }
 ?>

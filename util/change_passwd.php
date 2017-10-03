@@ -14,7 +14,7 @@ die;
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bm — change password</title>
+	<title>bigmike — change password</title>
 </head>
 <body>
 <div id="container">

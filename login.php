@@ -10,23 +10,24 @@ if (isset($_GET['ref']))
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bm — login</title>
+	<title>bigmike — login</title>
 </head>
 <body>
 
 <div id="container">
 <div id="leftframe">
+	<nav><?php print_login(); ?></nav>
 	<img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
 <div id="rightframe">
 	<header>
-		<h1>bm</h1>
+		<h1>bigmike</h1>
 		<a href="util/acc_create.php">create an account</a>
 	</header>
 <?php
 if (isset($_POST['username'], $_POST['password'])) {
 	// Don't login too fast!
-	sleep(5);
+	sleep(1);
 
 	print "<p>";
 	if ($info = login($_POST['username'], $_POST['password'])) {
@@ -53,22 +54,17 @@ if (isset($_POST['username'], $_POST['password'])) {
 	}
 	print "</p>";
 }
+else {
+	print "<form action='login.php$uri' method='post'>"
+	. "<label for='username'>Username</label></br>"
+	. "<input type='text' name='username' value='' maxlength='20' /></br>"
+	. "<label for='password'>Password</label></br>"
+	. "<input type='password' name='password' maxlength='50' /></br></br>"
+	. "<input type='submit' value='Login' />"
+	. "</form>";
+}
 ?>
-
-<p>
-Please log in ～
-</p>
-<?php
-echo('<form action="login.php'.$uri.'" method="post">');
-?>
-	<label for="username">Username</label></br>
-	<input type="text" name="username" value="" maxlength="20" /></br>
-	<label for="password">Password</label></br>
-	<input type="password" name="password" maxlength="50" /></br></br>
-	<input type="submit" value="Login»" />
-</form>
 </div>
 </div>
-
 </body>
 </HTML>
