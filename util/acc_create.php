@@ -57,7 +57,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		if (!CONFIG_OPEN_REGISTRATION)
 			print '<label>one-time registration key</label><br/>'
 			. '<input type="password" id="invite_key"'
-			. ' name="invite_key" maxlength="128">';
+			. ' name="invite_key" maxlength="128"><br/>';
 		print '<label>requested username</label><br/>'
 		. '<input type="text" name="username" maxlength="20"><br/>'
 		. '<label>requested password</label><br/>'

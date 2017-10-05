@@ -30,8 +30,7 @@ function updateUserStyle($css, $workmode, $id = NULL)
 }
 // Set all the elements that define a style
 function reloadUserStyle() {
-	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'yys';
-	if (!isset($_SESSION['userid'])) $_SESSION['workmode'] = 'y';
+	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'bigmike';
 	switch($_SESSION['pref_css']) {
 	case "classic":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
@@ -127,7 +126,7 @@ function reloadUserStyle() {
 		];
 		break;
 	}
-	if ($_SESSION['workmode']) unset($_SESSION['mascot']);
+	if ($_SESSION['workmode'] == 'on') unset($_SESSION['mascot']);
 }
 // returns a human-readable file-size
 function human_filesize($bytes, $decimals = 2)

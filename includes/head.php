@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['pref_css']))
 	reloadUserStyle();
-update_user_identity(
+if (logged_in()) update_user_identity(
 	$_SESSION['userid'],
 	$_SERVER['REMOTE_ADDR'],
 	$_SERVER['HTTP_USER_AGENT']

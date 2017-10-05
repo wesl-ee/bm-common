@@ -7,5 +7,5 @@
 	setcookie(session_name(),'',0,'/');
 	session_regenerate_id(true);
 
-	print "<script>window.history.back();</script>";
+	header("Location: ".CONFIG_WEBHOMEPAGE)
 ?>
