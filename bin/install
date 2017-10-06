@@ -106,7 +106,7 @@ if (!$sth->execute) {
 # Table creation
 $sth = $dbh->prepare(
 	"CREATE TABLE `users` ("
-	. "`id` INT(11) NOT NULL,"
+	. "`id` INT(11) AUTO_INCREMENT,"
 	. "`username` VARCHAR(20) DEFAULT NULL,"
 	. "`password` VARCHAR(128) DEFAULT NULL,"
 	. "`signup_date` DATETIME DEFAULT CURRENT_TIMESTAMP,"
