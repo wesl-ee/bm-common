@@ -64,9 +64,11 @@ my $sqluser = <STDIN>;
 chomp $sqluser;
 
 # SQL password
+system('/usr/bin/stty', '-echo');
 print "MySQL password: ";
 my $sqlpass = <STDIN>;
 chomp $sqlpass;
+system('/usr/bin/stty', 'echo');
 
 # Jack in
 my $dbs = "DBI:mysql:host=$sqlhost";
@@ -102,10 +104,11 @@ $sth = $dbh->prepare(
 	. "`password` VARCHAR(128) DEFAULT NULL,"
 	. "`signup_date` DATETIME DEFAULT CURRENT_TIMESTAMP,"
 	. "`last_login` DATETIME DEFAULT CURRENT_TIMESTAMP,"
+	. "`last_ip` VARCHAR(45) DEFAULT '' NOT NULL,"
 	. "`locked` CHAR(1) DEFAULT 'n',"
 	. "`failed_logins` INT(11) DEFAULT '0',"
 	. "`pref_css` VARCHAR(64) DEFAULT 'bigmike',"
-	. "`workmode` VARCHAR(2) DEFAULT 'no',",
+	. "`workmode` VARCHAR(2) DEFAULT 'no',"
 	. "`invited_by` VARCHAR(40) DEFAULT NULL,"
 	. "PRIMARY KEY (`id`)"
 	. ") ENGINE=InnoDB DEFAULT CHARSET=utf8"
@@ -128,7 +131,7 @@ $sth = $dbh->prepare(
 	"CREATE TABLE `identity` ("
 	. "`id` VARCHAR(128) NOT NULL,"
 	. "`address` VARCHAR(128) NOT NULL DEFAULT '',"
-	. "`user_agent` VARCHAR(512) NOT NULL DEFAULT '',"
+	. "`user_agent` VARCHAR(128) NOT NULL DEFAULT '',"
 	. "`last_activity` DATETIME DEFAULT CURRENT_TIMESTAMP,"
 	. "PRIMARY KEY (`address`, `user_agent`)"
 	. ") ENGINE=InnoDB DEFAULT CHARSET=utf8"

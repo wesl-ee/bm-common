@@ -81,6 +81,8 @@ h1, h2, h3, h4, ul {
 	flex: 0 0 auto;
 }
 #rightframe > header > * {
+	padding-left: 5px;
+	padding-right: 5px;
 	/* Max one-line */
 	white-space: nowrap;
 	/* Cut off long items */
@@ -94,6 +96,10 @@ h1, h2, h3, h4, ul {
 	justify-content: space-between;
 
 	flex: 0 0 auto;
+}
+#rightframe > footer > * {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 #leftframe > nav {

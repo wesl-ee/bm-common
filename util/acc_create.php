@@ -24,6 +24,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		<h3>account creation wizard</h3>
 	</header>
 
+<main>
 <?php if (!CONFIG_OPEN_REGISTRATION) {
 
 }?>
@@ -51,7 +52,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		}
 		if ($invite_key) invites_invalidate($invite_key);
 		print 'Created your account!<br/>'
-		. 'Now just <a href="login.php">login</a>';
+		. 'Now just <a href="../login.php">login</a>';
 	} else {
 		print '<form action="acc_create.php" method="post">';
 		if (!CONFIG_OPEN_REGISTRATION)
@@ -67,6 +68,7 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 		. '<input type="submit" value="Sign me up!"><br/>'
 		. '</form>';
 	}?>
+</main>
 </div>
 </div>
 </body>
