@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 use strict;
+use File::Basename;
 use DBI;
 
 use constant HOOYA_VERSION => '0.41';
@@ -53,27 +54,33 @@ print TEXT_BOLD
 	. " components first!\n"
 . TEXT_RESET;
 
-# SQL hostname
-print "\nMySQL host: ";
-my $sqlhost = <STDIN>;
-chomp $sqlhost;
+# Read SQL settings from the config file
+my ($CONFIG_DB_SERVER,
+$CONFIG_DB_USERNAME,
+$CONFIG_DB_PASSWORD,
+$CONFIG_DB_DATABASE);
 
-# SQL username
-print "MySQL user: ";
-my $sqluser = <STDIN>;
-chomp $sqluser;
-
-# SQL password
-system('/usr/bin/stty', '-echo');
-print "MySQL password: ";
-my $sqlpass = <STDIN>;
-chomp $sqlpass;
-system('/usr/bin/stty', 'echo');
+# Grab the PHP config file for accessing SQL
+my $incfile =  dirname($0) . "/../includes/config.php";
+open(FILE, $incfile);
+while (<FILE>) {
+	$CONFIG_DB_SERVER = $1 if (/["']CONFIG_DB_SERVER["'], ["'](.+)["']/);
+	$CONFIG_DB_USERNAME = $1 if (/"CONFIG_DB_USERNAME", ["'](.+)["']/);
+	$CONFIG_DB_PASSWORD = $1 if (/["']CONFIG_DB_PASSWORD["'], ["'](.+)["']/);
+	$CONFIG_DB_DATABASE = $1 if (/["']CONFIG_DB_DATABASE["'], ["'](.+)["']/);
+}
+close(FILE);
 
 # Jack in
-my $dbs = "DBI:mysql:host=$sqlhost";
-my $dbh = DBI->connect($dbs, $sqluser, $sqlpass,
-{'PrintError' => 0});
+# SQL
+my $dsn = "DBI:mysql:database=" . $CONFIG_DB_DATABASE
+. ";host=" . $CONFIG_DB_SERVER;
+my $dbh = DBI->connect(
+	$dsn,
+	$CONFIG_DB_USERNAME,
+	$CONFIG_DB_PASSWORD,
+	{'PrintError' => 0}
+);
 my $sth;
 if (!defined $dbh) {
 	die_error DBI::errstr;

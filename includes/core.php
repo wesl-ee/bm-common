@@ -164,7 +164,7 @@ function get_username($id)
 }
 function logged_in()
 {
-	return !CONFIG_REQUIRE_AUTHENTICATION && isset($_SESSION['userid']);
+	return !CONFIG_REQUIRE_AUTHENTICATION || isset($_SESSION['userid']);
 }
 function parse_timestamp($ts)
 {
