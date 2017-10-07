@@ -53,6 +53,10 @@ mod_xsendfile enables the sending of large files easily. You can grab an
 apache module L<here|https://tn123.org/mod_xsendfile/>, but several
 implementations of this module exist for numerous other web servers
 
+=item MySQL (MariaDB)
+
+Storing user credentials and other information
+
 =item Perl
 
 You likely already have Perl5 installed, but in case you do not it is easily
