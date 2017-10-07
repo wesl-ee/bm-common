@@ -85,7 +85,7 @@ per-user if you lack those permissions or want a simply local install
 =head2 Installation
 
 Ensure that you have all the above dependencies satisfied. Then, feel free
-to run C<git clone https://howler.space/git/bigmike-hooYa.git> and host the
+to run C<git clone https://bm.howler.space/git/bigmike-hooYa.git> and host the
 repository through your web server
 
 Then, C<cp includes/config.template.php includes/config.php> and edit the

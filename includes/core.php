@@ -147,7 +147,8 @@ function print_login()
 {
 	print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
 	if (isset($_SESSION['userid']))
-		print '<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>';
+		print '<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>'
+		. '<a href="'.CONFIG_COMMON_WEBPATH.'util/invite.php">invite a friend</a><br/>';
 	else
 		print '<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='
 		.$_SERVER['REQUEST_URI'].'">login</a><br/>';
