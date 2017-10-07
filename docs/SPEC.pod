@@ -1,4 +1,4 @@
-=head1 bigmike specifics
+=head1 How Bigmike is Managed
 
 =head3 `users` table
 
@@ -27,7 +27,11 @@ and USER_PASSWORD is never stored plain-text
 
 =item signup_date
 
+When the user first registered; like a bragging right
+
 =item last_login
+
+Soon to be removed
 
 =item locked
 
@@ -50,6 +54,11 @@ If the user registered using an invite code, this column describes who
 invited him/her. If the user is newer than 3 months, the user that extended
 the invitation is considered responsible for this user's behavior.
 
+=item workmode
+
+When workmode is on, the user will not see the cute mascots in the left
+frame
+
 =back
 
 =head3 `invites` table
@@ -67,5 +76,32 @@ SHA512 (no salt) key
 id of the user in L<`users`|"`users` table">
 
 =item date_created
+
+DATETIME the invite was generated
+
+=back
+
+=head3 `identity` table
+
+Used for user validation when a cookie is not available; this mostly arises
+when a user wants to stream something from the site
+
+=over
+
+=item id
+
+User ID
+
+=item address
+
+IP Address that was used during this session
+
+=item user_agent
+
+Browser User Agent that was used during this session
+
+=item last_activity
+
+Last activity that was seen using this IP+Agent combination
 
 =back
