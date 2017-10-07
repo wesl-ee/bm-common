@@ -8,21 +8,21 @@ stylsheets in action at L<https://bm.howler.space/>
 
 =over 12
 
-=item swappable stylesheets
+=item Swappable Stylesheets
 
 Pre-built themes are provided for the user's pleasure
 
-=item optional user authentication
+=item Optional User Authentication
 
 Including includes/auth.php at the top of a file forces the user to
 log in to access the page. The authentication references a SQL table
-defind by includes/config.php
+defined by C<includes/config.php>
 
-=item per-deployment configuration
+=item Per-deployment Configuration
 
-per-deployment settings are defined in includes/config.php
+per-deployment settings are defined in C<includes/config.php>
 
-=item user invites
+=item User Invites
 
 Users may invite other users to join. One invited is available site-wide
 every so-many days; this practice limits bigmike's growth to being linear at
@@ -31,12 +31,12 @@ balooning out of control
 
 =back
 
-=head2 Installation
+=head2 Dependencies
 
 The following things are required to run bm-common, and should be installed
 in roughly the order they are listed here.
 
-=over
+=over 12
 
 =item An HTTP Server
 
@@ -78,9 +78,21 @@ per-user if you lack those permissions or want a simply local install
 
 =back
 
+=head2 Installation
+
+Ensure that you have all the above dependencies satisfied. Then, feel free
+to run C<git clone https://howler.space/git/bigmike-hooYa.git> and host the
+repository through your web server
+
+Then, C<cp includes/config.template.php includes/config.php> and edit the
+default configuration to your liking
+
+Finally run C<bin/install> to create the bigmike SQL structure for user
+authentication
+
 =head2 License
 
-Modified BSD License
+Modified BSD License (see C<docs/LICENSE>)
 
 =head2 Contact
 
