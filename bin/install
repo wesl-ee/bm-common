@@ -3,7 +3,7 @@ use strict;
 use File::Basename;
 use DBI;
 
-use constant HOOYA_VERSION => '0.41';
+use constant HOOYA_VERSION => '0.7';
 use constant {
 	FOREGROND_BLACK => '[0;30m',
 	FOREGROUND_RED => '[0;31m',
