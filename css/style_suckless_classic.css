@@ -31,8 +31,20 @@ a {
 	padding-bottom: 0px;
 	height: 100%;
 }
-aside {
-	border-radius: 0px 25px 0px 0px !important;
+@media only screen and (max-width: 600px) {
+	#rightframe {
+		width: 100%;
+		margin-top: 0px;
+		max-height: 100%;
+
+		border-radius: 0px;
+	}
+	aside {
+		border-radius: 0px;
+	}
+	#mascot {
+		width: 40%;
+	}
 }
 input[type=text] {
 	background-color: #ffffff;
