@@ -65,6 +65,10 @@ if (isset($_POST['pref_css'])) {
 			print "selected " ?>
 		value="gold">Gold</option>
 
+		<option <?php if ($_SESSION['pref_css']=="maki")
+			print "selected " ?>
+		value="maki">Classic</option>
+
 		<option <?php if ($_SESSION['pref_css']=="nier")
 			print "selected " ?>
 		value="nier">Nier</option>

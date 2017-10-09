@@ -1,0 +1,22 @@
+/* Theme colors and fonts */
+body {
+	background-color: #BBF3FF;
+	color: #B0475A;
+}
+#leftframe > nav, #rightframe,  aside {
+	background-color: #ed544c;
+	color: #ffffff;
+	border-style: solid;
+	border-color: black;
+}
+::-webkit-scrollbar-thumb {
+	background: #ffffff;
+}
+body {
+	font-family: MPlus;
+	font-size: 16px;
+}
+@font-face {
+	font-family: MPlus;
+	src: url('JF-Dot-MPlusS10.ttf');
+}

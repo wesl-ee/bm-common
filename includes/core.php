@@ -32,8 +32,8 @@ function updateUserStyle($css, $workmode, $id = NULL)
 function reloadUserStyle() {
 	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'bigmike';
 	switch($_SESSION['pref_css']) {
-	case "classic":
-		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
+	case "maki":
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_maki.css";
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/maki.png";
 		$_SESSION['motd'] = [
 			"お帰りなさい",
@@ -123,6 +123,13 @@ function reloadUserStyle() {
 			"Hahaha what a story",
 			"So how's your sex life",
 			"Oh hi",
+		];
+		break;
+	case "classic":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/classic.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_classic.css";
+		$_SESSION['motd'] = [
+			"Welcome to the server"
 		];
 		break;
 	}

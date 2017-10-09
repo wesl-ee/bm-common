@@ -1,22 +1,55 @@
 /* Theme colors and fonts */
 body {
 	background-color: #BBF3FF;
+	font-family: ProggySquare;
 	color: #B0475A;
+	font-size: 18px;
 }
-#leftframe > nav, #rightframe,  aside {
-	background-color: #ed544c;
-	color: #ffffff;
-	border-style: solid;
-	border-color: black;
+#leftframe > nav, #rightframe, aside {
+	background-color: #FFD4E5;
 }
-::-webkit-scrollbar-thumb {
-	background: #ffffff;
+::-webkit-scrolbar-thumb {
+	background: #B0475A;
 }
-body {
-	font-family: MPlus;
-	font-size: 16px;
+a {
+	color: #FD7F96;
+	text-decoration: none;
 }
+/* Special Considerations */
+#mascot {
+	width: calc(10% - 10px);
+	right: 10px;
+}
+#rightframe {
+	width: 60%;
+	margin-top: 50px;
+	max-height: calc(90% - 50px);
+
+	border-radius: 25px;
+}
+#container {
+	padding-bottom: 0px;
+	height: 100%;
+}
+aside {
+	border-radius: 0px 25px 0px 0px !important;
+}
+input[type=text] {
+	background-color: #ffffff;
+	opacity: 0.5;
+	border-style: none;
+}
+input[type=password] {
+	background-color: #ffffff;
+	opacity: 0.5;
+	border-style: none;
+}
+input[type=submit] {
+	background-color: #ffffff;
+	border-style: none;
+}
+
 @font-face {
-	font-family: MPlus;
-	src: url('JF-Dot-MPlusS10.ttf');
+	font-family: ProggySquare;
+	src: url('ProggySquare.ttf');
 }
