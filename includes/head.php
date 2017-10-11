@@ -3,7 +3,7 @@ if (!isset($_SESSION['pref_css']))
 	reloadUserStyle();
 if (logged_in()) update_user_identity(
 	$_SESSION['userid'],
-	$_SERVER['REMOTE_ADDR'],
+	$_SERVER['HTTP_X_REAL_IP'],
 	$_SERVER['HTTP_USER_AGENT']
 );
 ?>

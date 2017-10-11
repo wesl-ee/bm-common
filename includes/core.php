@@ -209,7 +209,7 @@ function update_user_identity($id, $address, $user_agent)
 	$query = "SELECT id, last_activity FROM `identity` WHERE"
 	. " `address` = '$address' AND"
 	. " `user_agent` = '$user_agent'"
-	. " AND `last_activity` < DATE_SUB(NOW(), INTERVAL 1 HOUR);";
+	. " AND `last_activity` > DATE_SUB(NOW(), INTERVAL 1 HOUR);";
 	$res = mysqli_query($dbh, $query);
 	$row = mysqli_fetch_assoc($res);
 	if($row['id'] == $_SESSION['userid']) return;

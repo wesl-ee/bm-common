@@ -14,16 +14,16 @@ function account_create($username, $password, $invited_by = NULL)
 	. " WHERE `username`='" . strtolower($username) . "'");
 	if (mysqli_num_rows($res)) {
 		syslog(LOG_INFO|LOG_DAEMON, "Attempted to create a duplicate"
-		. " user $username from " . $_SERVER['REMOTE_ADDR']);
+		. " user $username from " . $_SERVER['HTTP_X_REAL_IP']);
 		return false;
 	}
 
 	// Duplicate IP address detection
 /*	$res = mysqli_query($dbh, "SELECT `username` FROM `users`"
-	. " WHERE `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'");
+	. " WHERE `last_ip`='" . $_SERVER['HTTP_X_REAL_IP'] . "'");
 	if (mysqli_num_rows($res)) {
 		syslog(LOG_INFO|LOG_DAEMON, "Attempted to same-ip register"
-		. " $username from " . $_SERVER['REMOTE_ADDR']);
+		. " $username from " . $_SERVER['HTTP_X_REAL_IP']);
 		return false;
 	}*/
 
@@ -36,7 +36,7 @@ function account_create($username, $password, $invited_by = NULL)
 	mysqli_query($dbh, "INSERT INTO `users`"
 	. " (`username`, `password`, `last_ip`) VALUES"
 	. " ('$username', '$salted_password'"
-	. ", '" . $_SERVER['REMOTE_ADDR'] . "')");
+	. ", '" . $_SERVER['HTTP_X_REAL_IP'] . "')");
 
 	if (isset($invited_by)) {
 		mysqli_query($dbh, "UPDATE `users` SET"
@@ -45,7 +45,7 @@ function account_create($username, $password, $invited_by = NULL)
 	}
 	mysqli_close($dbh);
 	syslog(LOG_INFO|LOG_DAEMON, "Created account "
-	. " $username from " . $_SERVER['REMOTE_ADDR']);
+	. " $username from " . $_SERVER['HTTP_X_REAL_IP']);
 	return true;
 }
 function user_validate($username, $password)
@@ -78,7 +78,7 @@ function login($username, $password)
 {
 	if (!user_validate($username, $password)) {
 		syslog(LOG_INFO|LOG_DAEMON, "Failed log-in attempt for"
-		. " invalid user $username from " . $_SERVER['REMOTE_ADDR']);
+		. " invalid user $username from " . $_SERVER['HTTP_X_REAL_IP']);
 		return false;
 	}
 	$dbh = mysqli_connect(CONFIG_DB_SERVER,
@@ -94,7 +94,7 @@ function login($username, $password)
 	$row = mysqli_fetch_assoc($res);
 
 	syslog(LOG_INFO|LOG_DAEMON, "Successful login for"
-	. " $username from " . $_SERVER['REMOTE_ADDR']);
+	. " $username from " . $_SERVER['HTTP_X_REAL_IP']);
 
 	// Initialize the user's session
 	$_SESSION['userid'] = $row['id'];
@@ -112,7 +112,7 @@ function login($username, $password)
 	// Update 'last login' information to the current session
 	$today = date("Y-m-d H:i:s");
 	mysqli_query($dbh, "UPDATE `users` SET `last_login`='$today'"
-	. ", `last_ip`='" . $_SERVER['REMOTE_ADDR'] . "'"
+	. ", `last_ip`='" . $_SERVER['HTTP_X_REAL_IP'] . "'"
 	. " WHERE `id` = " . $_SESSION['userid']);
 
 	return [
@@ -129,7 +129,7 @@ function account_delete($id)
 		CONFIG_DB_DATABASE);
 	mysqli_query($dbh, "DELETE FROM `users` WHERE Id=$id");
 	syslog(LOG_INFO|LOG_DAEMON, "Deleted account "
-	. " $username from " . $_SERVER['REMOTE_ADDR']);
+	. " $username from " . $_SERVER['HTTP_X_REAL_IP']);
 	return;
 }
 ?>
