@@ -219,7 +219,7 @@ function update_user_identity($id, $address, $user_agent)
 	. " UPDATE `last_activity` = NOW()";
 	mysqli_query($dbh, $query);
 }
-function check_user_identity($id, $address)
+function check_user_identity($address)
 {
 	$dbh = mysqli_connect(CONFIG_DB_SERVER,
 		CONFIG_DB_USERNAME,
