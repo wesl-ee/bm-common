@@ -132,6 +132,13 @@ function reloadUserStyle() {
 			"Welcome to the server"
 		];
 		break;
+	case "tomie":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/tomie.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_tomie.css";
+		$_SESSION['motd'] = [
+			"Love me to death"
+		];
+		break;
 	}
 	if ($_SESSION['workmode'] == 'on') unset($_SESSION['mascot']);
 }
