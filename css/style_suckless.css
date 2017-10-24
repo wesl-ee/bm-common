@@ -32,20 +32,20 @@
 	left: 0;
 
 	height: 100%;
-	width: 30%;
+	width: 25%;
 }
 /* Where the important shit goes */
 #rightframe {
 	position: absolute;
 	top: 0;
-	left: 30%;
+	left: 25%;
 
 	/* funkmaster flex */
 	display: flex;
 	flex-direction: column;
 
 	/* Share space with #leftframe */
-	width: 70%;
+	width: 75%;
 	max-height: 100%;
 
 	/* Shouldn't happen that we have overflow, but
@@ -93,12 +93,16 @@ footer {
 	display: flex;
 	align-content: flex-start;
 	justify-content: space-between;
+	flex-wrap: wrap;
 
 	flex: 0 0 auto;
 }
 footer > * {
 	padding-left: 5px;
 	padding-right: 5px;
+}
+#search + footer {
+	justify-content: center;
 }
 
 #leftframe > nav {
