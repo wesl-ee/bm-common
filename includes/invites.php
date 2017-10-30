@@ -37,7 +37,7 @@ function invites_delete($key)
 }
 function invites_cangenerate($userid)
 {
-	$cutoff = date('Y-m-d H:i:s', strtotime(' -7 days'));
+	$cutoff = date('Y-m-d H:i:s', strtotime('-' . CONFIG_INVITE_COOLDOWN));
 	$conn = new mysqli(CONFIG_DB_SERVER, CONFIG_DB_USERNAME, CONFIG_DB_PASSWORD, CONFIG_DB_DATABASE);
 	$cmd = "SELECT `hash` FROM `invites` WHERE `date_created` > '".$cutoff."'";
 	$result = $conn->query($cmd);

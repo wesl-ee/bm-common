@@ -46,6 +46,11 @@ include CONFIG_COMMON_PATH."includes/invites.php";
 				return;
 			}
 		}
+		$email = "$username@example.com";
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			print "Please pick another username";
+			return;
+		}
 		if (account_create($username, $password, $invited_by) === false) {
 			print 'Could not create your account right now. . .';
 			return;
