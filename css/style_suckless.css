@@ -168,7 +168,6 @@ footer > * {
 	}
 }
 a {
-	transition: color 0.2s ease;
 	text-decoration: underline;
 	color: inherit;
 }

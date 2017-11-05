@@ -41,6 +41,10 @@ if (isset($_POST['pref_css'])) {
 		<td>CSS Style</td>
 		<td>
 		<select id=sel name=pref_css onchange="this.form.submit()">
+		<option <?php if ($_SESSION['pref_css']=="20XX")
+			print "selected " ?>
+		value="20XX">20XX</option>
+
 		<option <?php if ($_SESSION['pref_css']=="bigmike")
 			print "selected " ?>
 		value="bigmike">Big Mike</option>
@@ -56,6 +60,10 @@ if (isset($_POST['pref_css'])) {
 		<option <?php if ($_SESSION['pref_css']=="hino")
 			print "selected " ?>
 		value="hino">Hino</option>
+
+		<option <?php if ($_SESSION['pref_css']=="homura")
+			print "selected " ?>
+		value="homura">Homura</option>
 
 		<option <?php if ($_SESSION['pref_css']=="illya")
 			print " selected" ?>

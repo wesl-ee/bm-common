@@ -139,6 +139,20 @@ function reloadUserStyle() {
 			"Love me to death"
 		];
 		break;
+	case "20XX":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/20XX.gif";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_20XX.css";
+		$_SESSION['motd'] = [
+			"Welcome to 20XX"
+		];
+		break;
+	case "Homura":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/homura.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_20XX.css";
+		$_SESSION['motd'] = [
+			"Love me to death"
+		];
+		break;
 	}
 	if ($_SESSION['workmode'] == 'on') unset($_SESSION['mascot']);
 }
