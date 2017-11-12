@@ -13,8 +13,15 @@ if (CONFIG_HOOYA_PATH) {
 
 if (isset($_FILES['picture']))
 if ($_GET['id'] == $_SESSION['userid']) {
-	print 'aa';die;
-	update_userpicture($_SESSION['userid'], $_GET['picture']);
+	$imageFileType = pathinfo(basename($_FILES['picture']['name']),PATHINFO_EXTENSION);
+	$targetfile = 'users/' . $_SESSION['username'] . '-' . basename($_FILES['picture']['name']);
+	if (!getimagesize($_FILES['picture']['tmp_name'])) {
+		print 'Not an image!'; die;
+	}
+	if (!move_uploaded_file($_FILES['picture']['tmp_name'], $targetfile)) {
+		print 'Someting happened!'; die;
+	}
+	update_userpicture($_SESSION['userid'], $targetfile);
 }
 ?>
 <HTML>
@@ -36,7 +43,8 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		$tagcount = get_usertagcount($id);
 		$userpicture = get_userpicture($id);
 		if (!$userpicture)
-			$userpicture = 'ed083cf55c0598e29e072feca85a7993';
+			$userpicture = 'users/vsauce-michael.jpg';
+		$userpicturepath = CONFIG_COMMON_WEBPATH . "home/$userpicture";
 		$lastactivity = get_lastuseractivity($id);
 		print '<header style=float:left;><a href=.>all users</a>';
 		print "<h1 style='text-align:center;word-wrap:break-word'>$username";
@@ -46,7 +54,7 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		. '<main>'
 		. '<div class=summary>'
 		. '<div><img '
-		. "src=" . CONFIG_HOOYA_WEBPATH . "download.php?key=$userpicture&thumb></img></div>";
+		. "src=$userpicturepath></img></div>";
 		if ($lastactivity) {
 			print "<span>Last Online $lastactivity</span>";
 		}
@@ -75,12 +83,14 @@ if ($_GET['id'] == $_SESSION['userid']) {
 	} else {
 		print'<h1>Friends</h1><main>';
 		foreach (get_users() as $id => $info) {
-			if (!$info['picture']) $info['picture'] = 'ed083cf55c0598e29e072feca85a7993';
+			if (!$info['picture'])
+				$info['picture'] = 'users/vsauce-michael.jpg';
+			$userpicturepath = CONFIG_COMMON_WEBPATH . "home/" . $info['picture'];
 			print "<div style='padding:10px;display:inline-flex;flex-direction:column;align-items:center;'>"
 			. $info['username']
 			. "<a href=?id=$id>"
-			. "<img style='max-width: 150px' src=" . CONFIG_HOOYA_WEBPATH
-			. "download.php?key=" . $info['picture'] . "&thumb></img></a>"
+			. "<img style='max-width: 150px' src=$userpicturepath>"
+			. "</img></a>"
 			. "</div>";
 		}
 		print '</main>'
@@ -94,7 +104,7 @@ document.getElementById("fupload").onchange = function() {
 	this.parentNode.submit();
 };
 </script>
-<?php if (isset($_GET['picture']))
+<?php if (isset($_FILES['picture']))
 	print '<script>window.history.back();</script>';
 ?>
 </body>

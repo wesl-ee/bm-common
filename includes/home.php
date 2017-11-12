@@ -49,6 +49,11 @@ function update_userpicture($id, $key)
 		CONFIG_DB_PASSWORD,
 		CONFIG_DB_DATABASE);
 	$key = mysqli_real_escape_string($dbh, $key);
+	$query = "SELECT picture FROM `users` WHERE"
+	. " `id` = $id";
+	$res = mysqli_query($dbh, $query);
+	$oldpicture = mysqli_fetch_assoc($res)['picture'];
+	unlink($oldpicture);
 	$query  = "UPDATE `users` SET `picture`='$key' WHERE `id`=$id";
 	return mysqli_query($dbh, $query);
 }
