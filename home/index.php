@@ -11,8 +11,9 @@ if (CONFIG_HOOYA_PATH) {
 	include CONFIG_HOOYA_PATH."includes/render.php";
 }
 
-if (isset($_GET['picture'], $_GET['id']))
+if (isset($_FILES['picture']))
 if ($_GET['id'] == $_SESSION['userid']) {
+	print 'aa';die;
 	update_userpicture($_SESSION['userid'], $_GET['picture']);
 }
 ?>
@@ -27,6 +28,7 @@ if ($_GET['id'] == $_SESSION['userid']) {
 	<nav><?php print_login();?></nav>
 	<img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
+<div id="rightframe" class=userpage>
 <?php
 	if (isset($_GET['id'])) {
 		$id = (int)$_GET['id'];
@@ -36,28 +38,28 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		if (!$userpicture)
 			$userpicture = 'ed083cf55c0598e29e072feca85a7993';
 		$lastactivity = get_lastuseractivity($id);
-		print '<div id="rightframe" class="userpage">'
-		. '<div class=summary>'
-		. '<span style=padding-bottom:20px;><a href=.>all users</a></span>'
-		. '<img '
-		. "src=" . CONFIG_HOOYA_WEBPATH . "download.php?key=$userpicture&thumb></img>";
+		print '<header style=float:left;><a href=.>all users</a>';
+		print "<h1 style='text-align:center;word-wrap:break-word'>$username";
 		if ($id == $_SESSION['userid'])
-			print "<form><input value=$userpicture placeholder='hooYa! picture id'"
-			. " style='width:100%' name=picture>"
-			.  "<input type=hidden name=id value=$id></form>";
+			print " (you)";
+		print '</h1></header>'
+		. '<main>'
+		. '<div class=summary>'
+		. '<div><img '
+		. "src=" . CONFIG_HOOYA_WEBPATH . "download.php?key=$userpicture&thumb></img></div>";
 		if ($lastactivity) {
 			print "<span>Last Online $lastactivity</span>";
 		}
+		if ($id == $_SESSION['userid'])
+			print "<form method=post enctype='multipart/form-data'><input class=fupload type=file"
+			. " name=picture id=fupload>"
+			. "<label id=flabel for=fupload>Change picture</label>"
+			.  "<input type=hidden name=id value=$id></form>";
 		if ($id == $_SESSION['userid'])
 			print '<a href="../util/change_passwd.php">Change password</a>'
 			. '<a href="../util/invite.php">Invite a friend</a>'
 			. '<a href="../util/acc_delete.php">Delete your account</a>';
 		print '</div>'
-		. '<main class=details>'
-		. "<h1 style='text-align:center;word-wrap:break-word'>$username";
-		if ($id == $_SESSION['userid'])
-			print " (you)";
-		print '</h1>'
 		. '<dl>';
 		if (CONFIG_HOOYA_PATH) {
 			if ($tagcount > 0) {
@@ -71,8 +73,7 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		. '</main>'
 		. '</div>';
 	} else {
-		print '<div id="rightframe" class="users">'
-		.'<h1>Friends</h1><main>';
+		print'<h1>Friends</h1><main>';
 		foreach (get_users() as $id => $info) {
 			if (!$info['picture']) $info['picture'] = 'ed083cf55c0598e29e072feca85a7993';
 			print "<div style='padding:10px;display:inline-flex;flex-direction:column;align-items:center;'>"
@@ -87,6 +88,12 @@ if ($_GET['id'] == $_SESSION['userid']) {
 	}
 ?>
 </div>
+</div>
+<script>
+document.getElementById("fupload").onchange = function() {
+	this.parentNode.submit();
+};
+</script>
 <?php if (isset($_GET['picture']))
 	print '<script>window.history.back();</script>';
 ?>

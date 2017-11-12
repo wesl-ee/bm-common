@@ -245,33 +245,15 @@ main.choices .choicebox dd {
 main.choices .choicebox dt:hover {
 	box-shadow: -5px 5px 10px;
 }
-#rightframe.userpage {
-	flex-direction: row;
-}
-#rightframe.userpage > .summary {
+#rightframe.userpage .summary {
 	display: flex;
 	flex-direction: column;
-	float: left;
-	width: calc(30% - 20px);
-	padding-right: 20px;
-	padding-top: 10px;
-	max-height: 100%;
-}
-#rightframe.userpage > .summary > * {
-	margin: auto;
-	text-align: center;
-}
-#rightframe.userpage > .summary img {
-	display: block;
-	max-width: 100%;
-	margin: auto;
-}
-#rightframe.userpage > .details {
-	float: left;
-	width: 70%;
+	align-items: center;
+	padding-top: 20px;
 }
 #rightframe.users img,
 #rightframe.userpage img {
+	max-width: 250px;
 	border: 3px solid;
 }
 #bargraph {
@@ -287,6 +269,26 @@ main.choices .choicebox dt:hover {
 	list-style:none;
 	text-align: right;
 	border-bottom: 3px solid;
+}
+.fupload {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.fupload + label {
+	color: black;
+	background-color: #F7F7F7;
+	display: inline-block;
+	padding-left: 1px;
+	padding-right: 1px;
+	border: 1px solid black;
+}
+
+.fupload + label:hover {
+	cursor: pointer;
 }
 img {
 	-moz-user-select: none;
