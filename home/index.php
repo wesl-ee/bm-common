@@ -27,7 +27,6 @@ if ($_GET['id'] == $_SESSION['userid']) {
 	<nav><?php print_login();?></nav>
 	<img id="mascot" src=<?php echo $_SESSION['mascot'];?>>
 </div>
-<div id="rightframe" class='userpage'>
 <?php
 	if (isset($_GET['id'])) {
 		$id = (int)$_GET['id'];
@@ -37,8 +36,9 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		if (!$userpicture)
 			$userpicture = 'ed083cf55c0598e29e072feca85a7993';
 		$lastactivity = get_lastuseractivity($id);
-		print '<div class=summary>'
-		. '<span><a href=.>back</a> to all users</span>'
+		print '<div id="rightframe" class="userpage">'
+		. '<div class=summary>'
+		. '<span style=padding-bottom:20px;><a href=.>all users</a></span>'
 		. '<img '
 		. "src=" . CONFIG_HOOYA_WEBPATH . "download.php?key=$userpicture&thumb></img>";
 		if ($id == $_SESSION['userid'])
@@ -48,6 +48,10 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		if ($lastactivity) {
 			print "<span>Last Online $lastactivity</span>";
 		}
+		if ($id == $_SESSION['userid'])
+			print '<a href="../util/change_passwd.php">Change password</a>'
+			. '<a href="../util/invite.php">Invite a friend</a>'
+			. '<a href="../util/acc_delete.php">Delete your account</a>';
 		print '</div>'
 		. '<main class=details>'
 		. "<h1 style='text-align:center;word-wrap:break-word'>$username";
@@ -64,22 +68,24 @@ if ($_GET['id'] == $_SESSION['userid']) {
 			} else print "No tags added yet!";
 		}
 		print '</dl>'
-		. '</main>';
+		. '</main>'
+		. '</div>';
 	} else {
-		print'<main style="display:flex;flex-wrap:wrap;align-items:center;">';
+		print '<div id="rightframe" class="users">'
+		.'<h1>Friends</h1><main>';
 		foreach (get_users() as $id => $info) {
 			if (!$info['picture']) $info['picture'] = 'ed083cf55c0598e29e072feca85a7993';
-			print "<div style='padding:10px;display:flex;flex-direction:column;align-items:center;'>"
+			print "<div style='padding:10px;display:inline-flex;flex-direction:column;align-items:center;'>"
 			. $info['username']
 			. "<a href=?id=$id>"
 			. "<img style='max-width: 150px' src=" . CONFIG_HOOYA_WEBPATH
 			. "download.php?key=" . $info['picture'] . "&thumb></img></a>"
 			. "</div>";
 		}
-		print '</main>';
+		print '</main>'
+		. '</div>';
 	}
 ?>
-</div>
 </div>
 <?php if (isset($_GET['picture']))
 	print '<script>window.history.back();</script>';

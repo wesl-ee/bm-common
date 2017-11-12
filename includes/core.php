@@ -30,7 +30,7 @@ function updateUserStyle($css, $workmode, $id = NULL)
 }
 // Set all the elements that define a style
 function reloadUserStyle() {
-	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'bigmike';
+	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'homura';
 	switch($_SESSION['pref_css']) {
 	case "maki":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_maki.css";
@@ -146,11 +146,11 @@ function reloadUserStyle() {
 			"Welcome to 20XX"
 		];
 		break;
-	case "Homura":
+	case "homura":
 		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/homura.png";
-		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_20XX.css";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_homura.css";
 		$_SESSION['motd'] = [
-			"Love me to death"
+			"Welcome homu"
 		];
 		break;
 	}
@@ -176,7 +176,7 @@ function print_login()
 	print('<a href="'.CONFIG_WEBHOMEPAGE.'">home</a></br>');
 	if (isset($_SESSION['userid']))
 		print '<a href="'.CONFIG_COMMON_WEBPATH.'logout.php">logout</a><br/>'
-		. '<a href="'.CONFIG_COMMON_WEBPATH.'util/invite.php">invite a friend</a><br/>';
+		. '<a href="'.CONFIG_COMMON_WEBPATH.'home/?id=' . $_SESSION['userid'] . '">my page</a><br/>';
 	else
 		print '<a href="'.CONFIG_COMMON_WEBPATH.'login.php?ref='
 		.$_SERVER['REQUEST_URI'].'">login</a><br/>';

@@ -257,6 +257,10 @@ main.choices .choicebox dt:hover {
 	padding-top: 10px;
 	max-height: 100%;
 }
+#rightframe.userpage > .summary > * {
+	margin: auto;
+	text-align: center;
+}
 #rightframe.userpage > .summary img {
 	display: block;
 	max-width: 100%;
@@ -266,6 +270,7 @@ main.choices .choicebox dt:hover {
 	float: left;
 	width: 70%;
 }
+#rightframe.users img,
 #rightframe.userpage img {
 	border: 3px solid;
 }
