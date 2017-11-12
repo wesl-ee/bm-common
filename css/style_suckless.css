@@ -12,7 +12,6 @@
 /* Fit it all on one page */
 #container {
 	position: absolute;
-	overflow: hidden !important;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -219,6 +218,61 @@ main th {
 main table {
 	color: inherit;
 	margin: auto;
+}
+main.choices {
+	display: flex;
+	justify-content: space-around;
+	flex-flow: row wrap;
+}
+main.choices .choicebox {
+	padding: 10px;
+	margin: 10px;
+	border-width: 1px;
+	border-style: solid;
+	text-align: center;
+	width: 200px;
+}
+main.choices .choicebox dt {
+	padding: 10px;
+	margin: 10px;
+	border-width: 1px;
+	border-style: solid;
+	transition: box-shadow 0.5s, color 1s;
+}
+main.choices .choicebox dd {
+	margin: 0px;
+}
+main.choices .choicebox dt:hover {
+	box-shadow: -5px 5px 10px;
+}
+#rightframe.userpage {
+	display: block;
+}
+#rightframe.userpage > .summary {
+	float: left;
+	width: calc(30% - 20px);
+	padding-right: 20px;
+}
+#rightframe.userpage > .details {
+	float: left;
+	width: 70%;
+}
+#rightframe.userpage img {
+	border: 3px solid;
+}
+#bargraph {
+	position: relative;
+	width: 70%;
+	margin: auto;
+	margin-bottom: 5px
+}
+#bargraph dd {
+	margin-inline-start: 0px;
+}
+#bargraph dd {
+	list-style:none;
+	text-align: right;
+	border-bottom: 3px solid;
 }
 img {
 	-moz-user-select: none;
