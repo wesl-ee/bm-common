@@ -246,12 +246,21 @@ main.choices .choicebox dt:hover {
 	box-shadow: -5px 5px 10px;
 }
 #rightframe.userpage {
-	display: block;
+	flex-direction: row;
 }
 #rightframe.userpage > .summary {
+	display: flex;
+	flex-direction: column;
 	float: left;
 	width: calc(30% - 20px);
 	padding-right: 20px;
+	padding-top: 10px;
+	max-height: 100%;
+}
+#rightframe.userpage > .summary img {
+	display: block;
+	max-width: 100%;
+	margin: auto;
 }
 #rightframe.userpage > .details {
 	float: left;
