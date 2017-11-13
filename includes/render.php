@@ -22,21 +22,24 @@ function render_userpage($id)
 	print '<header><span><a href=.>all users</a></span>';
 	print "<h1>$username";
 	if ($id == $_SESSION['userid'])
-		print " (you)";
+		print "	(you)";
 	print '</h1></header>'
 	. '<main>'
-	. '<div class=summary>'
-	. '<div><img '
-	. "src='$userpicturepath'></img></div>";
+	. '<div class=summary>';
+	if ($id == $_SESSION['userid'])
+		print "<form method=post enctype='multipart/form-data'>"
+		.  "<input type=hidden name=id value=$id>"
+		. "<input style='display:none' type=file"
+		. " name=picture id=fupload>"
+		. "<label style='cursor:pointer;'id=flabel for=fupload>";
+	print '<div><img '
+	. "src='$userpicturepath'></div>";
+	if ($id == $_SESSION['userid'])
+		print '</label></form>';
 	print "<span>Joined on $joindate</span>";
 	if ($lastactivity) {
 		print "<span>Last Online $lastactivity</span>";
 	}
-	if ($id == $_SESSION['userid'])
-		print "<form method=post enctype='multipart/form-data'><input class=fupload type=file"
-		. " name=picture id=fupload>"
-		. "<label id=flabel for=fupload>Change picture</label>"
-		.  "<input type=hidden name=id value=$id></form>";
 	if ($id == $_SESSION['userid'])
 		print '<a href="../util/change_passwd.php">Change password</a>'
 		. '<a href="../util/invite.php">Invite a friend</a>'
