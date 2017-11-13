@@ -1,2 +1,3 @@
 includes/config.php
-otp_challenge
+home/users/*
+!home/users/vsauce-michael.jpg

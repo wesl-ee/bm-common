@@ -17,7 +17,7 @@ h1 {
 	border-color: white;
 }
 #rightframe {
-	box-shadow: -1px 1px 10px white;
+	box-shadow: -3px 3px 3px white;
 	border-radius: 0px 0px 0px 15px;
 }
 ::-webkit-scrollbar-thumb {
