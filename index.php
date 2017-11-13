@@ -9,7 +9,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
-	<title>bigmike - user center</title>
+	<title>bm - user center</title>
 </head>
 <body>
 <div id="container">
@@ -26,7 +26,7 @@ if (CONFIG_REQUIRE_AUTHENTICATION)
 	</header>
 	<main>
 	<table>
-		<tr><td><a href="util/users.php">User directory</a></td></tr>
+		<tr><td><a href="home/">User directory</a></td></tr>
 		<tr><td><a href="util/user_prefs.php">User Preferences</a></td></tr>
 		<tr><td><a href="util/change_passwd.php">Change password</a></td></tr>
 		<tr><td><a href="util/invite.php">Invite a Friend</a></td></tr>
