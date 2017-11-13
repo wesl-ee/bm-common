@@ -31,7 +31,8 @@ function render_userpage($id)
 		.  "<input type=hidden name=id value=$id>"
 		. "<input style='display:none' type=file"
 		. " name=picture id=fupload>"
-		. "<label style='cursor:pointer;'id=flabel for=fupload>";
+		. "<label style='cursor:pointer;'title='Click to change"
+		. " your picture!' id=flabel for=fupload>";
 	print '<div><img '
 	. "src='$userpicturepath'></div>";
 	if ($id == $_SESSION['userid'])
