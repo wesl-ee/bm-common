@@ -2,6 +2,7 @@
 <?php
 include "../includes/core.php";
 include CONFIG_COMMON_PATH . "includes/home.php";
+include CONFIG_COMMON_PATH . "includes/render.php";
 
 if (CONFIG_REQUIRE_AUTHENTICATION)
 	include CONFIG_COMMON_PATH."includes/auth.php";
@@ -39,59 +40,17 @@ if ($_GET['id'] == $_SESSION['userid']) {
 <?php
 	if (isset($_GET['id'])) {
 		$id = (int)$_GET['id'];
-		$username = get_username($id);
-		$tagcount = get_usertagcount($id);
-		$userpicture = get_userpicture($id);
-		if (!$userpicture)
-			$userpicture = 'users/vsauce-michael.jpg';
-		$userpicturepath = CONFIG_COMMON_WEBPATH . "home/$userpicture";
-		$lastactivity = get_lastuseractivity($id);
-		print '<header style=float:left;><a href=.>all users</a>';
-		print "<h1 style='text-align:center;word-wrap:break-word'>$username";
-		if ($id == $_SESSION['userid'])
-			print " (you)";
-		print '</h1></header>'
-		. '<main>'
-		. '<div class=summary>'
-		. '<div><img '
-		. "src=$userpicturepath></img></div>";
-		if ($lastactivity) {
-			print "<span>Last Online $lastactivity</span>";
-		}
-		if ($id == $_SESSION['userid'])
-			print "<form method=post enctype='multipart/form-data'><input class=fupload type=file"
-			. " name=picture id=fupload>"
-			. "<label id=flabel for=fupload>Change picture</label>"
-			.  "<input type=hidden name=id value=$id></form>";
-		if ($id == $_SESSION['userid'])
-			print '<a href="../util/change_passwd.php">Change password</a>'
-			. '<a href="../util/invite.php">Invite a friend</a>'
-			. '<a href="../util/acc_delete.php">Delete your account</a>';
-		print '</div>'
-		. '<dl>';
-		if (CONFIG_HOOYA_PATH) {
-			if ($tagcount > 0) {
-				print '<dt>Pictures Tagged</dt>'
-				. "<dd>$tagcount</dd>";
-				$favoritetags = get_userfavorites($id, 5);
-				render_bargraph($favoritetags);
-			} else print "No tags added yet!";
-		}
-		print '</dl>'
-		. '</main>'
-		. '</div>';
+		render_userpage($id);
+
 	} else {
 		print'<h1>Friends</h1><main>';
 		foreach (get_users() as $id => $info) {
 			if (!$info['picture'])
 				$info['picture'] = 'users/vsauce-michael.jpg';
-			$userpicturepath = CONFIG_COMMON_WEBPATH . "home/" . $info['picture'];
-			print "<div style='padding:10px;display:inline-flex;flex-direction:column;align-items:center;'>"
-			. $info['username']
-			. "<a href=?id=$id>"
-			. "<img style='max-width: 150px' src=$userpicturepath>"
-			. "</img></a>"
-			. "</div>";
+			$userpicture = CONFIG_COMMON_WEBPATH
+			. "home/" . $info['picture'];
+			$username = $info['username'];
+			render_usersummary($id, $username, $userpicture);
 		}
 		print '</main>'
 		. '</div>';

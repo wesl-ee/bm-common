@@ -42,6 +42,18 @@ function get_userpicture($id)
 	$row = mysqli_fetch_assoc($res);
 	return $row['picture'];
 }
+function get_joindate($id)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+	$query = "SELECT `signup_date` FROM `users` WHERE"
+	. " `id` = $id";
+	$res = mysqli_query($dbh, $query);
+	$row = mysqli_fetch_assoc($res);
+	return $row['signup_date'];
+}
 function update_userpicture($id, $key)
 {
 	$dbh = mysqli_connect(CONFIG_DB_SERVER,
