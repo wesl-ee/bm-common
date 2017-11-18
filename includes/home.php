@@ -30,17 +30,21 @@ function get_lastuseractivity($id)
 	$row = mysqli_fetch_assoc($res);
 	return $row['date'];
 }
-function get_userpicture($id)
+function get_userpictures($ids)
 {
 	$dbh = mysqli_connect(CONFIG_DB_SERVER,
 		CONFIG_DB_USERNAME,
 		CONFIG_DB_PASSWORD,
 		CONFIG_DB_DATABASE);
-	$query = "SELECT picture FROM `users` WHERE"
-	. " `id` = $id";
+	$query = "SELECT `id`, `picture` FROM `users` WHERE";
+	for ($i = 0; $i < count($ids); $i++) {
+		if ($i) $query .= ' OR';
+		$query .= ' `id` = ' . $ids[$i];
+	}
 	$res = mysqli_query($dbh, $query);
-	$row = mysqli_fetch_assoc($res);
-	return $row['picture'];
+	while ($row = mysqli_fetch_assoc($res))
+		$ret[$row['id']] = $row['picture'];
+	return $ret;
 }
 function get_joindate($id)
 {

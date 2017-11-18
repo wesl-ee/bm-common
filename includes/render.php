@@ -13,7 +13,7 @@ function render_userpage($id)
 {
 	$username = get_username($id);
 	$tagcount = get_usertagcount($id);
-	$userpicture = get_userpicture($id);
+	$userpicture = get_userpictures([$id])[$id];
 	if (!$userpicture)
 		$userpicture = 'users/vsauce-michael.jpg';
 	$userpicturepath = CONFIG_COMMON_WEBPATH . "home/$userpicture";
