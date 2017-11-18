@@ -19,7 +19,7 @@ if (isset($_POST['pref_css'])) {
 </div>
 <div id="rightframe">
 <header>
-	<h1>User preferences</h1>
+	<h1>Theming</h1>
 </header>
 <main>
 <?php

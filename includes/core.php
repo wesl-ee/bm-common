@@ -237,7 +237,7 @@ function update_user_identity($id, $address, $user_agent)
 
 	$query = "INSERT INTO `identity` (`id`, `address`, `user_agent`)"
 	. " VALUES ('$id', '$address', '$user_agent') ON DUPLICATE KEY"
-	. " UPDATE `last_activity` = NOW()";
+	. " UPDATE `id` = $id, `last_activity` = NOW()";
 	mysqli_query($dbh, $query);
 }
 function check_user_identity($address)
