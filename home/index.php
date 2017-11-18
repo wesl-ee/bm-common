@@ -43,7 +43,7 @@ if ($_GET['id'] == $_SESSION['userid']) {
 		render_userpage($id);
 
 	} else {
-		print'<h1>Friends</h1><main>';
+		print'<h1>Friends</h1><main class=users>';
 		foreach (get_users() as $id => $info) {
 			if (!$info['picture'])
 				$info['picture'] = 'users/vsauce-michael.jpg';
