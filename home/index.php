@@ -24,6 +24,10 @@ if ($_GET['id'] == $_SESSION['userid']) {
 	}
 	update_userpicture($_SESSION['userid'], $targetfile);
 }
+if (isset($_POST['bio']))
+if ($_GET['id'] == $_SESSION['userid']) {
+	update_userbio($_SESSION['userid'], urldecode($_POST['bio']));
+}
 ?>
 <HTML>
 <head>
@@ -40,7 +44,8 @@ if ($_GET['id'] == $_SESSION['userid']) {
 <?php
 	if (isset($_GET['id'])) {
 		$id = (int)$_GET['id'];
-		render_userpage($id);
+		$editmode = isset($_GET['edit']);
+		render_userpage($id, $editmode);
 
 	} else {
 		print'<h1>Friends</h1><main class=users>';
@@ -63,8 +68,8 @@ document.getElementById("fupload").onchange = function() {
 	this.parentNode.submit();
 };
 </script>
-<?php if (isset($_FILES['picture']))
-	print '<script>window.history.back();</script>';
+<?php /*if (isset($_FILES['picture']) || isset($_GET['bio']))
+	print '<script>window.history.back();</script>';*/
 ?>
 </body>
 </HTML>

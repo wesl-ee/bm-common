@@ -46,6 +46,22 @@ function get_userpictures($ids)
 		$ret[$row['id']] = $row['picture'];
 	return $ret;
 }
+function get_userbios($ids)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+	$query = "SELECT `id`, `about` FROM `users` WHERE";
+	for ($i = 0; $i < count($ids); $i++) {
+		if ($i) $query .= ' OR';
+		$query .= ' `id` = ' . $ids[$i];
+	}
+	$res = mysqli_query($dbh, $query);
+	while ($row = mysqli_fetch_assoc($res))
+		$ret[$row['id']] = $row['about'];
+	return $ret;
+}
 function get_joindate($id)
 {
 	$dbh = mysqli_connect(CONFIG_DB_SERVER,
@@ -71,6 +87,16 @@ function update_userpicture($id, $key)
 	$oldpicture = mysqli_fetch_assoc($res)['picture'];
 	unlink($oldpicture);
 	$query  = "UPDATE `users` SET `picture`='$key' WHERE `id`=$id";
+	return mysqli_query($dbh, $query);
+}
+function update_userbio($id, $bio)
+{
+	$dbh = mysqli_connect(CONFIG_DB_SERVER,
+		CONFIG_DB_USERNAME,
+		CONFIG_DB_PASSWORD,
+		CONFIG_DB_DATABASE);
+	$bio = mysqli_real_escape_string($dbh, $bio);
+	$query  = "UPDATE `users` SET `About`='$bio' WHERE `id`=$id";
 	return mysqli_query($dbh, $query);
 }
 ?>

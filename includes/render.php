@@ -9,11 +9,15 @@ function render_usersummary($id, $username, $picture)
 	. "</div>";
 }
 // Cleanup later, lots of SQL calls because I am lazy
-function render_userpage($id)
+function render_userpage($id, $editmode)
 {
 	$username = get_username($id);
 	$tagcount = get_usertagcount($id);
 	$userpicture = get_userpictures([$id])[$id];
+	$userbio = htmlspecialchars(get_userbios([$id])[$id]);
+	if ($userbio == '') {
+		$userbio = "I'm new here, please be gentle >.<";
+	}
 	if (!$userpicture)
 		$userpicture = 'users/vsauce-michael.jpg';
 	$userpicturepath = CONFIG_COMMON_WEBPATH . "home/$userpicture";
@@ -27,7 +31,8 @@ function render_userpage($id)
 	. '<main>'
 	. '<div class=summary>';
 	if ($id == $_SESSION['userid'])
-		print "<form method=post enctype='multipart/form-data'>"
+		print "<form method=post enctype='multipart/form-data'"
+		. " action='?id=$id'>"
 		.  "<input type=hidden name=id value=$id>"
 		. "<input style='display:none' type=file"
 		. " name=picture id=fupload>"
@@ -47,6 +52,26 @@ function render_userpage($id)
 		. '<a href="../util/acc_delete.php">Delete your account</a>';
 	print '</div>'
 	. '<dl>';
+	print '<dt>User Biography';
+	if ($id == $_SESSION['userid'] && !$editmode)
+		print " (<a href='?id=$id&edit'>edit</a>)";
+	print '</dt>';
+	if ($id == $_SESSION['userid'] && $editmode)
+		print "<form action='?id=$id' method=POST>"
+		. "<dd><textarea class=editing id=bio name=bio>"
+		. "$userbio</textarea></dd>"
+		. "<input type=submit value=Commit>"
+		. "</form>"
+		. "<script>var textarea = document.getElementById('bio');"
+		. "textarea.focus();"
+		. "textarea.style.height = '';"
+		. "textarea.style.height = textarea.scrollHeight + 'px'"
+		. "textarea.addEventListener('input', function() {"
+		. "textarea.style.height = '';"
+		. "textarea.style.height = textarea.scrollHeight + 'px'});"
+		. "</script>";
+	else
+		print "<dd><span>$userbio</span></dd>";
 	if (CONFIG_HOOYA_PATH) {
 		if ($tagcount > 0) {
 			print '<dt>Pictures Tagged</dt>'

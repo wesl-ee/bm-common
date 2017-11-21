@@ -255,16 +255,17 @@ main.choices .choicebox dt:hover {
 }
 #rightframe.users img,
 #rightframe.userpage img {
-	max-height: 500px;
+	max-height: 300px;
 	border: 3px solid;
 }
 #rightframe .users {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 }
 #rightframe .userblock {
-	padding:10px;
+	padding: 10px;
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
@@ -301,6 +302,20 @@ main.choices .choicebox dt:hover {
 }
 .fupload + label:hover {
 	cursor: pointer;
+}
+.editing {
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	resize: none;
+	max-width: calc(100% - 35px);
+	min-width: calc(100% - 35px);
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	background-color: #FFFFE0;
+	color: black;
 }
 img {
 	-moz-user-select: none;
