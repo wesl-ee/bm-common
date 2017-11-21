@@ -313,9 +313,12 @@ main.choices .choicebox dt:hover {
 	max-width: calc(100% - 35px);
 	min-width: calc(100% - 35px);
 	box-sizing: border-box;
-	margin-bottom: 10px;
 	background-color: #FFFFE0;
 	color: black;
+}
+dl > dd, dl > dt {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 img {
 	-moz-user-select: none;
