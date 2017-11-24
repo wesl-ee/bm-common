@@ -272,8 +272,7 @@ main.choices .choicebox dt:hover {
 }
 #bargraph {
 	position: relative;
-	width: 70%;
-	margin: auto;
+	width: 80%;
 	margin-bottom: 5px
 }
 #bargraph dd {
@@ -306,7 +305,6 @@ main.choices .choicebox dt:hover {
 .editing {
 	padding-left: 10px;
 	padding-right: 10px;
-	overflow: hidden;
 	margin-left: auto;
 	margin-right: auto;
 	resize: none;

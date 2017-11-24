@@ -65,10 +65,10 @@ function render_userpage($id, $editmode)
 		. "<script>var textarea = document.getElementById('bio');"
 		. "textarea.focus();"
 		. "textarea.style.height = '';"
-		. "textarea.style.height = textarea.scrollHeight + 'px'"
+		. "textarea.style.height = textarea.scrollHeight + 1 + 'px';"
 		. "textarea.addEventListener('input', function() {"
 		. "textarea.style.height = '';"
-		. "textarea.style.height = textarea.scrollHeight + 'px'});"
+		. "textarea.style.height = textarea.scrollHeight + 1 + 'px'});"
 		. "</script>";
 	else
 		print "<dd><span>$userbio</span></dd>";
