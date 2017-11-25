@@ -52,6 +52,9 @@ if (isset($_POST['pref_css'])) {
 		<option <?php if ($_SESSION['pref_css']=="classic")
 			print "selected " ?>
 		value="classic">Classic</option>
+		<option <?php if ($_SESSION['pref_css']=="Fallout")
+			print "selected " ?>
+		value="Fallout">Fallout</option>
 
 		<option <?php if ($_SESSION['pref_css']=="flylo")
 			print "selected " ?>

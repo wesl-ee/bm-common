@@ -19,6 +19,8 @@ define("CONFIG_COMMON_WEBPATH", "/hub/common/");
 // Where you want to drop users when they want to go to your
 // main site
 define("CONFIG_WEBHOMEPAGE", "/hub/");
+// Default Theme
+define("CONFIG_DEFAULT_THEME", "20XX");
 
 // pieces of bigmike
 // if you do not implement a component, simply set its value to false

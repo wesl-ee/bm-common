@@ -30,7 +30,8 @@ function updateUserStyle($css, $workmode, $id = NULL)
 }
 // Set all the elements that define a style
 function reloadUserStyle() {
-	if (!isset($_SESSION['pref_css'])) $_SESSION['pref_css'] = 'homura';
+	if (!isset($_SESSION['pref_css']))
+		$_SESSION['pref_css'] = CONFIG_DEFAULT_THEME;
 	switch($_SESSION['pref_css']) {
 	case "maki":
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_maki.css";
@@ -151,6 +152,13 @@ function reloadUserStyle() {
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_homura.css";
 		$_SESSION['motd'] = [
 			"Welcome homu"
+		];
+		break;
+	case "Fallout":
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/fallout.png";
+		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_fallout.css";
+		$_SESSION['motd'] = [
+			"Hail"
 		];
 		break;
 	}
