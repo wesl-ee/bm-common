@@ -181,20 +181,7 @@ a:hover {
 	max-width: 25%;
 	bottom: 0;
 	max-height: 80%;
-	filter:none;
-        -webkit-filter: grayscale(100%);
-        -moz-filter:    grayscale(100%);
-        -ms-filter:     grayscale(100%);
-        -o-filter:      grayscale(100%);
-        transition: all 300ms ease;
 	display: block;
-}
-#mascot:hover {
-        filter: none;
-        -webkit-filter: grayscale(0%);
-        -moz-filter:    grayscale(0%);
-        -ms-filter:     grayscale(0%);
-        -o-filter:      grayscale(0%);
 }
 /* The content we came to see */
 main {
@@ -323,6 +310,7 @@ main.choices .choicebox dt:hover {
 	position: relative;
 	float: left;
 	z-index: initial;
+	cursor: default;
 }
 .color .colorname {
 	visibility: hidden;
