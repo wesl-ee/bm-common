@@ -314,6 +314,33 @@ main.choices .choicebox dt:hover {
 	background-color: #FFFFE0;
 	color: black;
 }
+.colorbar {
+	position: relative;
+	z-index: 10;
+}
+.color {
+	display: inline-block;
+	position: relative;
+	float: left;
+	z-index: initial;
+}
+.color .colorname {
+	visibility: hidden;
+	position: absolute;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+	border-radius: 5px 5px 0px 5px;
+	bottom: 5px;
+	margin-bottom: -5px;
+	right: 0;
+	transition: bottom 0.1s;
+	overflow-wrap: break-word;
+	z-index: -1;
+}
+.color:hover .colorname {
+	visibility: visible;
+	bottom: 100%;
+}
 dl > dd, dl > dt {
 	margin-top: 5px;
 	margin-bottom: 5px;
