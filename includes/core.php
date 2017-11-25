@@ -140,7 +140,7 @@ function reloadUserStyle() {
 		];
 		break;
 	case "20XX":
-		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/20XX.gif";
+		$_SESSION['mascot']=CONFIG_COMMON_WEBPATH."img/20XX.png";
 		$_SESSION['stylesheet']=CONFIG_COMMON_WEBPATH."css/style_suckless_20XX.css";
 		$_SESSION['motd'] = [
 			"Welcome to 20XX"
