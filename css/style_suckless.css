@@ -124,13 +124,13 @@ footer > * {
 	#container {
 		margin-bottom: 0px;
 		height: 100%;
-		display: flex;
-		flex-direction: column;
 	}
 	#rightframe {
+		max-height: initial;
 		position: initial;
 		width: 100%;
 		border: 0px;
+		border-radius: 0px !important;
 		border-bottom: 1px;
 		border-left-width: 0px;
 		z-index: 1;
@@ -146,9 +146,10 @@ footer > * {
 		bottom: initial;
 		max-height: initial;
 		max-width: initial;
-		text-align: right;
+		display: flex;
+		justify-content: space-evenly;
 		border: 0px;
-		box-shadow: 0px;
+		box-shadow: 0px 0px !important;
 		width: 100%;
 		border-radius: 0px;
 	}
@@ -158,6 +159,7 @@ footer > * {
 		width: 100%;
 		max-width: initial;
 		border: 0px;
+		box-shadow: 0px 0px;
 
 		border-radius: 0px;
 	}
@@ -347,7 +349,6 @@ img {
 	image-orientation: from-image;
 }
 input, select, textarea, select {
-	background-color: #F7F7F7;
         font-family: inherit;
 	border: 1px solid black;
 	margin-bottom: 1px;
