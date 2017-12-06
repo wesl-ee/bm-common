@@ -12,6 +12,9 @@ body {
 ::-webkit-scrollbar-thumb {
 	background: white;
 }
+dl, ol, ul {
+	list-style-type: '> ';
+}
 body {
 	font-family: monospace;
 	text-transform: uppercase;

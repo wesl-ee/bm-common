@@ -23,6 +23,9 @@ h1 {
 ::-webkit-scrollbar-thumb {
 	background: white;
 }
+dl, ul, ol {
+	list-style-type: square;
+}
 body {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }

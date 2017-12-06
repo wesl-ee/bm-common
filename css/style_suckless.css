@@ -301,6 +301,9 @@ main.choices .choicebox dt:hover {
 	background-color: #FFFFE0;
 	color: black;
 }
+.warn {
+	border-style: dashed;
+}
 .colorbar {
 	position: relative;
 	z-index: 10;
