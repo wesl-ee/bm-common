@@ -211,6 +211,16 @@ function parse_timestamp($ts)
 	$m = monthname($m);
 	return "$m $d, $y";
 }
+function bmlog($msg) {
+	$ip = $_SERVER['HTTP_X_REAL_IP'];
+	$user = logged_in() ? $_SESSION['username'] : 'Unauthenticated';
+	$time = date('c');
+	file_put_contents(
+		CONFIG_BM_LOG,
+		"$time - $user ($ip) $msg\n",
+		FILE_APPEND|LOCK_EX
+	);
+}
 function monthname($m) {
 	return [
 	'January',
