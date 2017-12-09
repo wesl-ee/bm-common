@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 include "../includes/core.php";
 
@@ -11,6 +10,7 @@ if (!isset($_SESSION['userid'])) {
 die;
 }
 ?>
+<!DOCTYPE html>
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>

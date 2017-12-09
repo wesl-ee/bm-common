@@ -164,7 +164,7 @@ footer > * {
 		border-radius: 0px;
 	}
 	#mascot {
-		z-index: 0;
+		z-index: -1;
 	}
 	#motd {
 		display: none !important;

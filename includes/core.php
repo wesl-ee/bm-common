@@ -30,6 +30,7 @@ function updateUserStyle($css, $workmode, $id = NULL)
 }
 // Set all the elements that define a style
 function reloadUserStyle() {
+
 	if (!isset($_SESSION['pref_css']))
 		$_SESSION['pref_css'] = CONFIG_DEFAULT_THEME;
 	switch($_SESSION['pref_css']) {

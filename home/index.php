@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 include "../includes/core.php";
 include CONFIG_COMMON_PATH . "includes/home.php";
@@ -17,18 +16,27 @@ if ($_GET['id'] == $_SESSION['userid']) {
 	$imageFileType = pathinfo(basename($_FILES['picture']['name']),PATHINFO_EXTENSION);
 	$targetfile = 'users/' . $_SESSION['username'] . '-' . basename($_FILES['picture']['name']);
 	if (!getimagesize($_FILES['picture']['tmp_name'])) {
+		bmlog("Failed to change user picture to"
+		. " $targetfile ($imageFileType)");
 		print 'Not an image!'; die;
 	}
 	if (!move_uploaded_file($_FILES['picture']['tmp_name'], $targetfile)) {
+		bmlog("Failed to change user picture to $targetfile");
 		print 'Someting happened!'; die;
 	}
+	exec('convert ' . escapeshellarg($targetfile)
+		. ' -resize 750x750\> ' . escapeshellarg($targetfile)
+	);
 	update_userpicture($_SESSION['userid'], $targetfile);
+	bmlog("Updated picture to $targetfile");
 }
 if (isset($_POST['bio']))
 if ($_GET['id'] == $_SESSION['userid']) {
 	update_userbio($_SESSION['userid'], urldecode($_POST['bio']));
+	bmlog("Updated biography");
 }
 ?>
+<!DOCTYPE html>
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>

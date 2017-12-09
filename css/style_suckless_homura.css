@@ -11,6 +11,7 @@ body {
 	box-shadow: -5px 5px 4px black;
 }
 #rightframe {
+	background-color: white;
 	border-radius: 0px 0px 0px 15px;
 }
 ::-webkit-scrollbar-thumb {

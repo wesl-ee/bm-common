@@ -93,7 +93,7 @@ function login($username, $password)
 	. "  WHERE username='$username'");
 	$row = mysqli_fetch_assoc($res);
 
-	syslog(LOG_INFO|LOG_DAEMON, "Successful login for"
+	bmlog("Successful login for"
 	. " $username from " . $_SERVER['HTTP_X_REAL_IP']);
 
 	// Initialize the user's session

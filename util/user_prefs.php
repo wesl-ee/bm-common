@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <?php
 include "../includes/core.php";
 if (isset($_POST['pref_css'])) {
 	header("Refresh: 1; url=user_prefs.php");
 }
 ?>
+<!DOCTYPE html>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
 	<title>bigmike — preferences</title>

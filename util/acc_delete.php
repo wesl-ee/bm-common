@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <?php
 include "../includes/core.php";
 include CONFIG_COMMON_PATH."includes/accounts.php";
 include CONFIG_COMMON_PATH."includes/invites.php";
 include CONFIG_COMMON_PATH."includes/auth.php";
 ?>
+<!DOCTYPE html>
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php";?>

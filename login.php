@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 include "includes/core.php";
 include "includes/accounts.php";
@@ -7,6 +6,7 @@ include "includes/accounts.php";
 if (isset($_GET['ref']))
 	$uri = "?ref=".urlencode($_GET['ref']);
 ?>
+<!DOCTYPE html>
 <HTML>
 <head>
 	<?php include CONFIG_COMMON_PATH."includes/head.php"; ?>
